@@ -12,8 +12,12 @@
     <title>Фрилансеру</title>
 </head>
 
+
+
 <body>
-    <header class="header">
+
+
+    <header class="header" id="burgerH"> 
         <div class="header1">
             <div class="header11">
                 <div class="mainmenu">
@@ -26,10 +30,14 @@
                                 <input type="text" placeholder="Найти услугу..." class="searchinput">
                                 <button class="search_button">Найти</button>
                             </form>
-
                         </div>
+                        <button class="burger" id="burger"> 
+                            <div class="burgerline"></div>
+                            <div class="burgerline"></div>
+                            <div class="burgerline"></div>
+                        </button>
                     </div>
-                    <div class="mainbuttons">
+                    <div class="mainbuttons" id="burger_menu1"> 
                         <button class="signin_button">Вход</button>
                         <button class="signup_button">Регистрация</button>
                         <button class="frilancer_button">Фрилансеру</button>
@@ -37,7 +45,7 @@
                 </div>
             </div>
         </div>
-        <div class="header2">
+        <div class="header2" id="burger_menu2"> 
             <div class="header21">
                 <div class="catalog">
                     <button class="catalog_button">Дизайн</button>
@@ -51,6 +59,15 @@
             </div>
         </div>
     </header>
+
+
+
+
+
+
+
+
+
 
     <main class="main">
         <div class="firstblock_back">
@@ -252,39 +269,50 @@
                 <div class="logo sdsd">
                     <img src="img/logo.png" alt="Logo">
                 </div>
-                <div class="footer_b_title">Поддержка</div>
-                <div class="fbtb">
-                    <button class="fb">Вопрос - ответ</button>
-                    <button class="fb">Служба поддержки</button>
+                <div class="footer_b_title">
+                    <h4>Поддержка<i></i></h4>
+                    <div class="fbtb">
+                        <button class="fb">Вопрос - ответ</button>
+                        <button class="fb">Служба поддержки</button>
+                    </div>
                 </div>
             </div>
             <div class="footer_main_b_block">
-                <div class="footer_b_title">О проекте</div>
-                <div class="fbtb">
-                    <button class="fb">О проекте</button>
-                    <button class="fb">Пользовательские соглашения</button>
-                    <button class="fb">Политика конфидециальности</button>
-                    <button class="fb">Способы оплаты</button>
-                    <button class="fb">Карьера на проекте</button>
+                <div class="footer_b_title">
+                    <h4>О проекте<i></i></h4>
+                    <div class="fbtb">
+                        <button class="fb">О проекте</button>
+                        <button class="fb">Пользовательские соглашения</button>
+                        <button class="fb">Политика конфидециальности</button>
+                        <button class="fb">Способы оплаты</button>
+                        <button class="fb">Карьера на проекте</button>
+                    </div>
                 </div>
+
             </div>
             <div class="footer_main_b_block">
-                <div class="footer_b_title">Сообщество</div>
-                <div class="fbtb">
-                    <button class="fb">Блог</button>
-                    <button class="fb">Партнерская программа</button>
-                    <button class="fb">Кейсы</button>
+                <div class="footer_b_title">
+                    <h4>Сообщество<i></i></h4>
+                    <div class="fbtb">
+                        <button class="fb">Блог</button>
+                        <button class="fb">Партнерская программа</button>
+                        <button class="fb">Кейсы</button>
+                    </div>
                 </div>
+                
             </div>
             <div class="footer_main_b_block">
-                <div class="footer_b_title">Полезное</div>
-                <div class="fbtb">
-                    <button class="fb">Покупателю</button>
-                    <button class="fb">Фрилансеру</button>
-                    <button class="fb">Как заработать на проекте</button>
-                    <button class="fb">Рубрики</button>
-                    <button class="fb">Мобильное приложение</button>
+                <div class="footer_b_title">
+                    <h4>Полезное<i></i></h4>
+                    <div class="fbtb">
+                        <button class="fb">Покупателю</button>
+                        <button class="fb">Фрилансеру</button>
+                        <button class="fb">Как заработать на проекте</button>
+                        <button class="fb">Рубрики</button>
+                        <button class="fb">Мобильное приложение</button>
+                    </div>
                 </div>
+                
             </div>
         </div>
         <div class="footer_social_b">
@@ -306,5 +334,6 @@
             </div>
         </div>
     </footer>
+    <script src="app.js"></script>
 </body>
 </html>
