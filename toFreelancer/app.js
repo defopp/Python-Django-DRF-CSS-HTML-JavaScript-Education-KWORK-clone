@@ -39,3 +39,51 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 });
 // Сделал
+
+
+
+
+
+
+
+// слайдер 1
+let offset = 0;
+const sliderLine = document.querySelector('.thirdblock_stickers')
+
+document.querySelector(".next_sl_bt").addEventListener('click', function () {
+    offset += 576;
+    if (offset > 1152) {
+        offset = 0
+    }
+    sliderLine.style.left = -offset + 'px';
+})
+
+document.querySelector(".prev_sl_bt").addEventListener('click', function () {
+    offset -= 576;
+    if (offset < 0) {
+        offset = 1152
+    }
+    sliderLine.style.left = -offset + 'px';
+})
+
+
+// слайдер 2
+let offset1 = 0;
+const sliderLine1 = document.querySelector('.thirdblock_stickers1')
+
+document.querySelector(".next_sl_bt1").addEventListener('click', function () {
+    offset1 += 576;
+    if (offset1 > 1152) {
+        offset1 = 0
+    }
+    sliderLine1.style.left = -offset1 + 'px';
+})
+
+document.querySelector(".prev_sl_bt1").addEventListener('click', function () {
+    offset1 -= 576;
+    if (offset1 < 0) {
+        offset1 = 1152
+    }
+    sliderLine1.style.left = -offset1 + 'px';
+})
+// Оптимизировать. 3 и 4 блок

@@ -395,11 +395,6 @@ body{
 
 
 
-
-
-
-                        /* FIRST BLOCK */
-
 .main{
     margin: 0;
     font-family: 'Inter', sans-serif;
@@ -408,9 +403,25 @@ body{
     flex-direction: column;
     align-items: center;
 }
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* FIRST BLOCK */        
+
 .firstblock_back {
-    width: 1440px;
+    max-width: 1440px;
+    width: 100%;
     min-height: 567px;
     background-image: url(../img/fbback.png);
     color: var(--white-color);
@@ -418,6 +429,10 @@ body{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    background-position: center;
+    @media (max-width: 1100px) {
+        min-height: 500px;
+    }
 }
 
 .firstblock_titlediv {
@@ -425,11 +440,18 @@ body{
     flex-direction: column;
     align-items: center;
     margin-top: 152px;
+    @media (max-width: 1100px) {
+        margin-top: 135px;
+    }
+    @media (max-width: 906px) {
+        margin-top: 100px;
+    }
 }
 
 .firstblock_title {
     font-weight: 700;
     font-size: 36px;
+    text-align: center;
     /* dsadadssadasdasdasd text-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.9); */
 }
 
@@ -437,6 +459,7 @@ body{
     font-weight: 400;
     font-size: 16px;
     margin-top: 5px;
+    text-align: center;
 }
 
 .singup_button {
@@ -463,6 +486,9 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (max-width: 906px) {
+        min-height: 100px;
+    }
 }
 
 .firstblock_stats {
@@ -470,6 +496,11 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: 1100px) {
+        gap: 30px;
+        margin: 0 30px;
+        
+    }
 }
 
 .firstblock_stat {
@@ -478,6 +509,8 @@ body{
     align-items: center;
     justify-content: center;
 }
+
+
 
 .fb_statname {
     font-weight: 400;
@@ -489,6 +522,88 @@ body{
     font-size: 36px;
 }
 
+@media (max-width: 906px) {
+    .fb_statname{
+        font-size: 17px;
+    }
+    .fb_statinfo{
+        font-size: 28px;
+    }
+    .firstblock_back{
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 732px) {
+    .fb_statname{
+        font-size: 14px;
+    }
+    .fb_statinfo{
+        font-size: 22px;
+    }
+
+}
+
+@media (max-width: 610px) {
+    .fb_statname{
+        color: #2f2f2f;
+    }
+    .fb_statinfo{
+        color: #2f2f2f;
+    }
+
+    .firstblock_title{
+        font-size: 30px;
+    }
+
+    .firstblock_statdiv{
+        background-color: white;
+        min-height: 200px;
+    }
+    
+    .firstblock_stats{
+        margin-top: 30px;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .firstblock_titlediv{
+        margin-top: 83px;
+    }
+
+    .firstblock_back{
+        min-height: 500px;
+    }
+
+    .aass{
+        margin: 12px 0px;
+    }
+}
+
+@media (max-width: 533px) {
+    .firstblock_title{
+        font-size: 20px;
+    }
+    .firstblock_text{
+        font-size: 13px;
+    }
+    .aass{
+        margin: 12px 0px;
+    }
+    .firstblock_titlediv{
+        margin-top: 100px;
+    }
+}
+
+@media (max-width: 445px) {
+
+    .firstblock_text{
+        font-size: 11px;
+    }
+    .aass{
+        margin: 12px 0px;
+    }
+}   
 
 
 
@@ -501,6 +616,21 @@ body{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* second */
 .secondblockback{
     justify-content: center;
     display: flex;
@@ -508,7 +638,7 @@ body{
 
 .secondblock{
     margin-top: 34px;
-    width: 1100px;
+    max-width: 1100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -518,6 +648,10 @@ body{
 .title_text_b2{
     color: var(--black-color);
     margin-left: 9px;
+    text-align: center;
+    @media (max-width: 570px) {
+        font-size: 22px;
+    }
 }
 
 .resumesdiv{
@@ -539,12 +673,33 @@ body{
     border: none;
     border-radius: 5px;
     box-shadow: inset 0px -100px 50px -60px;
+    @media (max-width: 1050px) {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .categories_button_text{
+        font-size: 20px;
+    }
+
+    .text_underresume{
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .secondblockback{
+        display: none;
+    }
 }
 
 .categories_button_text{
     margin-bottom: 10px;
     margin-left: 10px;
     color: var(--white-color);
+
 }
 
 .cbbackground_1{
@@ -617,12 +772,31 @@ body{
     font-size: 17px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* третий блок */
 
 .thirdblockback{
     background-color: rgba(66, 97, 157, 0.1);
     margin-top: 34px;
-    width: 1440px;
+    max-width: 1440px;
+    width: 100%;
     height: 469px;
     display: flex;
     justify-content: center;
@@ -637,6 +811,7 @@ body{
 
 .thirdblock_title{
     margin-top: 60px;
+    text-align: center;
 }
 
 .thirdblock_text{
@@ -644,6 +819,7 @@ body{
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 14px;
+    text-align: center;
 }
 
 .thirdblock_stickers{
@@ -651,14 +827,28 @@ body{
     display: flex;
     width: 100%;
     justify-content: space-evenly;
+    gap: 20px;
 }
 
 .thirdblock_sticker{
-    width: 183px;
+    min-width: 183px;
+    max-width: 288px;
     height: 195px;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.thirdblock_stickers:nth-child(1){
+    min-width: 235px;
+}
+
+.thirdblock_stickers:nth-child(2){
+    min-width: 204px;
+}
+
+.thirdblock_stickers:nth-child(3){
+    min-width: 276px;
 }
 
 .sticker_title{
@@ -666,6 +856,7 @@ body{
     font-weight: 700;
     font-size: 15px;
     margin-top: 8px;
+    text-align: center;
 }
 
 .sticker_text{
@@ -676,47 +867,150 @@ body{
     text-align: center;
 }
 
-.dasasdda{
-    margin-left: 20px;
+@media (max-width: 774px) {
+    .thirdblock_stickers{
+        width: 276px;
+        gap: 300px;
+        justify-content: flex-start;
+        margin: 60px auto;
+        position: relative;
+        transition: 0.5s;
+        left: 0px;
+    }
+    .thirdblock_sticker{
+        min-width: none;
+        min-width: 276px;
+    }
+
 }
 
-.aaaaaaa{
-    margin-left: 75px;
-    width: 195px;
+.slider{
+    width: 100%;
 }
 
-.dfasdasda{
-    width: 281px;
+.slider_b{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    bottom: 185px;
 }
+
+.slider_b button{
+    display: none;
+    margin: 0 15px;
+    padding: 0 0;
+    width: 35px;
+    height: 60px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: transparent;
+    transition: 0.4s;
+    position: relative;
+
+    @media (max-width: 774px){  
+        display: block;
+    }
+}
+
+.prev_sl_bt:hover{
+    transform: translateX(2px);
+}
+.next_sl_bt:hover{
+    transform: translateX(-2px);
+}
+
+
+.prev_sl_bt:active{
+    transform: translateX(-2px);
+}
+.next_sl_bt:active{
+    transform: translateX(2px);
+}
+
+
+.next_sl_bt img{
+    position: relative;
+    transform: rotate(180deg);
+}
+
+@media (max-width: 600px){
+    .thirdblock_title{
+        font-size: 25px;
+    }
+
+}
+
+@media (max-width: 500px){
+    .thirdblock_title{
+        font-size: 20px;
+        margin-top: 50px;
+    }
+
+    .thirdblock_stickers{
+        margin: 40px auto;
+    }
+    .thirdblockback{
+        height: 400px;
+    }
+    
+    .slider_b button{
+        height: 30px;
+        width: 18px;
+    }
+
+    .slider_b button img{
+        height: 100%;
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* четвертый блок */
-
-
 .thirdblockback1{
-    background-color: rgba(255, 255, 255, 0.2);
-    width: 1440px;
+    background-color: none;
+    margin-top: 0px;
+    max-width: 1440px;
+    width: 100%;
     height: 469px;
     display: flex;
     justify-content: center;
 }
 
-.thirdblock1{
+.thirdblock{
     align-items: center;
     width: 954px;
     display: flex;
     flex-direction: column;
 }
 
-.thirdblock_title1{
+.thirdblock1_title{
     margin-top: 60px;
+    text-align: center;
 }
 
-.thirdblock_text1{
+.thirdblock1_text{
     margin-top: 10px;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 14px;
+    text-align: center;
 }
 
 .thirdblock_stickers1{
@@ -724,17 +1018,31 @@ body{
     display: flex;
     width: 100%;
     justify-content: space-evenly;
+    gap: 20px;
 }
 
-.thirdblock_sticker1{
-    width: 183px;
+.thirdblock_sticker{
+    min-width: 183px;
+    max-width: 288px;
     height: 195px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.sticker_title1{
+.thirdblock_stickers1:nth-child(1){
+    min-width: 235px;
+}
+
+.thirdblock_stickers1:nth-child(2){
+    min-width: 204px;
+}
+
+.thirdblock_stickers1:nth-child(3){
+    min-width: 276px;
+}
+
+.sticker_title{
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     font-size: 15px;
@@ -742,7 +1050,7 @@ body{
     text-align: center;
 }
 
-.sticker_text1{
+.sticker_text{
     margin-top: 5px;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
@@ -750,22 +1058,117 @@ body{
     text-align: center;
 }
 
-.dasasdda1{
-    width: 320px;
+@media (max-width: 774px) {
+    .thirdblock_stickers1{
+        width: 276px;
+        gap: 300px;
+        justify-content: flex-start;
+        margin: 60px auto;
+        position: relative;
+        transition: 0.5s;
+        left: 0px;
+    }
+    .thirdblock_sticker{
+        min-width: none;
+        min-width: 276px;
+    }
+
 }
 
-.aaaaaaa1{
-    width: 255px;
+.slider{
+    width: 100%;
 }
 
-.dfasdasda1{
-    width: 281px;
+.slider_b{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    bottom: 185px;
 }
+
+.slider_b button{
+    display: none;
+    margin: 0 15px;
+    padding: 0 0;
+    width: 35px;
+    height: 60px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: transparent;
+    transition: 0.4s;
+    position: relative;
+
+    @media (max-width: 774px){  
+        display: block;
+    }
+}
+
+.prev_sl_bt1:hover{
+    transform: translateX(2px);
+}
+.next_sl_bt1:hover{
+    transform: translateX(-2px);
+}
+
+
+.prev_sl_bt1:active{
+    transform: translateX(-2px);
+}
+.next_sl_bt1:active{
+    transform: translateX(2px);
+}
+
+
+.next_sl_bt1 img{
+    position: relative;
+    transform: rotate(180deg);
+}
+
+@media (max-width: 600px){
+    .thirdblock_title{
+        font-size: 25px;
+    }
+
+}
+
+@media (max-width: 500px){
+    .thirdblock_title{
+        font-size: 20px;
+        margin-top: 50px;
+    }
+
+    .thirdblock_stickers1{
+        margin: 40px auto;
+    }
+    .thirdblockback1{
+        height: 400px;
+    }
+    
+    .slider_b button{
+        height: 30px;
+        width: 18px;
+    }
+
+    .slider_b button img{
+        height: 100%;
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
 
 
 
 /* пятый блок */
-
 .frelstudy{
     height: 328px;
     width: 994px;
@@ -983,4 +1386,4 @@ body{
     margin: 0 10px;
     width: 75px;
     height: 27px;
-}
+}   
