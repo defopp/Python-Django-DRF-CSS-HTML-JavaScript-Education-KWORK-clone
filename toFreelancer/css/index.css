@@ -1302,6 +1302,277 @@ body{
 
 
 
+/* шестой блок */
+
+/* мобайлферст */
+.sixthblock {
+    max-width: 994px;
+    width: 100%;
+}
+
+.sixthblock h1{
+    margin-top: 34px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.buyers_block {
+    height: 436px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    overflow: hidden;   
+    @media (max-width: 780px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 701.24px;
+        grid-template-columns: 50%;
+        grid-template-rows: 25% 25% 25% 25%;
+    }
+}
+.buyer {
+    background-color: var(--gray-color);
+    display: grid;
+    grid-template-columns: 50% 50%;
+    overflow: hidden;
+    box-sizing: border-box;
+    @media (max-width: 780px) {
+        width: 497px;
+    }
+}
+
+.buyer img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 0;
+}
+
+.buyer ul{
+    margin: auto 20px;
+    padding: 0;
+    position: relative;
+    min-height: 100px;
+}
+
+.buyer h6{
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    z-index: 2;
+    font-size: 11px;
+    font-weight: 600;
+    max-width: 150px;
+
+}
+.buyer p{
+    position: relative;
+    z-index: 2;
+    font-size: 11px;
+    font-weight: 300;
+    max-width: 200px;
+}
+
+@media (max-width: 780px) {
+    .buyers_block{
+        min-height: 100px;
+    }
+    .buyer:nth-child(2){
+        position: relative;
+        top: 175.31px;
+    }
+    .buyer:nth-child(3){
+        position: relative;
+        top: -175.31px;
+    }
+}
+
+@media (max-width: 500px) {
+    .buyer{
+        width: 95%;
+        height: 175.31px;
+    }
+    
+    .buyer img{
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        margin: auto 5px;
+    }
+
+    .buyer p{
+        margin-top: 0px;
+    }
+}
+
+@media (max-width: 350px) {
+    .buyer h6{
+        font-size: 10px;
+    }
+    
+
+    .buyer p{
+        font-size: 9px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/* десктоп */
+@media (min-width: 993px) {
+    .sixthblock {
+        max-width: 994px;
+        width: 100%;
+    }
+    
+    .sixthblock h1{
+        margin-top: 34px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    .buyers_block {
+        height: 436px;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50% 50%;
+        overflow: hidden;
+    }
+    .buyer {
+        background-color: var(--gray-color);
+        display: flex;
+        overflow: hidden;
+    }
+    .buyer ul{
+        margin: auto 0px;
+        padding: 0;
+        position: relative;
+        height: 144px;
+    }
+
+    .buyer h6{
+        position: relative;
+        margin-top: 10px;
+        z-index: 2;
+        font-size: 11px;
+        font-weight: 600;
+        width: 150px;
+        left: -25px;
+        top: 17px;
+    }
+    .buyer p{
+        position: relative;
+        z-index: 2;
+        font-size: 11px;
+        font-weight: 300;
+        width: 200px;
+        left: -25px;
+        top: 17px;
+    }
+
+
+    .buyer ul::before {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-left: 119px solid transparent;
+        border-top: 0px solid transparent;
+        border-right: 119px solid transparent;
+        border-bottom: 80px solid  var(--gray-color);
+        position: absolute;
+        top: 32px;
+        left: -155px;
+        transform: rotate(-90deg);
+    }
+
+    .buyer:nth-child(4) ul::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-left: 119px solid transparent;
+        border-top: 0px solid transparent;
+        border-right: 119px solid transparent;
+        border-bottom: 80px solid  var(--gray-color);
+        position: absolute;
+        top: 32px;
+        right: -155px;
+        transform: rotate(90deg);
+    }
+
+    .buyer:nth-child(3) ul::after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-left: 119px solid transparent;
+        border-top: 0px solid transparent;
+        border-right: 119px solid transparent;
+        border-bottom: 80px solid  var(--gray-color);
+        position: absolute;
+        top: 32px;
+        right: -155px;
+        transform: rotate(90deg);
+    }
+
+    .buyer:nth-child(3) p{
+        left: 20px;
+    }
+
+    .buyer:nth-child(3) h6{
+        left: 20px;
+    }
+
+    .buyer:nth-child(4) p{
+        left: 20px;
+    }
+
+    .buyer:nth-child(4) h6{
+        left: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
