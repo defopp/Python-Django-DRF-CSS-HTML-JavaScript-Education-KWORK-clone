@@ -1554,11 +1554,108 @@ body{
 
 
 
+/* седьмой блок */
+.seventh__block__back{
+    max-width: 1440px;
+    min-height: 200px;
+    margin-top: 34px;
+    width: 100%;
+    background-color: rgba(66, 97, 157, 0.1);
+    padding-bottom: 34px;
+}
+
+.seventh__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.text-h1 {
+}
+.seventh_menus {
+    max-width: 994px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    @media (max-width: 1030px) {
+        align-items: center;
+        flex-direction: column;
+    }
+}
 
 
 
 
 
+.seventh_menu {
+    position: relative;
+    max-width: 470px;
+    width: 100%;
+    background-color: var(--gray-color);
+    display: grid;
+    grid-template-rows: min-content 0fr;
+    height: max-content;
+    overflow: hidden;
+    @media (max-width: 1030px) {
+        width: 90%;
+    }
+}
+
+.seventh_menu.open{
+    grid-template-rows: min-content 1fr;
+}
+
+.seventh_menu.open > p {
+    margin-bottom: 20px;
+}
+
+.seventh_menu p{
+    min-height: 0px;
+    margin: 0 20px;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+
+.seventh_menu h3{
+    position: relative;
+    padding: 0 20px;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 437px) {
+        font-size:13px
+    }
+}
+
+
+
+/* стрелка */
+.seventh_menu h3::after{    
+    content: "";
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+
+    position: relative;
+    right: 0;
+    top: 6px;
+    height: 10px;
+    width: 10px;
+    
+    transition: .4s;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+
+}
+
+.seventh_menu.open h3::after{
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
 
 
 

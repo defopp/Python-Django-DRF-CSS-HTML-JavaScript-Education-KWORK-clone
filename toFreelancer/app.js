@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function (){
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    // const buttons = document.querySelectorAll(".footer_b_title");
     const titles = document.querySelectorAll(".footer_b_title h4");
 
 
@@ -87,3 +86,19 @@ document.querySelector(".prev_sl_bt1").addEventListener('click', function () {
     sliderLine1.style.left = -offset1 + 'px';
 })
 // Оптимизировать. 3 и 4 блок
+
+
+
+
+
+// 7 блок 
+document.addEventListener("DOMContentLoaded", function () {
+    const titles = document.querySelectorAll(".seventh_menu h3");
+
+
+    titles.forEach(title => {
+        title.addEventListener('click', function() {
+            title.parentNode.classList.toggle('open');
+    })
+});
+});
