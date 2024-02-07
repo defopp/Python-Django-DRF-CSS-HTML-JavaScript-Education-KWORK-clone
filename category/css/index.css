@@ -110,6 +110,7 @@ button:hover{
 
     .mainbuttons{
         position: absolute;
+        z-index: 3;
         transition: .3s ease-in-out;
         width: 100%;
         display: flex;
@@ -119,7 +120,7 @@ button:hover{
         padding-top: 10px;
         padding-bottom: 10px;
         border-top: 1px solid rgba(66, 97, 157, 0.1);
-        background-color: rgba(255, 105, 180, 0.2);
+        background-color: rgba(255, 105, 180, 0.4);
     }
     .mainbuttons.open{
         top: 44.75px;
@@ -139,6 +140,7 @@ button:hover{
     .header2{
         transition: .3s ease-in-out;
         position: relative;
+        z-index: 5;
         transform: translateY(-500px);
         border-bottom: 1px solid rgba(66, 97, 157, 0.5);
         background-color: var(--pink-color);
@@ -187,7 +189,7 @@ button:hover{
 }
 
 .mainlogosearch {
-    
+    position: relative;
     display: flex;
     padding-bottom: 9px;
     @media (max-width: 600px) {
@@ -198,7 +200,7 @@ button:hover{
         flex-direction: row;
         padding-bottom: 0px;
         background-color: white;
-        z-index: 2;
+        z-index: 3;
     }
     
 }
@@ -307,6 +309,7 @@ button:hover{
 }
 
 .burger.open .burgerline:nth-child(2){
+    transition: 0s;
     background-color: transparent;
 }
 
@@ -366,6 +369,7 @@ button:hover{
     justify-content: center;
     width: 954px;
     padding: 1% 0%;
+
 }
 
 .catalog {
@@ -429,13 +433,95 @@ button:hover{
 
 
 
+/* maint title burger */
+
+.title__burger{
+    margin-right: 6px;
+    padding: 0;
+    height: 20px;
+    width: 30px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    display: none;
+    margin-right: 20px;
+    top: 35px;
+    @media (max-width:1100px) {
+        display: flex;
+    }
+    @media (max-width:600px) {
+        position: absolute;
+        margin-right: 8px;
+    }
+}
+
+.title__burger:hover{
+    transition: .2s;
+    transform: scale(1.01, 1.01);
+}
+
+.title_burger_container{
+    position: absolute;
+    display: flex;
+    justify-content: end;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: none;
+    z-index: 0;
+}
+
+.title_burger_container.open{
+    z-index: 1;
+    background-color: rgba(2, 3, 3, 0.426);
+}
 
 
+.title__burger{
+    z-index: 2;
 
+}
 
+.title_burger_container span{
+    width: 100%;
+    background-color: var(--black-color);
+    height: 4px;
+    position: relative;
+    transition: .2s;
+    border-radius: 3px;
+}
 
+.title_burger_container span:nth-child(1){
+    top:4px;
+    transform: translateY(-10px);
+}
 
+.title_burger_container span:nth-child(3){
+    bottom:4px;
+    transform: translateY(10px);
 
+}
+
+.title_burger_container.open span:nth-child(1){
+    transform: rotate(45deg);
+    box-shadow: 0 0 20px #ffffff;
+
+}
+
+.title_burger_container.open span:nth-child(2){
+    transition: none;
+    background-color: transparent;
+
+}
+
+.title_burger_container.open span:nth-child(3){
+    transform: rotate(-45deg);
+    box-shadow: 0 0 20px #ffffff;
+
+}
 
 
 
@@ -443,20 +529,199 @@ button:hover{
 .main{
     margin: 0 auto;
     font-family: 'Inter', sans-serif;
-    font-weight: 400;
-
+    font-weight: 400; 
 }
 
 .mainblock{
+    position: relative;
+    display: flex;
+    flex-direction: column;
     margin: 0 auto;
-    max-width: 1440px;
     width: 100%;
-    background-color: rgba(187, 211, 212, 0.249);
+    height: max-content;
+    box-sizing: border-box;
+    background-color: rgba(161, 200, 237, 0.406);
+    overflow: hidden;
 }
 
-.mainblock h1{
-    margin-top: 0;
+.main__title h1{
+    padding: 5px 0;
+    margin: 0px auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
+
+.main__title{
+    margin: 30px auto;
+    width: 100%;
+    @media (max-width: 1100px) {
+        margin-top: 18px;
+    }
+}
+
+.main__title p{
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+
+
+.catalog__container {
+    width: max-content;
+    margin: 0 auto;
+    display: flex;
+}
+
+
+.catalog__menus {
+    min-width: 250px;
+    margin: 0px 24px;
+    margin-bottom: 68px;
+    @media (max-width: 1100px) {
+        transition: .2s;
+        position: absolute;
+        border-radius: 0 3px 3px 0px;
+        z-index: 1;
+        left: -500px;
+        background-color: #a6b0f7ef;
+        margin: 0 0;
+        padding: 13px 13px;
+        padding-left: 30px;
+        box-shadow: 0 0 10px #42619D;
+        top: 0;
+    }
+}
+
+.catalog__menus.open{
+    left: -15px;
+}
+
+.catalog__menus.open{
+    left: -15px;
+}
+
+.catalog__menus h2{
+    margin: 0 0;
+    margin-bottom: 15px;
+}
+
+.catalog__menus h3{
+    margin: 0 0;
+    font-size: 15px;
+    margin-bottom: 5px;
+
+}
+
+.catalog__menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 15px;
+    
+}
+
+
+.catalog__menu button {
+    width: max-content;
+    border: none;
+    background: none;
+    padding: 0 0;
+}
+
+
+
+
+
+.catalog__categorys{
+    display: grid;
+    padding-bottom: 44px;
+    gap: 15px;
+    margin-right: 24px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.categories_button{
+    padding: 0 0;
+    position: relative;
+    cursor: pointer;
+    width: 250px;
+    height: 200px;
+    border: none;
+    border-radius: 3px;
+    box-shadow: inset 0px -100px 40px -60px rgba(0, 0, 0, 0.9);
+}
+.cbbackground_1{
+    background-image: url(../img/Screenshot_1.png);
+    background-size: cover;
+    background-position: center;
+}
+
+
+.categories_button h3{
+    font-weight: 400;
+    margin: 0 0;
+    position: absolute;
+    
+    bottom: 10px;
+    left: 15px;
+    color: var(--white-color);
+}
+
+
+
+@media (max-width: 1367px) {
+    .catalog__categorys{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+
+@media (max-width: 800px) {
+    .catalog__categorys{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .categories_button{
+        width: 200px;
+        height: 150px;
+    }
+    .main__title{
+        width: 100%;
+        
+    }
+
+}
+
+@media (max-width: 500px) {
+    .categories_button{
+        width: 180px;
+        height: 130px;
+    }
+    .main__title p{
+        text-align: center;
+        width: 98%;
+    }
+
+}
+
+@media (max-width: 500px) {
+    .categories_button{
+        width: 160px;
+        height: 110px;
+    }
+    .main__title p{
+        
+    }
+    .main__title{
+        
+    }
+}
+
+
+
+
 
 
 
