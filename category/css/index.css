@@ -111,22 +111,23 @@ button:hover{
     .mainbuttons{
         position: absolute;
         z-index: 3;
-        transition: .3s ease-in-out;
+        transition: .3s;
         width: 100%;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        transform: translateY(-500px);
+        transform: translateX(-500px);
         padding-top: 10px;
         padding-bottom: 10px;
         border-top: 1px solid rgba(66, 97, 157, 0.1);
-        background-color: rgba(255, 105, 180, 0.4);
-    }
-    .mainbuttons.open{
+        background-color: rgba(255, 105, 180, 0.552);
         top: 44.75px;
+        margin-top: 0;
+        margin-right: 0;
+    }
+    .mainbuttons.open{  
         position: absolute;
-        transform: translateX(0);
-        margin: 0 auto;        
+        transform: translateY(0);
     }
 
     .catalog{
@@ -138,17 +139,17 @@ button:hover{
         
     }
     .header2{
-        transition: .3s ease-in-out;
+        transition: .3s;
         position: relative;
         z-index: 5;
-        transform: translateY(-500px);
+        transform: translateX(-500px);
         border-bottom: 1px solid rgba(66, 97, 157, 0.5);
         background-color: var(--pink-color);
     }
     .header2.open{
         width: 100%;
-        transform: translateX(0);
         position: absolute;
+        transform: translateX(0);
         top: calc(44.75px*2);
 
     }
@@ -162,7 +163,8 @@ button:hover{
 
 .header {
     margin: 0 auto;
-
+    position: relative;
+    z-index: 5;
 }
 
 .header1{
@@ -284,6 +286,7 @@ button:hover{
     }
 }
 
+
 .burgerline{
     width: 100%;
     background-color: var(--pink-color);
@@ -301,7 +304,6 @@ button:hover{
 .burgerline:nth-child(3){
     bottom:4px;
     transform: translateY(10px);
-
 }
 
 .burger.open .burgerline:nth-child(1){
@@ -317,11 +319,15 @@ button:hover{
     transform: rotate(-45deg);
 }
 
+
 .mainbuttons {
     margin-top: 2px;
     margin-right: 2%;
     padding: auto;
-
+    @media (max-width:600px) {
+        margin-top: 0;
+        margin-right: 0;
+    }
 }
 
 .signin_button {
@@ -435,7 +441,7 @@ button:hover{
 
 /* maint title burger */
 
-.title__burger{
+.title_burger{
     margin-right: 6px;
     padding: 0;
     height: 20px;
@@ -445,82 +451,77 @@ button:hover{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
     display: none;
-    margin-right: 20px;
-    top: 35px;
+    margin-left: 13px;
+    margin-top: 9px;
     @media (max-width:1100px) {
         display: flex;
     }
     @media (max-width:600px) {
-        position: absolute;
         margin-right: 8px;
     }
 }
 
-.title__burger:hover{
+.title_burger.open{
+
+}
+
+
+.title_burger:hover{
     transition: .2s;
     transform: scale(1.01, 1.01);
 }
 
 .title_burger_container{
+    display: none;
     position: absolute;
-    display: flex;
-    justify-content: end;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    top: -500px;
     background-color: none;
-    z-index: 0;
+    width: 1440px;
+    height: 20000%;
 }
 
-.title_burger_container.open{
-    z-index: 1;
-    background-color: rgba(2, 3, 3, 0.426);
+.title_burger.open .title_burger_container{
+    display: block;
+    background-color: rgba(39, 47, 81, 0.243);
 }
 
 
-.title__burger{
-    z-index: 2;
-
-}
-
-.title_burger_container span{
+.title_burger span{
     width: 100%;
     background-color: var(--black-color);
     height: 4px;
-    position: relative;
     transition: .2s;
     border-radius: 3px;
+    position: relative;
+    z-index: 2;
 }
 
-.title_burger_container span:nth-child(1){
+.title_burger span:nth-child(1){
     top:4px;
     transform: translateY(-10px);
 }
 
-.title_burger_container span:nth-child(3){
+.title_burger span:nth-child(3){
     bottom:4px;
     transform: translateY(10px);
 
 }
 
-.title_burger_container.open span:nth-child(1){
+.title_burger.open span:nth-child(1){
     transform: rotate(45deg);
-    box-shadow: 0 0 20px #ffffff;
+    box-shadow: 0 0 50px 20px #ffffff;
 
 }
 
-.title_burger_container.open span:nth-child(2){
+.title_burger.open span:nth-child(2){
     transition: none;
     background-color: transparent;
 
 }
 
-.title_burger_container.open span:nth-child(3){
+.title_burger.open span:nth-child(3){
     transform: rotate(-45deg);
-    box-shadow: 0 0 20px #ffffff;
-
 }
 
 
@@ -544,6 +545,16 @@ button:hover{
     overflow: hidden;
 }
 
+.main__title{
+    position: relative;
+    z-index: 2;
+    margin: 30px auto;
+    width: 100%;
+    @media (max-width: 1100px) {
+        margin-top: 18px;
+    }
+}
+
 .main__title h1{
     padding: 5px 0;
     margin: 0px auto;
@@ -552,13 +563,6 @@ button:hover{
     justify-content: center;
 }
 
-.main__title{
-    margin: 30px auto;
-    width: 100%;
-    @media (max-width: 1100px) {
-        margin-top: 18px;
-    }
-}
 
 .main__title p{
     margin: 0 auto;
@@ -582,14 +586,14 @@ button:hover{
     @media (max-width: 1100px) {
         transition: .2s;
         position: absolute;
-        border-radius: 0 3px 3px 0px;
-        z-index: 1;
+        border-radius: 0 0 3px 0px;
+        z-index: 2;
         left: -500px;
         background-color: #a6b0f7ef;
         margin: 0 0;
         padding: 13px 13px;
         padding-left: 30px;
-        box-shadow: 0 0 10px #42619D;
+        box-shadow: 0 0 10px #ffffff;
         top: 0;
     }
 }
@@ -635,6 +639,8 @@ button:hover{
 
 
 .catalog__categorys{
+    position: relative;
+    z-index: 1;
     display: grid;
     padding-bottom: 44px;
     gap: 15px;
