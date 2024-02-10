@@ -767,7 +767,19 @@ button:hover{
     -webkit-transform: rotate(-135deg);
 }
 
-
+.save_button{
+    margin-top: 24px;
+    height: 35px;
+    width: 100%;
+    border: 1px solid rgba(37, 55, 64, 0.355);
+    background-color: rgba(66, 97, 157, 0.5);
+    border-radius: 2px;
+}
+.save_button p{
+    font-size: 16px;
+    margin: 0 auto;
+    color: black;
+}
 
 
 
