@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function (){
 // });
 // нужно сделать чтобы ивент лист работал только на тайтл, а открывал весь див
 
-
+// drop menu
 document.addEventListener("DOMContentLoaded", function () {
     // const buttons = document.querySelectorAll(".footer_b_title");
     const titles = document.querySelectorAll(".footer_b_title h4");
@@ -39,3 +39,14 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 });
 // Сделал
+
+
+// drop menu
+document.addEventListener("DOMContentLoaded", function () {
+
+    const button = document.querySelector(".menu");
+
+    button.addEventListener('click', function() {
+    button.parentNode.classList.toggle('open');
+    })  
+});
