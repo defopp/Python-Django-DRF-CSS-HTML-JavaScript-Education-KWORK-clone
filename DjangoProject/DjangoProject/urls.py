@@ -1,5 +1,5 @@
 """
-URL configuration for FreelancerSite project.
+URL configuration for DjangoProject project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -16,9 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from SiteApp import views
 
 urlpatterns = [
-    path('', views.MainPage),
     path('admin/', admin.site.urls),
 ]
