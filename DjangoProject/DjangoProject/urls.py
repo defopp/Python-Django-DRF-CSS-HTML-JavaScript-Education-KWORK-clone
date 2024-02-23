@@ -21,7 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-from mainApp.views import MainPage
+from mainApp.views import MainPage, ToFreelancerPage
 
 
 
@@ -29,4 +29,6 @@ from mainApp.views import MainPage
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', MainPage),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('toFreelancer/', ToFreelancerPage),
+]
+# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

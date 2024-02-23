@@ -12,7 +12,9 @@ document.addEventListener('DOMContentLoaded', function (){
     })
 });
 
+
 document.addEventListener("DOMContentLoaded", function () {
+    // const buttons = document.querySelectorAll(".footer_b_title");
     const titles = document.querySelectorAll(".footer_b_title h4");
 
 
@@ -23,3 +25,5 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 });
 // Сделал
+
+
