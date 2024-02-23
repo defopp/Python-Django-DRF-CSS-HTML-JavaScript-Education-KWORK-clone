@@ -21,7 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-from mainApp.views import MainPage, ToFreelancerPage
+from mainApp.views import MainPage, ToFreelancerPage, CategoryPage
 
 
 
@@ -30,5 +30,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', MainPage),
     path('toFreelancer/', ToFreelancerPage),
+    path('category/', CategoryPage),
 ]
 # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -6,3 +6,6 @@ def MainPage(request):
 
 def ToFreelancerPage(request):
     return render(request, 'mainApp\\to_freelancer.html')
+
+def CategoryPage(request):
+    return render(request, 'mainApp\\category.html')
