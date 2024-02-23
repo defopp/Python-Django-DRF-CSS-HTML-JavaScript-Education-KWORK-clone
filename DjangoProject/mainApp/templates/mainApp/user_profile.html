@@ -1,0 +1,43 @@
+{% extends 'mainApp/layout.html' %}
+{% load static %}
+
+
+{% block title %}
+<link rel="stylesheet" href={% static "mainApp\css\user_profile.css" %}>
+<title>UserProfile</title>
+{%endblock%}
+
+
+{% block content %}
+
+<main>
+    <img class="background" alt="background" src={% static 'mainApp/img/medium.jpg'%}></img>
+    <div class="on_background">
+        <div class="profile_infos">
+            <div class="profile">
+                <div class="profile_info">
+                    <img src={% static 'mainApp/img/avatar.png'%} alt="avatar">
+                    <h1>NickName</h1>
+                    <p class="reg_date">На сайте с 1 ноября 2022</p>
+                    <p class="status">status off on</p>
+                </div>
+                <p class="description">(Описание) Пользователь не написал о себе</p>
+                <div class="profile_setting">
+                    <button>Настройки профиля</button>
+                </div>
+            </div>
+            <div class="active_projects">
+                <h1>Мои проекты</h1>
+                <p>У пользователя NickName нет активных проектов</p>
+            </div>
+        </div>
+        <div class="profile_review">
+            <div class="review">
+                <h1>Отзывы</h1>
+                <p>У пользователя NickName нет отзывов</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+{%endblock%}

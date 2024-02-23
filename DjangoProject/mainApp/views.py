@@ -15,3 +15,9 @@ def CategoryCatalogPage(request):
 
 def ProjectPage(request):
     return render(request, 'mainApp\\project.html')
+
+def ProjectCreatePage(request):
+    return render(request, 'mainApp\\project_create.html')
+
+def UserProfilePage(request):
+    return render(request, 'mainApp\\user_profile.html')

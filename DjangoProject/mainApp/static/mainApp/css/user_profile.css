@@ -1,0 +1,192 @@
+
+
+h1{
+    margin: 0 0;
+    font-size: 25px;
+}
+
+p{
+    margin: 0 0;
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+/* main profile info */
+/* main profile info */
+/* main profile info */
+main{
+    margin: 0 auto;
+    max-width: 1440px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.background {
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    object-position: center 60%;
+}
+
+.on_background{    
+    padding-top: 190px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.profile_infos {
+    max-width: 940px;
+    width: 100%;
+    min-height: 241px;
+}
+
+
+
+.profile {
+    display: grid;
+    border: 3px solid var(--blue-color);
+    grid-template-columns: auto 6fr 3fr;
+    background-color: #FFFFFF;
+    
+    /* GRID */
+}
+
+
+
+.profile_info {
+    
+    padding: 20px 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 290px;
+    gap: 8px;
+    width: max-content;
+    padding-right: 0px;
+}
+
+.profile_info img{
+    position: absolute;
+    transform: scale(1.1);
+    border: 3px solid var(--blue-color);
+    height: 172px;
+    width: 172px;
+    left: 30px;
+    top: -20px;
+}
+
+.reg_date{
+    display: flex;
+}
+
+.reg_date::before{
+    display: block;
+    position: relative;
+    top:2px;
+    width: 15px;
+    height: 15px;
+    content: "";
+    margin-right: 3px;
+    background-image: url("../img/timer-icon-7799\ 1.png");
+}
+
+.status{
+    display: flex;
+    gap: 5px;
+}
+
+.status::before{
+    position: relative;
+    top: 5px;
+    display: block;
+    content: "";
+    background-image: url(../img/dasdadadadasdsadsadaa.png);
+    width: 10px;
+    height: 10px;
+}
+
+.description{
+    padding: 10px 10px;
+    font-size: 13px;
+}
+
+.profile_setting {
+    border-left: 3px solid var(--blue-color);
+    background-color: rgba(117, 153, 195, 0.415);
+    padding: 10px 10px;
+}
+.profile_setting button{
+    width: 100%;
+    height: 35px;
+    background-color: var(--pink-color);
+    border-radius: 3px;
+    border: 1px solid var(--blue-color);
+}
+
+.active_projects {
+    padding: 20px 20px;
+}
+.profile_review {
+    width: 100%;
+    background-color: rgba(117, 153, 195, 0.415);
+}
+.review {
+    margin: 0 auto;
+    max-width: 940px;
+    width: 100%;
+    padding: 20px 20px;
+}
+
+
+
+@media (max-width:850px) {
+    .profile{
+        grid-template-columns: auto calc(100% - 212px);
+        grid-template-rows: auto;
+        grid-template-areas: 'info descript descript'
+                            'setting setting setting';
+    }
+    .profile_setting{
+        grid-area: setting;
+        border-left: none;
+        border-top: 3px solid var(--blue-color);
+    }
+    
+    .profile > p{
+        grid-area: descript;
+    }
+    .profile_info {
+        grid-area: info;
+    }        
+
+}
+
+
+@media (max-width:560px) {
+    .profile{
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        grid-template-areas: 'info'
+                            'descript'
+                            'setting';
+    }
+
+}
+
+/* main profile info */
+/* main profile info */
+/* main profile info */
