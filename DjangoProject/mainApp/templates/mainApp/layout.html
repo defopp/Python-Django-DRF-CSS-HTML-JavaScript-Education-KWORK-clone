@@ -22,7 +22,7 @@
                 <div class="mainmenu">
                     <div class="mainlogosearch">
                         <div class="logo">
-                            <img src={% static "mainApp/img/logo.png" %} alt="Logo">
+                            <a href="{% url 'main' %}"><img src={% static "mainApp/img/logo.png" %} alt="Logo"></a>
                         </div>
                         <div class="searchbox">
                             <form action="" class="search_bar">
@@ -39,7 +39,7 @@
                     <div class="mainbuttons" id="burger_menu1"> 
                         <button class="signin_button">Вход</button>
                         <button class="signup_button">Регистрация</button>
-                        <button class="frilancer_button">Фрилансеру</button>
+                        <a href="{% url 'freelancer' %}"><button class="frilancer_button">Фрилансеру</button></a>
                     </div>
                 </div>
             </div>

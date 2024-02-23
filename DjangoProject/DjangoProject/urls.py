@@ -29,8 +29,8 @@ from mainApp.views import MainPage, ToFreelancerPage, CategoryPage, CategoryCata
 urlpatterns = [
     # main pages
     path('admin/', admin.site.urls),
-    path('', MainPage),
-    path('to_freelancer/', ToFreelancerPage),
+    path('', MainPage, name='main'),
+    path('to_freelancer/', ToFreelancerPage, name='freelancer'),
     path('create_project/', ProjectCreatePage),
     
     
