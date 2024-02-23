@@ -9,3 +9,9 @@ def ToFreelancerPage(request):
 
 def CategoryPage(request):
     return render(request, 'mainApp\\category.html')
+
+def CategoryCatalogPage(request):
+    return render(request, 'mainApp\\category_catalog.html')
+
+def ProjectPage(request):
+    return render(request, 'mainApp\\project.html')

@@ -1,0 +1,190 @@
+{% extends 'mainApp/layout.html' %}
+{% load static %}
+
+
+{% block title %}
+<link rel="stylesheet" href={% static "mainApp\css\category_catalog.css" %}>
+<title>Catalog</title>
+{%endblock%}
+
+
+{% block content %}
+<main>
+    <div class="mainblock">
+        <div class="main__title">
+            <h2><a href="">Разработка в IT</a> > <a href="">Настройка сайта</a></h2>
+            <h1>Настройка сайта
+                <div class="title_burger" id="Tburger"> 
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <div class="title_burger_container"></div>
+                </div>
+            </h1>
+        </div>
+        
+        <div class="catalog__container">
+
+            <div class="catalog__menus" id="TBmenu">
+                <h4>Рубрики</h4>
+                <div class="catalog__menu">
+                    <a href="">Разработка в IT</a>
+        
+                    <ul>
+                        <button>Доработка сайта</button>
+                        <button>Настройка сайта</button>
+                        <button>Защита и лечение сайта</button>
+                        <button>Ускорение сайта</button>
+                        <button>Плагины и темы</button>
+                        <button>Исправление ошибок</button>
+                    </ul>
+                </div>
+                <div class="filter_menu">
+                    <h5>CMS</h5>
+                    <ul>
+                        <div><input type="checkbox" name="CMS"> <label>Wordpress</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Joomia</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>1C Битрикс</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Opencart</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Opencart</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Opencart</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Opencart</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Opencart</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Opencart</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Opencart</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Opencart</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Opencart</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Opencart</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Opencart</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Opencart</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Opencart</label></div>
+                    </ul>
+                    
+                </div>
+                <div class="filter_menu">
+                    <h5>Язык разработки</h5>
+                    <ul>
+                        <div><input type="checkbox" name="CMS"> <label>С, С++</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>С#</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Go</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Java</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Java</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Java</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Java</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Go</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Java</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Java</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Java</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Java</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Go</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Java</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Java</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Java</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Java</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Go</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Java</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Java</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Java</label></div>
+                        <div><input type="checkbox" name="CMS"> <label>Java</label></div>
+                    </ul>
+                    
+                </div>
+                <div class="filter_menu">
+                    <h5>Интерфейс на JavaScript</h5>
+                    <ul>
+                        <div><input type="radio" name="jsint" onMouseDown="this.isChecked=this.checked;" onClick="this.checked=!this.isChecked;"> <label>Да</label></div>
+                        <div><input type="radio" name="jsint" onMouseDown="this.isChecked=this.checked;" onClick="this.checked=!this.isChecked;"> <label>Нет</label></div>
+                    </ul>
+                </div>
+                
+                <div class="filter_menu">
+                    <h5>Используется CS</h5>
+                    <ul>
+                        <div><input type="radio" name="cssint" onMouseDown="this.isChecked=this.checked;" onClick="this.checked=!this.isChecked;"> <label>Да</label></div>
+                        <div><input type="radio" name="cssint" onMouseDown="this.isChecked=this.checked;" onClick="this.checked=!this.isChecked;"> <label>Нет</label></div>
+                    </ul>
+                </div>
+                
+                <div class="filter_menu">
+                    <h5>База данных</h5>
+                    <ul>
+                        <div><input type="radio" name="database" onMouseDown="this.isChecked=this.checked;" onClick="this.checked=!this.isChecked;"> <label>Предусмотрена</label></div>
+                        <div><input type="radio" name="database" onMouseDown="this.isChecked=this.checked;" onClick="this.checked=!this.isChecked;"> <label>Не предусмотрена</label></div>
+                    </ul>
+                </div>
+                
+                <div class="filter_menu">
+                    <h5>Активность продавца</h5>
+                    <ul>
+                        <div><input type="checkbox" name="user_active"> <label>Онлайн</label></div>
+                        <div><input type="checkbox" name="user_active"> <label>Заходил до 1 дн. назад</label></div>
+                        <div><input type="checkbox" name="user_active"> <label>Заходил до 3 дн. назад</label></div>
+                        <div><input type="checkbox" name="user_active"> <label>Заходил до 1 недели назад</label></div>
+                        <div><input type="checkbox" name="user_active"> <label>Заходил до 2 недель назад</label></div>
+                    </ul>
+                </div>
+
+                <div class="filter_menu">
+                    <h5>Положительные отзывы</h5>
+                    <ul>
+                        <div><input type="radio" name="rating" onMouseDown="this.isChecked=this.checked;" onClick="this.checked=!this.isChecked;"> <label>От 1</label></div>
+                        <div><input type="radio" name="rating" onMouseDown="this.isChecked=this.checked;" onClick="this.checked=!this.isChecked;"> <label>От 5</label></div>
+                        <div><input type="radio" name="rating" onMouseDown="this.isChecked=this.checked;" onClick="this.checked=!this.isChecked;"> <label>От 20</label></div>
+                        <div><input type="radio" name="rating" onMouseDown="this.isChecked=this.checked;" onClick="this.checked=!this.isChecked;"> <label>От 100</label></div>
+                    </ul>
+                </div>
+                
+                <div class="filter_menu">
+                    <h5>Сроки выполнения</h5>
+                    <ul>
+                        <div><input type="radio" name="time_to_work" onMouseDown="this.isChecked=this.checked;" onClick="this.checked=!this.isChecked;"> <label>За 24 часа</label></div>
+                        <div><input type="radio" name="time_to_work" onMouseDown="this.isChecked=this.checked;" onClick="this.checked=!this.isChecked;"> <label>До 2 дней</label></div>
+                        <div><input type="radio" name="time_to_work" onMouseDown="this.isChecked=this.checked;" onClick="this.checked=!this.isChecked;"> <label>До 3 дней</label></div>
+                        <div><input type="radio" name="time_to_work" onMouseDown="this.isChecked=this.checked;" onClick="this.checked=!this.isChecked;"> <label>До 5 дней</label></div>
+                        <div><input type="radio" name="time_to_work" onMouseDown="this.isChecked=this.checked;" onClick="this.checked=!this.isChecked;"> <label>До 10 дней</label></div>
+                    </ul>
+                </div>
+
+                <div class="filter_menu">
+                    <h5>Заказов в работе</h5>
+                    <ul>
+                        <div><input type="radio" name="active_projects" onMouseDown="this.isChecked=this.checked;" onClick="this.checked=!this.isChecked;"> <label>Нет</label></div>
+                        <div><input type="radio" name="active_projects" onMouseDown="this.isChecked=this.checked;" onClick="this.checked=!this.isChecked;"> <label>До 1</label></div>
+                        <div><input type="radio" name="active_projects" onMouseDown="this.isChecked=this.checked;" onClick="this.checked=!this.isChecked;"> <label>До 3</label></div>
+                        <div><input type="radio" name="active_projects" onMouseDown="this.isChecked=this.checked;" onClick="this.checked=!this.isChecked;"> <label>До 5</label></div>
+                        <div><input type="radio" name="active_projects" onMouseDown="this.isChecked=this.checked;" onClick="this.checked=!this.isChecked;"> <label>До 8</label></div>
+                    </ul>
+                </div>
+
+                
+                <button class="save_button"><p>Применить</p></button>
+
+            </div>
+
+
+
+            <div class="catalog__categorys">
+
+                <button class="project_item">
+                    <img src={% static "mainApp/img/1_blockBackGround.jpg" %} alt="project_img">
+                    <div class="project_info">
+                        <p>Настройка SMTP на WordPress, настройка отправки писем с сайта Настройка SMTP на WordPress, настройка отправки писем с сайта Настройка SMTP на WordPress, настройка отправки писем с сайтаНастройка SMTP на WordPress, настройка отправки писем с сайтастройка SMTP на WordPress, настройка отправки писем с сайта Настройка SMTP на WordPress, настройка отправки писем с сайта Настройка SMTP на WordPress, настройка отправки писем с сайтаНастройка SMTP на WordPress, настройка отправки писем с сайтe</p>
+                        <div class="price">1000р</div>
+                    </div>
+                    <div class="project_owner">
+                        <div class="owner_info">
+                            <img src={% static "mainApp/img/medium.jpg" %} alt="owner_avatar">
+                            <p class="owner_name">username</p>
+                        </div>
+                        <div class="owner_rating">5.0<p>(50)</p></div>
+                    </div>
+                </button>
+
+               
+                
+            </div>
+        </div>
+    </div>
+    <script src={% static "mainApp/js/category_catalog.js" %}></script>
+</main>
+{% endblock %}

@@ -21,15 +21,20 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-from mainApp.views import MainPage, ToFreelancerPage, CategoryPage
+from mainApp.views import MainPage, ToFreelancerPage, CategoryPage, CategoryCatalogPage, ProjectPage
 
 
 
 
 urlpatterns = [
+    # main pages
     path('admin/', admin.site.urls),
     path('', MainPage),
     path('toFreelancer/', ToFreelancerPage),
+    
+    # pages moded with api
     path('category/', CategoryPage),
+    path('category/catalog/', CategoryCatalogPage),
+    path('project/', ProjectPage),
 ]
 # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
