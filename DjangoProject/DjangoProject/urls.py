@@ -21,7 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-from mainApp.views import MainPage, ToFreelancerPage, CategoryPage, CategoryCatalogPage, ProjectPage, ProjectCreatePage, UserProfilePage
+from mainApp.views import MainPage, ToFreelancerPage, CategoryPage, CategoryCatalogPage, ProjectPage, ProjectCreatePage, UserProfilePage, MessengerPage
 
 
 
@@ -39,5 +39,6 @@ urlpatterns = [
     path('category/catalog/', CategoryCatalogPage),
     path('project/', ProjectPage),
     path('user_profile/', UserProfilePage),
+    path('messenger/', MessengerPage),
 ]
 # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

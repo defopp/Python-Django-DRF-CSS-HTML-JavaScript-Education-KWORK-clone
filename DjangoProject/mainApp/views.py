@@ -21,3 +21,6 @@ def ProjectCreatePage(request):
 
 def UserProfilePage(request):
     return render(request, 'mainApp\\user_profile.html')
+
+def MessengerPage(request):
+    return render(request, 'mainApp\\messenger.html')
