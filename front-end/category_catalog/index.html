@@ -15,6 +15,45 @@
 <body>
     
     <header class="header" id="burgerH"> 
+        
+        
+        <div class="authdiv">
+            <div class="auth_container">
+
+                <div class="regdiv">
+                    <h1>Регистрация</h1>
+                    <form action="">
+                        <input type="text" placeholder="Электронная почта/Логин">
+                        <input type="text" placeholder="Пароль">
+                        <div class="authcheckbox">
+                            <input type="checkbox">
+                            <label for="">Я ознакомлен(а), понимаю и принимаю Пользовательские соглашения, <a>Политику конфиденциальности и согласен(а) на получение email-рассылок.</a></label>
+                        </div>
+                        <button>Зарегистрироваться</button>
+                    </form>
+                    <span>или</span>
+                    <p>Уже зарегистрированы? <a id="signin">Войти</a></p>
+                </div>
+
+                <div class="signindiv">
+                    <h1>Вход</h1>
+                    <form action="">
+                        <input type="text" placeholder="Электронная почта/Логин">
+                        <input type="text" placeholder="Пароль">
+                        <div class="authcheckbox">
+                            <input type="checkbox">
+                            <label for="">Запомнить пароль</label>
+                        </div>
+                        <button>Войти</button>
+                    </form>
+                    <span>или</span>
+                    <p>Нет аккаунта? <a id="signup">Зарегистрироваться</a></p>
+                </div>
+
+            </div>
+        </div>
+
+
         <div class="header1">
             <div class="header11">
                 <div class="mainmenu">
@@ -35,8 +74,8 @@
                         </div>
                     </div>
                     <div class="mainbuttons" id="burger_menu1"> 
-                        <button class="signin_button">Вход</button>
-                        <button class="signup_button">Регистрация</button>
+                        <button class="signin_button" id="signin">Вход</button>
+                        <button class="signup_button" id="signup">Регистрация</button>
                         <button class="frilancer_button">Фрилансеру</button>
                     </div>
                 </div>
