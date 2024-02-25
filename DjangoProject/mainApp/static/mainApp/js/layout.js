@@ -60,7 +60,7 @@ function hideLogDiv(event) {
 // close/open
 function closeLogDiv(authdiv, regdiv, signindiv,authcont){
     authcont.style.transform = 'scale(0)'
-
+    
     setTimeout(function(){
         authdiv.style.display = "none";
         regdiv.style.display = "none";
@@ -70,12 +70,13 @@ function closeLogDiv(authdiv, regdiv, signindiv,authcont){
 }
 
 function openSignIn(authdiv, regdiv, signindiv,authcont){
+    document.removeEventListener('click', hideLogDiv)
     authdiv.style.display = "flex";
     regdiv.style.display = "none";
     signindiv.style.display = "flex";
     
     console.log('open sign in');
-
+    
     // body.style.overflow = 'hidden';
     
     setTimeout(function(){
@@ -84,10 +85,11 @@ function openSignIn(authdiv, regdiv, signindiv,authcont){
     
     setTimeout(function(){
         document.addEventListener('click', hideLogDiv);
-    }, 1000)
+    }, 500)
 }
 
 function openSignUp(authdiv, regdiv, signindiv,authcont){
+    document.removeEventListener('click', hideLogDiv)
     authdiv.style.display = "flex";
     regdiv.style.display = "flex";
     signindiv.style.display = "none";
@@ -102,7 +104,7 @@ function openSignUp(authdiv, regdiv, signindiv,authcont){
 
     setTimeout(function(){
         document.addEventListener('click', hideLogDiv);
-    }, 1000)
+    }, 500)
 }
 
 
@@ -115,7 +117,6 @@ SignUpButtons.forEach(button => {
 
 SignInButtons.forEach(button => {
     button.addEventListener('click', function () {
-        console.log('s')
         openSignIn(authdiv, regdiv, signindiv, authcont)
     })
 });       
