@@ -1,0 +1,46 @@
+{% load static %}
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='{% static "baseauth.css" %}'>
+    <title>Регистрация</title>
+</head>
+<body>
+    <div class="authdiv">
+        <a href="{% url "main" %}" class="backhome"><button><h2>Домой</h2></button></a>
+        <div class="auth_container"> 
+            <div class="regdiv">
+                <h1>Регистрация</h1>
+                <form  action="{% url 'signup' %}" method='POST'>
+                    
+                    {% if form.errors %}
+                        <div class="errormassage">{{ form.errors }}</div>
+                    {% endif %}
+                    {% csrf_token %}
+                    {{ form.username }}
+                    {{ form.password1 }}
+                    {{ form.password2 }}
+                    
+                    <div class="authcheckbox">
+                        <input type="checkbox" id='confpol_checkbox' name='confpol_apply' required>
+                        <label for="confpol_checkbox">Я ознакомлен(а), понимаю и принимаю Пользовательские соглашения, <a>Политику конфиденциальности и согласен(а) на получение email-рассылок.</a></label>
+                    </div>
+                    <button>Зарегистрироваться</button>
+                </form>
+
+                <span>или</span>
+                <p>Уже зарегистрированы? <a href="{% url 'login' %}">Войти</a></p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

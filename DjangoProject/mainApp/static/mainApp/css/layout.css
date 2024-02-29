@@ -198,6 +198,10 @@ button:hover{
 }
 
 
+/* валидация со стороны html */
+.auth_container input:valid{
+    border: 1px solid var(--pink-color);
+}
 
 
 

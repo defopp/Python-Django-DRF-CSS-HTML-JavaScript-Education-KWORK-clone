@@ -1,0 +1,40 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='{% static "baseauth.css" %}'>
+    <title>Вход</title>
+</head>
+<body>
+    <div class="authdiv">
+        <a href="{% url "main" %}" class="backhome"><button><h2>Домой</h2></button></a>
+        <div class="auth_container"> 
+            <div class="signindiv">
+                <h1>Вход</h1>
+                <form action="{% url 'login' %}" method='POST'>
+                    
+                    {% if form.errors %}
+                        <div class="errormassage">Неверная комбинация логин/пароль</div>
+                    {% endif %}
+                    {% csrf_token %}
+                    {{ form.username }}
+                    {{ form.password }}
+
+                    <div class="authcheckbox">
+                        <input type="checkbox" id='savepassword_checkbox' name='savepassord_apply'>
+                        <label for="savepassword_checkbox">Запомнить пароль</label>
+                    </div>
+                    <button>Войти</button>
+                </form>
+                
+                <span>или</span>
+                <p>Нет аккаунта? <a href="{% url 'signup' %}">Зарегистрироваться</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

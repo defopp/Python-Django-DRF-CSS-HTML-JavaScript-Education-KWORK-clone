@@ -1,0 +1,264 @@
+html {
+    box-sizing: border-box;
+}
+*, *::before, *::after{
+    box-sizing: inherit;
+}
+body{
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+button:hover{
+    transition: .2s;
+    position: relative;
+    transform: scale(1.01, 1.01);
+}
+
+:root{                                                  /*Цвета*/
+    --pink-color: #CF65C5;
+    --blue-color: #42619D;
+    --black-color: #000000;
+    --white-color: #FFFFFF;
+    --gray-color: #D9D9D9;
+}
+
+.text-h1 {                                              /*Большой заголовок*/
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+}
+
+.text-h2 {                                              /*Заголовок блока*/
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+}
+
+.text_light{
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.text-h4{
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:   var(--white-color);
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:   var(--white-color);
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:   var(--white-color);
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:   var(--white-color);
+}
+
+
+
+
+
+
+
+
+
+
+/* backhome */
+.backhome{
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    button{
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+        color: rgb(175, 183, 187);
+        
+        ::before{
+            position: relative;
+            top: 5px;
+            content: '';
+            display: inline-block;
+            border: solid rgb(175, 183, 187);
+            margin-right: 5px;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            padding: 5px ;
+            transform: rotate(135deg);
+            -webkit-transform: rotate(135deg);
+        }
+        h2{
+            display: flex;
+            justify-content: center;
+            margin: 0 0;
+        }
+    }
+    button:hover{
+        transform: translateX(5px);
+    }
+}
+
+/* errormassage */
+.errormassage{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    color: rgba(255, 0, 0, 0.377);
+    transition: 1s;
+    transform: scale(1.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    
+}
+.errormassage::before{
+    margin-right: 5px;
+    border-radius: 10px;
+    background-color:rgba(255, 0, 0, 0.377);
+    content: "";
+    display: block;
+    width: 5px;
+    height: 5px;
+}
+
+/* auth *//* auth *//* auth *//* auth *//* auth *//* auth */
+/* logic */
+/* auth *//* auth *//* auth *//* auth *//* auth *//* auth */
+/* auth *//* auth *//* auth *//* auth *//* auth *//* auth */
+.authdiv{
+
+    z-index: 1000;
+    background-color: rgba(21, 64, 67, 0.631);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth_container{
+    transition: 0.1s;
+    position: relative;
+    width: 380px;
+    height: max-content;
+    background-color: #ffffff;
+    padding: 30px 30px;
+    box-shadow: 0 0 100px 1px rgba(255, 255, 255, 0.372);
+    border: 1px solid rgba(0, 0, 0, 0.222);
+}
+
+.auth_container > div{
+    width: 100%;    
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.auth_container h1{
+    width: 100%;    
+    text-align: center;
+    margin: 0 0;
+}
+.auth_container span{
+    width: 100%;    
+    text-align: center;
+    margin: 0 0;
+    position: relative;
+    opacity: 0.1;
+}
+.auth_container span::before{
+    display: block;
+    content: '';
+    max-height: 1px;
+    min-width: 43%;    
+    border: 1px solid black;
+    position: absolute;
+    top: calc(50% + 1px);
+}
+.auth_container span::after{
+    display: block;
+    content: '';
+    max-height: 1px;
+    min-width: 43%;    
+    border: 1px solid black;
+    position: absolute;
+    top: calc(50% + 1px);
+    right: 0;
+}
+
+.auth_container form{
+    width: 100%;    
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.auth_container input{
+    background-color: #cacacac8;    
+    width: 100%;
+    height: 40px;    
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding:  0 10px;
+}
+
+.auth_container input::placeholder{
+    color: #0000004b;
+}
+
+.auth_container button{
+    border-radius: 5px;
+    font-size: 15px;
+    color: white;
+    height: 40px;
+    background-color: var(--pink-color);
+    border: 1px solid rgba(0, 0, 0, 0.362);
+}
+
+.authcheckbox{
+    display: flex;
+    font-size: 10px;
+    justify-content: space-between;
+}
+
+.authcheckbox input{
+    margin: 0 0;
+    width: 15px;
+    height: 15px;
+}
+.authcheckbox label{
+    width: 94%;
+    font-size: 12px;
+}
+
+
+.auth_container p{
+    margin: 0 0;
+    text-align: center;
+}
+
+.auth_container a{
+    text-decoration: underline;
+    color: var(--blue-color);
+    cursor: pointer;
+}
+
+
+/* валидация со стороны html */
+.auth_container input:valid{
+    border: 1px solid var(--pink-color);
+}
+
+
+

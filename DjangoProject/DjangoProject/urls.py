@@ -15,14 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from django.conf import settings
 from django.conf.urls.static import static
 
 
 from mainApp.views import MainPage, ToFreelancerPage, CategoryPage, CategoryCatalogPage, ProjectPage, ProjectCreatePage, UserProfilePage, MessengerPage
-
+# from usersApp.views import ApiSignUp, ApiSignIn
 
 
 
@@ -40,5 +40,12 @@ urlpatterns = [
     path('project/', ProjectPage),
     path('user_profile/', UserProfilePage),
     path('messenger/', MessengerPage),
+    
+    
+    # api
+    # path('api/users/signup/', ApiSignUp),
+    # path('api/users/signin/', ApiSignIn)
+    
+    path('users/', include('usersApp.urls'))
 ]
 # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

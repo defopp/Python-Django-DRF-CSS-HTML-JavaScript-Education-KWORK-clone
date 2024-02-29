@@ -17,36 +17,42 @@
 <body>
     
     <header class="header" id="burgerH"> 
-
         <div class="authdiv">
-            <div class="auth_container">
+            <div class="auth_container"> 
 
                 <div class="regdiv">
                     <h1>Регистрация</h1>
-                    <form action="">
-                        <input type="text" placeholder="Электронная почта/Логин">
-                        <input type="text" placeholder="Пароль">
+
+                    <form  action="{% url 'signup' %}" method='POST'>
+                        {% csrf_token %}
+                        <input type="text" placeholder="Логин" name='username' required minlength='5' maxlength='30'>
+                        <input type="text" placeholder="Пароль" name='password1' required minlength='5' maxlength='50'>
+                        <input type="text" placeholder="Повторите пароль" name='password2' required minlength='5' maxlength='50'>
                         <div class="authcheckbox">
-                            <input type="checkbox">
-                            <label for="">Я ознакомлен(а), понимаю и принимаю Пользовательские соглашения, <a>Политику конфиденциальности и согласен(а) на получение email-рассылок.</a></label>
+                            <input type="checkbox" id='confpol_checkbox' name='confpol_apply' required>
+                            <label for="confpol_checkbox">Я ознакомлен(а), понимаю и принимаю Пользовательские соглашения, <a>Политику конфиденциальности и согласен(а) на получение email-рассылок.</a></label>
                         </div>
                         <button>Зарегистрироваться</button>
                     </form>
+
                     <span>или</span>
                     <p>Уже зарегистрированы? <a id="signin">Войти</a></p>
                 </div>
 
                 <div class="signindiv">
                     <h1>Вход</h1>
-                    <form action="">
-                        <input type="text" placeholder="Электронная почта/Логин">
-                        <input type="text" placeholder="Пароль">
+
+                    <form action="{% url 'login' %}" method='POST'>
+                        {% csrf_token %}
+                        <input type="text" placeholder="Логин" name='username' required>
+                        <input type="text" placeholder="Пароль" name='password' required>
                         <div class="authcheckbox">
-                            <input type="checkbox">
-                            <label for="">Запомнить пароль</label>
+                            <input type="checkbox" id='savepassword_checkbox' name='savepassord_apply'>
+                            <label for="savepassword_checkbox">Запомнить пароль</label>
                         </div>
                         <button>Войти</button>
                     </form>
+                    
                     <span>или</span>
                     <p>Нет аккаунта? <a id="signup">Зарегистрироваться</a></p>
                 </div>
@@ -76,9 +82,15 @@
                             <span class="burgerline"></span>
                         </div>
                     </div>
+                    {% comment %} test {% endcomment %}{% comment %} test {% endcomment %}{% comment %} test {% endcomment %}{% comment %} test {% endcomment %}
+                    <h5>user: {{ user }}</h5>
+                    <form action="users/logout/" method="get"><button>Выйти из аккаунта</button></form>
+                    {% comment %} test {% endcomment %}{% comment %} test {% endcomment %}{% comment %} test {% endcomment %}{% comment %} test {% endcomment %}
                     <div class="mainbuttons" id="burger_menu1"> 
                         <button class="signin_button" id="signin">Вход</button>
                         <button class="signup_button" id="signup">Регистрация</button>
+
+
                         <a href="{% url 'freelancer' %}"><button class="frilancer_button">Фрилансеру</button></a>
                     </div>
                 </div>
