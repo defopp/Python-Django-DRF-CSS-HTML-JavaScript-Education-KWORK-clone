@@ -1,7 +1,7 @@
 {
   "type": "excalidraw",
   "version": 2,
-  "source": "https://excalidraw-jetbrains-plugin",
+  "source": "https://marketplace.visualstudio.com/items?itemName=pomdtr.excalidraw-editor",
   "elements": [
     {
       "type": "image",
@@ -38,8 +38,8 @@
     },
     {
       "type": "embeddable",
-      "version": 58,
-      "versionNonce": 1230720724,
+      "version": 59,
+      "versionNonce": 1748793018,
       "isDeleted": false,
       "id": "3TeP6pPxfDkmxOXo-kJp5",
       "fillStyle": "solid",
@@ -61,7 +61,7 @@
         "type": 3
       },
       "boundElements": [],
-      "updated": 1709106634335,
+      "updated": 1709294438219,
       "link": "https://www.youtube.com/watch?v=HpL6ymFEuu4&ab_channel=%D0%94%D0%B8%D0%B4%D0%B6%D0%B8%D1%82%D0%B0%D0%BB%D0%B8%D0%B7%D0%B8%D1%80%D1%83%D0%B9%21",
       "locked": false,
       "validated": true
@@ -2387,7 +2387,7 @@
       "containerId": "5bQIRthMQ-uZM0PNK1kLh",
       "originalText": "Приложения/App\n     models.py\n     views.py",
       "lineHeight": 1.15,
-      "baseline": 116
+      "baseline": 115
     },
     {
       "type": "rectangle",
@@ -2461,7 +2461,7 @@
       "containerId": "xewYdBM4x9qNeRpY3NI6G",
       "originalText": "Приложения/App\n     models.py\n     views.py",
       "lineHeight": 1.15,
-      "baseline": 116
+      "baseline": 115
     },
     {
       "type": "arrow",
@@ -2602,8 +2602,8 @@
     },
     {
       "type": "embeddable",
-      "version": 153,
-      "versionNonce": 132429932,
+      "version": 154,
+      "versionNonce": 553052646,
       "isDeleted": false,
       "id": "zixUvg12JfjApPIjIJLxI",
       "fillStyle": "solid",
@@ -2625,7 +2625,7 @@
         "type": 3
       },
       "boundElements": [],
-      "updated": 1709106634335,
+      "updated": 1709294438219,
       "link": "https://www.youtube.com/watch?v=Em-8EvV9w3o&t=223s&ab_channel=%D0%9A%D0%BB%D1%83%D0%B1%D0%B4%D0%B5%D0%B4%D0%BE%D0%B2-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%81%D1%82%D0%BE%D0%B2",
       "locked": false,
       "validated": true
@@ -2760,8 +2760,8 @@
     },
     {
       "type": "text",
-      "version": 117,
-      "versionNonce": 1533935596,
+      "version": 118,
+      "versionNonce": 1116088422,
       "isDeleted": false,
       "id": "SaGN-iBeNIomEklQnmHWF",
       "fillStyle": "solid",
@@ -2781,7 +2781,7 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1709106634497,
+      "updated": 1709294438372,
       "link": null,
       "locked": false,
       "fontSize": 106.85714285714282,
@@ -2796,8 +2796,8 @@
     },
     {
       "type": "embeddable",
-      "version": 64,
-      "versionNonce": 1613911124,
+      "version": 65,
+      "versionNonce": 1035046778,
       "isDeleted": false,
       "id": "zi6rTCI2r2dk880s7u051",
       "fillStyle": "solid",
@@ -2819,15 +2819,15 @@
         "type": 3
       },
       "boundElements": [],
-      "updated": 1709106634335,
+      "updated": 1709294438219,
       "link": "https://www.youtube.com/watch?v=KH3eobiFhGA&ab_channel=%D0%9A%D0%BB%D1%83%D0%B1%D0%B4%D0%B5%D0%B4%D0%BE%D0%B2-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%81%D1%82%D0%BE%D0%B2",
       "locked": false,
       "validated": true
     },
     {
       "type": "text",
-      "version": 877,
-      "versionNonce": 1327165925,
+      "version": 878,
+      "versionNonce": 781940986,
       "isDeleted": false,
       "id": "JBiaFD3VPQybRCe7iXmTS",
       "fillStyle": "solid",
@@ -2847,7 +2847,7 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1709112495835,
+      "updated": 1709294438391,
       "link": null,
       "locked": false,
       "fontSize": 109.91897243923611,
@@ -2858,7 +2858,7 @@
       "containerId": null,
       "originalText": "Функциональные требования: *не срочные\n    Пользователь(1 аккаунт для ФРИЛАНСЕРА(ПРОДАВЦА) и (*ПОКУПАТЕЛЯ)):\n        - Регистрация/логин        \n        - Создание куки сессий\n        - Настройка профиля\n        - Отзывы\n\n        \n            \n    Товар(проект(ПРОДАВЦА), проект(*ПОКУПАТЕЛЯ)):\n        - Добавление товара\n        - Настройка товара\n        - Покупка товара\n        - Удаление товара",
       "lineHeight": 1.2,
-      "baseline": 1820
+      "baseline": 1821
     },
     {
       "type": "ellipse",
@@ -2984,8 +2984,8 @@
     },
     {
       "type": "text",
-      "version": 3353,
-      "versionNonce": 1677664876,
+      "version": 3354,
+      "versionNonce": 900737958,
       "isDeleted": false,
       "id": "9r_OHc5wN5M0BmuJnOw7t",
       "fillStyle": "solid",
@@ -3008,7 +3008,7 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1709106634508,
+      "updated": 1709294438392,
       "link": null,
       "locked": false,
       "fontSize": 48.920964648671706,
@@ -3114,8 +3114,8 @@
     },
     {
       "type": "text",
-      "version": 1550,
-      "versionNonce": 952863316,
+      "version": 1551,
+      "versionNonce": 1568033210,
       "isDeleted": false,
       "id": "IUbe5P-541BtGTHYFhsv3",
       "fillStyle": "solid",
@@ -3138,7 +3138,7 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1709106634509,
+      "updated": 1709294438394,
       "link": null,
       "locked": false,
       "fontSize": 60.081752759754345,
@@ -4741,8 +4741,8 @@
     },
     {
       "type": "text",
-      "version": 2877,
-      "versionNonce": 860353772,
+      "version": 2878,
+      "versionNonce": 322422502,
       "isDeleted": false,
       "id": "jCoRvVB6uk5M70axb-t62",
       "fillStyle": "solid",
@@ -4770,7 +4770,7 @@
           "type": "arrow"
         }
       ],
-      "updated": 1709106634511,
+      "updated": 1709294438397,
       "link": null,
       "locked": false,
       "fontSize": 74.35509147098564,
@@ -5535,8 +5535,8 @@
     },
     {
       "type": "text",
-      "version": 543,
-      "versionNonce": 2098143188,
+      "version": 544,
+      "versionNonce": 842596986,
       "isDeleted": false,
       "id": "Aa-2jAWmyFN7pmgLIqkdV",
       "fillStyle": "solid",
@@ -5567,7 +5567,7 @@
           "type": "arrow"
         }
       ],
-      "updated": 1709106634514,
+      "updated": 1709294438401,
       "link": null,
       "locked": false,
       "fontSize": 79.85250618672785,
@@ -5722,8 +5722,8 @@
     },
     {
       "type": "embeddable",
-      "version": 147,
-      "versionNonce": 839568108,
+      "version": 148,
+      "versionNonce": 1535950118,
       "isDeleted": false,
       "id": "vb_DbhB4yJO1K08YBkiDd",
       "fillStyle": "solid",
@@ -5745,7 +5745,7 @@
         "type": 3
       },
       "boundElements": [],
-      "updated": 1709106634335,
+      "updated": 1709294438219,
       "link": "https://www.youtube.com/watch?v=-knypkOQSSw&ab_channel=selfedu",
       "locked": false,
       "validated": true

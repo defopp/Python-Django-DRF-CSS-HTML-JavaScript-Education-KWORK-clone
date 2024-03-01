@@ -28,4 +28,15 @@ available urls
         path('project/', ProjectPage),
         path('user_profile/', UserProfilePage),
         path('messenger/', MessengerPage),
+        
+        
+        
+        path('users/', include('usersApp.urls'))
+
+        urlpatterns = [
+        path('signup/', signupView.as_view(), name='signup'),
+        path('login/', loginView.as_view(), name='login'),
+        path('logout/', logoutView.as_view(), name='logout'),
+        ]
+
     ]
