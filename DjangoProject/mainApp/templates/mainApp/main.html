@@ -198,9 +198,9 @@
                         </div>
                     </div>
                 </div>
-                {% comment %} <iframe width="406" height="250" src="https://www.youtube.com/embed/McdghqVd7vk?si=xmBCv4Rvb3yuSlXX" title="YouTube video player" frameborder="0" 
+                <iframe width="406" height="250" src="https://www.youtube.com/embed/McdghqVd7vk?si=xmBCv4Rvb3yuSlXX" title="YouTube video player" frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>   
-                </iframe> {% endcomment %}
+                </iframe>
             </div>
             <div class="what_to_say">
                 <div class="what_to_say_title text-h2">
@@ -299,7 +299,10 @@
         <div class="fifthblock">
             <div class="fifthtitle">Закажи услугу фрилансеров прямо сейчас</div>
             <div class="fifthtext">Быстро, просто и безопасно</div>
+            {% if user.is_authenticated %}
+            {% else%}
             <button class="signup_button aass" id="signup">Начать</button>
+            {% endif %}
         </div>
     </div>
     <div class="sixthblockback">
