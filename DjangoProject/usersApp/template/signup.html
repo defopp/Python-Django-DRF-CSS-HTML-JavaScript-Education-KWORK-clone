@@ -19,10 +19,30 @@
             <div class="regdiv">
                 <h1>Регистрация</h1>
                 <form  action="{% url 'signup' %}" method='POST'>
-                    
-                    {% if form.errors %}
-                        <div class="errormassage">{{ form.errors }}</div>
+                    <div class="errormessagesignup">
+                    {% if form.errors %} 
+                        
+                        {% for field in form %}
+                            {% if field.errors %}
+
+                                {% if field.label == 'Повторите пароль' %}
+                                <h5>Пароль</h5>
+                                {% endif %}
+
+                                {% if field.label == 'Username' %}
+                                <h5>Логин</h5>
+                                {% endif %}
+
+                            {% endif %}
+
+                            {{ field.errors }}
+
+                        {% endfor %}
+                        
                     {% endif %}
+                    </div>
+
+
                     {% csrf_token %}
                     {{ form.username }}
                     {{ form.password1 }}

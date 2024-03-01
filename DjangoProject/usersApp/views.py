@@ -25,9 +25,11 @@ class signupView(View):
             user = authenticate(username=username, password=password)
             login(request, user)
             return redirect('main')
+        
         context = {
             'form': form
         }
+                
         return render(request, self.template_name, context)
 
             

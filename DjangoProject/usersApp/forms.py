@@ -11,6 +11,7 @@ class SignUpForm(UserCreationForm):
         widgets = {
             'username': forms.TextInput(attrs={'placeholder': 'Логин'}),
         }
+        
 
 class LogInForm(AuthenticationForm):
     class Meta:

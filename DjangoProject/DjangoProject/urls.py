@@ -42,9 +42,6 @@ urlpatterns = [
     path('messenger/', MessengerPage),
     
     
-    # api
-    # path('api/users/signup/', ApiSignUp),
-    # path('api/users/signin/', ApiSignIn)
     
     path('users/', include('usersApp.urls'))
 ]

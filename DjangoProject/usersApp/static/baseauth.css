@@ -121,16 +121,29 @@ button:hover{
     font-size: 15px;
     
 }
-.errormassage::before{
-    margin-right: 5px;
-    border-radius: 10px;
-    background-color:rgba(255, 0, 0, 0.377);
-    content: "";
-    display: block;
-    width: 5px;
-    height: 5px;
-}
 
+/* errormessagesignup */
+.errormessagesignup{
+    margin: 0 0;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.34);
+    ul{
+        margin: 0 0;
+        padding: 0 0;
+        
+        ::marker{
+            color: transparent;
+        }
+    }
+    li{
+        padding-left: 5px;
+        margin: 0 0;
+    }
+    h5{
+        margin: 5px 0;
+    }
+
+}
 /* auth *//* auth *//* auth *//* auth *//* auth *//* auth */
 /* logic */
 /* auth *//* auth *//* auth *//* auth *//* auth *//* auth */
