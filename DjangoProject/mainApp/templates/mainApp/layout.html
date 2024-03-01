@@ -25,7 +25,7 @@
 
                     <form  action="{% url 'signup' %}" method='POST'>
                         {% csrf_token %}
-                        <input type="text" placeholder="Логин" name='username' required minlength='5' maxlength='30'>
+                        <input type="text" placeholder="Логин" name='username' required minlength='5' maxlength='30' >
                         <input type="text" placeholder="Пароль" name='password1' required minlength='5' maxlength='50'>
                         <input type="text" placeholder="Повторите пароль" name='password2' required minlength='5' maxlength='50'>
                         <div class="authcheckbox">
@@ -82,17 +82,21 @@
                             <span class="burgerline"></span>
                         </div>
                     </div>
-                    {% comment %} test {% endcomment %}{% comment %} test {% endcomment %}{% comment %} test {% endcomment %}{% comment %} test {% endcomment %}
-                    <h5>user: {{ user }}</h5>
-                    <form action="users/logout/" method="get"><button>Выйти из аккаунта</button></form>
-                    {% comment %} test {% endcomment %}{% comment %} test {% endcomment %}{% comment %} test {% endcomment %}{% comment %} test {% endcomment %}
+                    
+                    
                     <div class="mainbuttons" id="burger_menu1"> 
+                        {% if user.is_authenticated %}
+                        <div class="profilelinks">
+                            <a href="" class="profilelink"><img src="{% static "mainApp/img/avatar.png" %}" alt="profile" ></a>
+                            <form action="{% url 'logout' %}" method="get"><button>logout</button></form>
+                        </div>
+                        {% else %}
                         <button class="signin_button" id="signin">Вход</button>
                         <button class="signup_button" id="signup">Регистрация</button>
-
-
+                        {% endif %}
                         <a href="{% url 'freelancer' %}"><button class="frilancer_button">Фрилансеру</button></a>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -110,7 +114,7 @@
             </div>
         </div>
     </header>
-
+        
     {% block content %}{% endblock %}
 
     <footer class="footer">

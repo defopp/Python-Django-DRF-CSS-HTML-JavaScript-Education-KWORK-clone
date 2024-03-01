@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.views import View
 from django.contrib.auth import authenticate, login, logout
 
+
 from .forms import SignUpForm, LogInForm
 
 
@@ -24,6 +25,7 @@ class signupView(View):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
+            
             return redirect('main')
         
         context = {
@@ -57,7 +59,7 @@ class loginView(View):
             'form': form
         }
         return render(request, self.template_name, context)
-
+ 
 
 class logoutView(View):
     def get(self, request):

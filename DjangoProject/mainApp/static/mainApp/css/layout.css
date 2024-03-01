@@ -276,6 +276,7 @@ button:hover{
     .mainbuttons.open{  
         position: absolute;
         transform: translateY(0);
+        display: flex;
     }
 
     .catalog{
@@ -469,12 +470,18 @@ button:hover{
 
 
 .mainbuttons {
+    height: 45px;
     margin-top: 2px;
     margin-right: 2%;
     padding: auto;
+    display: flex;
+    align-items: center;
     @media (max-width:600px) {
         margin-top: 0;
         margin-right: 0;
+    }
+    a{
+        max-height: max-content;
     }
 }
 
@@ -506,10 +513,34 @@ button:hover{
     border: none;
     background-color: transparent;
     cursor: pointer;
-
+    padding-bottom: 0;
 }
 
-
+.profilelinks{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 5px;
+    a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+    }
+    img{
+        border-radius: 50px;
+        width: 30px;
+        height: 30px;
+    }
+    button{
+        border: none;
+        background-color: transparent;
+        padding: 0;
+    }
+    .profilelink{
+       
+    }
+}
 
 
 

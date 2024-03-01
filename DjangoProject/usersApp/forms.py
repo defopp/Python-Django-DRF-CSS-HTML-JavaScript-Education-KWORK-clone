@@ -9,7 +9,7 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = ('username','password1','password2')
         widgets = {
-            'username': forms.TextInput(attrs={'placeholder': 'Логин'}),
+            'username': forms.TextInput(attrs={'placeholder': 'Логин'}), 
         }
         
 
