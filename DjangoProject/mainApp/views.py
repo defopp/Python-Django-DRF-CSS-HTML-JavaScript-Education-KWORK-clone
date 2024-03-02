@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.sessions.models import Session
 
 # Create your views here.
 def MainPage(request, context = None):
@@ -20,7 +21,10 @@ def ProjectCreatePage(request):
     return render(request, 'mainApp\\project_create.html')
 
 def UserProfilePage(request):
-    return render(request, 'mainApp\\user_profile.html')
+    if request.user.is_authenticated:
+        return render(request, 'mainApp\\user_profile.html')
+    else:
+        return redirect('main')
 
 def MessengerPage(request):
     return render(request, 'mainApp\\messenger.html')

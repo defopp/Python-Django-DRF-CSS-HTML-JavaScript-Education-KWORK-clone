@@ -17,24 +17,28 @@
             <div class="profile">
                 <div class="profile_info">
                     <img src={% static 'mainApp/img/avatar.png'%} alt="avatar">
-                    <h1>NickName</h1>
-                    <p class="reg_date">На сайте с 1 ноября 2022</p>
-                    <p class="status">status off on</p>
+                    <h1>
+                        {{ user.username }}
+                    </h1>
+                    <p class="reg_date">На сайте с {{ user.date_joined }}{??}</p>
+                    <p class="status">status off on{??}</p>
                 </div>
-                <p class="description">(Описание) Пользователь не написал о себе</p>
+                <p class="description">
+                    (Описание) Пользователь не написал о себе{??}
+                </p>
                 <div class="profile_setting">
-                    <button>Настройки профиля</button>
+                    <button>Настройки профиля{??}</button>
                 </div>
             </div>
             <div class="active_projects">
                 <h1>Мои проекты</h1>
-                <p>У пользователя NickName нет активных проектов</p>
+                <p>У пользователя {{ user.username }} нет активных проектов{??}</p>
             </div>
         </div>
         <div class="profile_review">
             <div class="review">
                 <h1>Отзывы</h1>
-                <p>У пользователя NickName нет отзывов</p>
+                <p>У пользователя {{ user.username }} нет отзывов{??}</p>
             </div>
         </div>
     </div>

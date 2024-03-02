@@ -38,11 +38,11 @@ urlpatterns = [
     path('category/', CategoryPage),
     path('category/catalog/', CategoryCatalogPage),
     path('project/', ProjectPage),
-    path('user_profile/', UserProfilePage),
+    path('myprofile/', UserProfilePage, name='myprofile'),
     path('messenger/', MessengerPage),
     
     
-    
+    # api
     path('users/', include('usersApp.urls'))
 ]
 # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
