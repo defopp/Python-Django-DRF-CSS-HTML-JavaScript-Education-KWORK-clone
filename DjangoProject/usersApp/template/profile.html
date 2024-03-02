@@ -4,7 +4,7 @@
 
 {% block title %}
 <link rel="stylesheet" href={% static "mainApp\css\user_profile.css" %}>
-<title>MyProfile</title>
+<title>{{ userprofile.username }}</title>
 {%endblock%}
 
 
@@ -18,27 +18,25 @@
                 <div class="profile_info">
                     <img src={% static 'mainApp/img/avatar.png'%} alt="avatar">
                     <h1>
-                        {{ user.username }}
+                        {{ userprofile.username }}
                     </h1>
-                    <p class="reg_date">На сайте с {{ user.date_joined }}{??}</p>
+                    <p class="reg_date">На сайте с {{ userprofile.date_joined }}{??}</p>
                     <p class="status">status off on{??}</p>
                 </div>
                 <p class="description">
                     (Описание) Пользователь не написал о себе{??}
                 </p>
-                <div class="profile_setting">
-                    <button>Настройки профиля{??}</button>
-                </div>
+                
             </div>
             <div class="active_projects">
-                <h1>Мои проекты</h1>
-                <p>У пользователя {{ user.username }} нет активных проектов{??}</p>
+                <h1>Проекты</h1>
+                <p>У пользователя {{ userprofile.username }} нет активных проектов{??}</p>
             </div>
         </div>
         <div class="profile_review">
             <div class="review">
                 <h1>Отзывы</h1>
-                <p>У пользователя {{ user.username }} нет отзывов{??}</p>
+                <p>У пользователя {{ userprofile.username }} нет отзывов{??}</p>
             </div>
         </div>
     </div>

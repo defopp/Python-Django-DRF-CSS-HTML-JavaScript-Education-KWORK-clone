@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 
 
 from .forms import SignUpForm, LogInForm
+from .models import User
 
 
 class signupView(View):
@@ -68,8 +69,28 @@ class logoutView(View):
         return redirect('main')
 
 
-
-
+class profileView(View):
+    template_name = 'usersApp\\template\\profile.html'
+    
+    def get(self, request, pk):
+        user = User.objects.filter(id = pk)
+        if user.exists():
+            userQuerySet = user.values_list('username','password','date_joined')      
+            
+            for i in userQuerySet:
+                username, password, date_joined = i
+                
+                userprofile = {
+                    'userprofile':{
+                        'username':username,
+                        'password':password,
+                        'date_joined':date_joined
+                    }
+                }
+                
+            return render(request, self.template_name, userprofile)
+        else:
+            return HttpResponse('404')
 
 
 
