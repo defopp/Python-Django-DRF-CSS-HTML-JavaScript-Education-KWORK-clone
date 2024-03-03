@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     
     'mainApp',
     'usersApp',
+    'productsApp',
     
 ]
 
