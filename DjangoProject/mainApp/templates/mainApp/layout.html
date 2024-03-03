@@ -88,7 +88,9 @@
                         {% if user.is_authenticated %}
                         <div class="profilelinks">
                             <a href="{% url 'myprofile' %}" class="profilelink"><img src="{% static "mainApp/img/avatar.png" %}" alt="profile" ></a>
-                            <form action="{% url 'logout' %}" method="get"><button>logout</button></form>
+                            <form action="{% url 'logout' %}" method="get"><button>Выйти</button></form>
+                            <a href="">Сообщения{??}</a>
+                            <a href="">Создать проект{??}</a>
                         </div>
                         {% else %}
                         <button class="signin_button" id="signin">Вход</button>

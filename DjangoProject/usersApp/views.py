@@ -62,6 +62,7 @@ class loginView(View):
         }
         return render(request, self.template_name, context)
  
+ 
 
 class logoutView(View):
     def get(self, request):
@@ -75,8 +76,10 @@ class profileView(View):
     def get(self, request, pk):
         user = User.objects.filter(id = pk)
         if user.exists():
+            """проверяю есть ли пользователь с таким PrimaryKey в Базе данных
+            Если он есть, то распаковываю QuerySet в dict userprofile,
+            и отправляю на шаблон с контекстом userprofile"""
             userQuerySet = user.values_list('username','password','date_joined')      
-            
             for i in userQuerySet:
                 username, password, date_joined = i
                 
@@ -86,9 +89,9 @@ class profileView(View):
                         'password':password,
                         'date_joined':date_joined
                     }
-                }
-                
+                }    
             return render(request, self.template_name, userprofile)
+        
         else:
             return HttpResponse('404')
 
