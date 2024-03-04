@@ -1,0 +1,60 @@
+{% extends 'mainApp/layout.html' %}
+{% load static %}
+
+
+{% block title %}
+<link rel="stylesheet" href={% static "mainApp\css\category.css" %}>
+<title>sasa</title>
+{%endblock%}
+
+
+{% block content %}
+{% comment %} {{ maincategory }} {% endcomment %}
+
+
+    <main class="main">
+        <div class="mainblock">
+            <div class="main__title">
+                <h1>{{ maincategory.name }}
+                    <div class="title_burger" id="Tburger"> 
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <div class="title_burger_container"></div>
+                    </div>
+                </h1>
+                <p>Эти программы помогут создать даже новый Фейсбук{??}</p>
+            </div>
+            <div class="catalog__container">
+                <div class="catalog__menus" id="TBmenu">
+                    <h2>{{ maincategory.name }}</h2>
+                    
+                    {% for subcat in maincategory.subcat_list %}
+                        <div class="catalog__menu">
+                            <h3>{{ subcat.name }}</h3>
+                            {% if subcat.detcat_list %}
+                                {% for detcat in subcat.detcat_list %}
+                                    <button>{{ detcat.name }}</button>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+
+                </div>
+                <div class="catalog__categorys">
+                    {% for subcat in maincategory.subcat_list %}
+                        {% for detcat in subcat.detcat_list %}
+                            <button class="categories_button cbbackground_1">
+                                <h3>{{ detcat.name }}</h3>
+                            </button>
+                        {% endfor %}
+                    {% endfor %}     
+                </div>
+            </div>
+        </div>
+
+        <script src={% static "mainApp/js/category.js" %}></script>
+
+    </main>
+
+    {%endblock%}
