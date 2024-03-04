@@ -13,9 +13,9 @@ class MainCategoryView(View):
 
         maincat = MainCategory.objects.filter(urlname=urlname)
         if maincat.exists():
-            maincatQS = maincat.values_list('id', 'urlname', 'name')            
+            maincatQS = maincat.values_list('id', 'urlname', 'name', 'description')            
             for cat in maincatQS:
-                mainid, urlname, name = cat
+                mainid, urlname, name, description = cat
 
             subcat_list = get_list_of_subcategory(mainid)
             if len(subcat_list) > 0:     
@@ -23,48 +23,40 @@ class MainCategoryView(View):
                     'maincategory' : {
                         'urlname': urlname,
                         'name': name,
-                        'subcat_list': subcat_list, 
+                        'description': description, 
+                        'subcat_list': subcat_list
                     }
                 }
                 return render(request, self.template_name, context)
             else:
-                return HttpResponse(f'категория <h4>{name}</h4> не заполнена')
-        return HttpResponse('404')
-    pass
+                return HttpResponse(f'<h4>категория {name} не заполнена</h4>')
+        else:
+            return HttpResponse('404')
 
 
 
 
 
-def get_list_of_subcategory(maincat_id:int) -> list:
-    
+def get_list_of_subcategory(maincat_id:int) -> list: 
     subcatsSQ = SubCategory.objects.filter(main_category_id = maincat_id).values_list('id', 'urlname', 'name')
     subcatslist = []
     
     for cat in subcatsSQ:    
-        subid, suburlname, subname = cat
-        
+        subid, suburlname, subname = cat    
         if len(get_list_of_detailcategory(subid)) > 0:
             subcatslist.append({
                 'name':subname,
-                'urlname':suburlname,
+                'url':suburlname,
                 'detcat_list':get_list_of_detailcategory(subid)    
             })
         else:
             subcatslist.append({
                 'name':subname,
-                'urlname':suburlname    
+                'url':suburlname    
             })
-    
     return subcatslist
 
-
-
-
-
-
-def get_list_of_detailcategory(subcat_id:int) -> list:
-    
+def get_list_of_detailcategory(subcat_id:int) -> list:  
     detailcatsSQ = DetailCategory.objects.filter(sub_category_id = subcat_id).values_list('urlname', 'sub_category_id', 'name')
     detcatlist = []   
                      
@@ -74,6 +66,5 @@ def get_list_of_detailcategory(subcat_id:int) -> list:
             'url': url,
             'subcat_id': sub_category_id,
             'name': name,
-        })
-        
+        })   
     return detcatlist

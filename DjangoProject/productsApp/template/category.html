@@ -3,8 +3,8 @@
 
 
 {% block title %}
-<link rel="stylesheet" href={% static "mainApp\css\category.css" %}>
-<title>sasa</title>
+<link rel="stylesheet" href={% static "category.css" %}>
+<title>{{maincategory.name}}</title>
 {%endblock%}
 
 
@@ -23,7 +23,7 @@
                         <div class="title_burger_container"></div>
                     </div>
                 </h1>
-                <p>Эти программы помогут создать даже новый Фейсбук{??}</p>
+                <p>{{ maincategory.description }}</p>
             </div>
             <div class="catalog__container">
                 <div class="catalog__menus" id="TBmenu">
@@ -44,7 +44,9 @@
                 <div class="catalog__categorys">
                     {% for subcat in maincategory.subcat_list %}
                         {% for detcat in subcat.detcat_list %}
-                            <button class="categories_button cbbackground_1">
+                            <button class="categories_button">
+                                <img alt='настроить вывод картинки через бд' src="">
+                                <div class='shadow_box'></div>
                                 <h3>{{ detcat.name }}</h3>
                             </button>
                         {% endfor %}
@@ -53,7 +55,7 @@
             </div>
         </div>
 
-        <script src={% static "mainApp/js/category.js" %}></script>
+        <script src={% static "category.js" %}></script>
 
     </main>
 
