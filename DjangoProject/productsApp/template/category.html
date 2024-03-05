@@ -31,7 +31,7 @@
                     
                     {% for subcat in maincategory.subcat_list %}
                         <div class="catalog__menu">
-                            <h3>{{ subcat.name }}</h3>
+                            <h3><a href='{% url 'subcategoryURL' mainurlname=maincategory.url suburlname=subcat.url %}'>{{ subcat.name }}</a></h3>
                             {% if subcat.detcat_list %}
                                 {% for detcat in subcat.detcat_list %}
                                     <button>{{ detcat.name }}</button>

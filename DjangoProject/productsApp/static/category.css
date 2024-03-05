@@ -186,7 +186,9 @@
     margin-bottom: 15px;
     
 }
-
+.catalog__menu > h3 > a{
+    color: black;
+}
 
 .catalog__menu button {
     width: max-content;

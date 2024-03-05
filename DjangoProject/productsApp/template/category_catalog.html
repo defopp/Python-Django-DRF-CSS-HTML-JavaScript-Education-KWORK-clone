@@ -3,17 +3,20 @@
 
 
 {% block title %}
-<link rel="stylesheet" href={% static "mainApp\css\category_catalog.css" %}>
+<link rel="stylesheet" href={% static "category_catalog.css" %}>
 <title>Catalog</title>
 {%endblock%}
 
 
 {% block content %}
+{% comment %} <p>{{ maincategory }} {% endcomment %}
+
 <main>
     <div class="mainblock">
         <div class="main__title">
-            <h2><a href="">Разработка в IT</a> > <a href="">Настройка сайта</a></h2>
-            <h1>Настройка сайта
+            <h2><a href="{% url 'maincategoryURL' mainurlname=maincategory.url %}">{{ maincategory.name }}</a> > 
+                <a href="">{{ maincategory.subcategory.name }}</a></h2>
+            <h1>{{ maincategory.subcategory.name }}
                 <div class="title_burger" id="Tburger"> 
                     <span></span>
                     <span></span>
@@ -28,17 +31,16 @@
             <div class="catalog__menus" id="TBmenu">
                 <h4>Рубрики</h4>
                 <div class="catalog__menu">
-                    <a href="">Разработка в IT</a>
+                    <a href="{% url 'maincategoryURL' mainurlname=maincategory.url %}">{{ maincategory.name }}</a>
+                    <a href="" style="font-weight: 700;">{{ maincategory.subcategory.name }}</a>
         
                     <ul>
-                        <button>Доработка сайта</button>
-                        <button>Настройка сайта</button>
-                        <button>Защита и лечение сайта</button>
-                        <button>Ускорение сайта</button>
-                        <button>Плагины и темы</button>
-                        <button>Исправление ошибок</button>
+                        {% for detcat in maincategory.subcategory.detailcategory %}
+                            <button>{{ detcat.name }}</button>
+                        {% endfor %}
                     </ul>
                 </div>
+                {?фильтрация, делать??}
                 <div class="filter_menu">
                     <h5>CMS</h5>
                     <ul>
@@ -158,13 +160,13 @@
 
                 
                 <button class="save_button"><p>Применить</p></button>
+                {??}
 
             </div>
 
 
-
             <div class="catalog__categorys">
-
+                {?вывод всех продуктов выбранной категории?}
                 <button class="project_item">
                     <img src={% static "mainApp/img/1_blockBackGround.jpg" %} alt="project_img">
                     <div class="project_info">
@@ -185,6 +187,6 @@
             </div>
         </div>
     </div>
-    <script src={% static "mainApp/js/category_catalog.js" %}></script>
+    <script src={% static "category_catalog.js" %}></script>
 </main>
 {% endblock %}
