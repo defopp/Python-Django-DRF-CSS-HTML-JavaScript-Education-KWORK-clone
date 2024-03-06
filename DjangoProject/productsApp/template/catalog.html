@@ -1,0 +1,26 @@
+{% extends 'mainApp/layout.html' %}
+{% load static %}
+
+
+
+{% block title %}
+<link rel="stylesheet" href={% static "catalog.css" %}>
+<title>Каталог</title>
+{%endblock%}
+
+{% block content %}
+<div class="body2">
+    <div class="container">
+        {% for maincat in maincats %}
+        <ul>
+            <h2><a href="{% url 'maincategoryURL' mainurlname=maincat.urlname %}">{{maincat}}</a></h2>
+            {% for subcat in subcats %}
+                {% if subcat.main_category_id == maincat.id %}
+                    <li><a href="{% url 'subcategoryURL' mainurlname=maincat.urlname suburlname=subcat.urlname %}">{{ subcat }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

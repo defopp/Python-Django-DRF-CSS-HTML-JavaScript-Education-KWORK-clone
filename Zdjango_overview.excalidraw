@@ -38,8 +38,8 @@
     },
     {
       "type": "embeddable",
-      "version": 65,
-      "versionNonce": 559489946,
+      "version": 66,
+      "versionNonce": 2071005139,
       "isDeleted": false,
       "id": "3TeP6pPxfDkmxOXo-kJp5",
       "fillStyle": "solid",
@@ -61,7 +61,7 @@
         "type": 3
       },
       "boundElements": [],
-      "updated": 1709485854819,
+      "updated": 1709641451501,
       "link": "https://www.youtube.com/watch?v=HpL6ymFEuu4&ab_channel=%D0%94%D0%B8%D0%B4%D0%B6%D0%B8%D1%82%D0%B0%D0%BB%D0%B8%D0%B7%D0%B8%D1%80%D1%83%D0%B9%21",
       "locked": false,
       "validated": true
@@ -2387,7 +2387,7 @@
       "containerId": "5bQIRthMQ-uZM0PNK1kLh",
       "originalText": "Приложения/App\n     models.py\n     views.py",
       "lineHeight": 1.15,
-      "baseline": 116
+      "baseline": 115
     },
     {
       "type": "rectangle",
@@ -2461,7 +2461,7 @@
       "containerId": "xewYdBM4x9qNeRpY3NI6G",
       "originalText": "Приложения/App\n     models.py\n     views.py",
       "lineHeight": 1.15,
-      "baseline": 116
+      "baseline": 115
     },
     {
       "type": "arrow",
@@ -2602,8 +2602,8 @@
     },
     {
       "type": "embeddable",
-      "version": 160,
-      "versionNonce": 384826118,
+      "version": 161,
+      "versionNonce": 1977766621,
       "isDeleted": false,
       "id": "zixUvg12JfjApPIjIJLxI",
       "fillStyle": "solid",
@@ -2625,7 +2625,7 @@
         "type": 3
       },
       "boundElements": [],
-      "updated": 1709485854819,
+      "updated": 1709641451501,
       "link": "https://www.youtube.com/watch?v=Em-8EvV9w3o&t=223s&ab_channel=%D0%9A%D0%BB%D1%83%D0%B1%D0%B4%D0%B5%D0%B4%D0%BE%D0%B2-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%81%D1%82%D0%BE%D0%B2",
       "locked": false,
       "validated": true
@@ -2760,8 +2760,8 @@
     },
     {
       "type": "text",
-      "version": 124,
-      "versionNonce": 369455494,
+      "version": 125,
+      "versionNonce": 1233584029,
       "isDeleted": false,
       "id": "SaGN-iBeNIomEklQnmHWF",
       "fillStyle": "solid",
@@ -2781,7 +2781,7 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1709485855084,
+      "updated": 1709641451661,
       "link": null,
       "locked": false,
       "fontSize": 106.85714285714282,
@@ -2796,8 +2796,8 @@
     },
     {
       "type": "embeddable",
-      "version": 71,
-      "versionNonce": 207986778,
+      "version": 72,
+      "versionNonce": 239506803,
       "isDeleted": false,
       "id": "zi6rTCI2r2dk880s7u051",
       "fillStyle": "solid",
@@ -2819,15 +2819,15 @@
         "type": 3
       },
       "boundElements": [],
-      "updated": 1709485854819,
+      "updated": 1709641451501,
       "link": "https://www.youtube.com/watch?v=KH3eobiFhGA&ab_channel=%D0%9A%D0%BB%D1%83%D0%B1%D0%B4%D0%B5%D0%B4%D0%BE%D0%B2-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%81%D1%82%D0%BE%D0%B2",
       "locked": false,
       "validated": true
     },
     {
       "type": "text",
-      "version": 884,
-      "versionNonce": 1281937882,
+      "version": 885,
+      "versionNonce": 908072115,
       "isDeleted": false,
       "id": "JBiaFD3VPQybRCe7iXmTS",
       "fillStyle": "solid",
@@ -2847,7 +2847,7 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1709485855095,
+      "updated": 1709641451681,
       "link": null,
       "locked": false,
       "fontSize": 109.91897243923611,
@@ -2858,7 +2858,7 @@
       "containerId": null,
       "originalText": "Функциональные требования: *не срочные\n    Пользователь(1 аккаунт для ФРИЛАНСЕРА(ПРОДАВЦА) и (*ПОКУПАТЕЛЯ)):\n        - Регистрация/логин        \n        - Создание куки сессий\n        - Настройка профиля\n        - Отзывы\n\n        \n            \n    Товар(проект(ПРОДАВЦА), проект(*ПОКУПАТЕЛЯ)):\n        - Добавление товара\n        - Настройка товара\n        - Покупка товара\n        - Удаление товара",
       "lineHeight": 1.2,
-      "baseline": 1820
+      "baseline": 1821
     },
     {
       "type": "ellipse",
@@ -2984,8 +2984,8 @@
     },
     {
       "type": "text",
-      "version": 3360,
-      "versionNonce": 682184902,
+      "version": 3361,
+      "versionNonce": 1260323837,
       "isDeleted": false,
       "id": "9r_OHc5wN5M0BmuJnOw7t",
       "fillStyle": "solid",
@@ -3008,7 +3008,7 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1709485855097,
+      "updated": 1709641451682,
       "link": null,
       "locked": false,
       "fontSize": 48.920964648671706,
@@ -3114,8 +3114,8 @@
     },
     {
       "type": "text",
-      "version": 1557,
-      "versionNonce": 233146010,
+      "version": 1558,
+      "versionNonce": 1027671635,
       "isDeleted": false,
       "id": "IUbe5P-541BtGTHYFhsv3",
       "fillStyle": "solid",
@@ -3138,7 +3138,7 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1709485855098,
+      "updated": 1709641451684,
       "link": null,
       "locked": false,
       "fontSize": 60.081752759754345,
@@ -4741,8 +4741,8 @@
     },
     {
       "type": "text",
-      "version": 2903,
-      "versionNonce": 1376733190,
+      "version": 2904,
+      "versionNonce": 2012707933,
       "isDeleted": false,
       "id": "jCoRvVB6uk5M70axb-t62",
       "fillStyle": "solid",
@@ -4770,7 +4770,7 @@
           "type": "arrow"
         }
       ],
-      "updated": 1709485855103,
+      "updated": 1709641451689,
       "link": null,
       "locked": false,
       "fontSize": 74.35509147098564,
@@ -5535,8 +5535,8 @@
     },
     {
       "type": "text",
-      "version": 550,
-      "versionNonce": 258843482,
+      "version": 551,
+      "versionNonce": 1116914675,
       "isDeleted": false,
       "id": "Aa-2jAWmyFN7pmgLIqkdV",
       "fillStyle": "solid",
@@ -5567,7 +5567,7 @@
           "type": "arrow"
         }
       ],
-      "updated": 1709485855107,
+      "updated": 1709641451693,
       "link": null,
       "locked": false,
       "fontSize": 79.85250618672785,
@@ -5722,8 +5722,8 @@
     },
     {
       "type": "embeddable",
-      "version": 154,
-      "versionNonce": 243706438,
+      "version": 155,
+      "versionNonce": 1328410429,
       "isDeleted": false,
       "id": "vb_DbhB4yJO1K08YBkiDd",
       "fillStyle": "solid",
@@ -5745,7 +5745,7 @@
         "type": 3
       },
       "boundElements": [],
-      "updated": 1709485854819,
+      "updated": 1709641451501,
       "link": "https://www.youtube.com/watch?v=-knypkOQSSw&ab_channel=selfedu",
       "locked": false,
       "validated": true
@@ -5832,8 +5832,8 @@
     },
     {
       "type": "text",
-      "version": 185,
-      "versionNonce": 573855558,
+      "version": 186,
+      "versionNonce": 2011293885,
       "isDeleted": false,
       "id": "06MoLQW8NKms0dHuLnH7l",
       "fillStyle": "solid",
@@ -5853,7 +5853,7 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1709485855118,
+      "updated": 1709641451710,
       "link": null,
       "locked": false,
       "fontSize": 170.0414837444321,
@@ -5864,12 +5864,12 @@
       "containerId": null,
       "originalText": "Категории товаров: \n    Проекты продавцов, \n    Заказы покупателей",
       "lineHeight": 1.25,
-      "baseline": 574
+      "baseline": 575
     },
     {
       "type": "text",
-      "version": 859,
-      "versionNonce": 190064666,
+      "version": 860,
+      "versionNonce": 1578880403,
       "isDeleted": false,
       "id": "v7OqexR1vk8ZBtyv7YfQT",
       "fillStyle": "solid",
@@ -5889,7 +5889,7 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1709485855135,
+      "updated": 1709641451734,
       "link": null,
       "locked": false,
       "fontSize": 112.11127684547492,
@@ -5900,12 +5900,12 @@
       "containerId": null,
       "originalText": "\nmaincategory/subcategory/detailcategory\n\n##############\n\nmaincategory\n    subcategory\n        detailcategory\n\n##############\n\n\n\nДизайн\nРазработка в IT\n    Доработка и настройка сайта\n        Доработка сайта\n        Настройка сайта\n        Защита и лечение сайта\n        Ускорение сайта\n        Планигы и темы\n        Исправление ошибок   \nТексты и переводы\nCEO и трафик\nСоциальные сети и реклама\nАудио, видео, съемки\nБизнес и жизнь",
       "lineHeight": 1.25,
-      "baseline": 3741
+      "baseline": 3742
     },
     {
       "type": "text",
-      "version": 343,
-      "versionNonce": 561348230,
+      "version": 344,
+      "versionNonce": 2088749341,
       "isDeleted": false,
       "id": "NaJHYD8OVTnQAHuy02Ucv",
       "fillStyle": "solid",
@@ -5925,7 +5925,7 @@
       "frameId": null,
       "roundness": null,
       "boundElements": [],
-      "updated": 1709485855137,
+      "updated": 1709641451735,
       "link": null,
       "locked": false,
       "fontSize": 277.05743271014967,
@@ -5936,7 +5936,7 @@
       "containerId": null,
       "originalText": "Каталог",
       "lineHeight": 1.25,
-      "baseline": 243
+      "baseline": 244
     }
   ],
   "appState": {

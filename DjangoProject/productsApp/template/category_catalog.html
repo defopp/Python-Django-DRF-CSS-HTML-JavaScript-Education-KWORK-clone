@@ -15,7 +15,7 @@
     <div class="mainblock">
         <div class="main__title">
             <h2><a href="{% url 'maincategoryURL' mainurlname=maincategory.url %}">{{ maincategory.name }}</a> > 
-                <a href="">{{ maincategory.subcategory.name }}</a></h2>
+                <a href="{{maincat}}">{{ maincategory.subcategory.name }}</a></h2>
             <h1>{{ maincategory.subcategory.name }}
                 <div class="title_burger" id="Tburger"> 
                     <span></span>

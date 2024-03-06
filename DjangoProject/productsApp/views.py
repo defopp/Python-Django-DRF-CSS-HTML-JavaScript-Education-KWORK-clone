@@ -6,6 +6,22 @@ from .models import MainCategory, SubCategory, DetailCategory
 
 
 # Create your views here.
+class CatalogView(View):
+    template_name = 'productsApp\\template\\catalog.html'
+    def get(self, request):
+        maincats = MainCategory.objects.all()
+        subcats = SubCategory.objects.all()
+        context = {
+                'maincats':maincats,
+                'subcats':subcats
+                }
+        return render(request, self.template_name, context)
+
+
+
+
+
+
 class MainCategoryView(View):
     template_name = 'productsApp\\template\\category.html'
     
@@ -31,7 +47,7 @@ class MainCategoryView(View):
             else:
                 return HttpResponse(f'<h4>категория {name} не заполнена</h4>')
         else:
-            return HttpResponse('404')
+            return HttpResponse('404, такой категории не существует')
 
 
 
