@@ -128,3 +128,22 @@ class SubCategoryView(View):
         else:
             return HttpResponse('Такой MAIN категории не существует')
         
+
+class new_project(View):
+    template_name = 'productsApp\\template\\project_create.html'
+    def get(self, request):
+        context = {
+            'maincats':MainCategory.objects.all(),
+            'subcats':SubCategory.objects.all(),
+            'detcats':DetailCategory.objects.all()
+        }
+        return render(request, self.template_name, context)
+    
+    
+    
+    
+    
+    
+    def post(self, request):
+        return HttpResponse(request.POST)
+    

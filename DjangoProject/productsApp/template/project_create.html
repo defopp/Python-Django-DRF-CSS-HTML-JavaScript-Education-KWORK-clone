@@ -1,0 +1,105 @@
+{% extends 'mainApp/layout.html' %}
+{% load static %}
+
+
+{% block title %}
+<link rel="stylesheet" href={% static "project_create.css" %}>
+<title>createProject</title>
+{%endblock%}
+
+
+{% block content %}
+<main>
+    <div class="main_container">
+        <h1>Опишите что нужно сделать</h1>
+        <div class="description">
+            <p>Разместите свою задачу на бирже. Ваш проект станет видимым для тысяч фрилансеров, и некоторые из них сделают вам предложения. 
+            Изучите их рейтинг, портфолио и выберите лучших из них. Подтвердите заказ, когда будете удовлетворены результатом на 100%. 
+            Только после этого оплата спишется в пользу продавца. <a href='https://kwork.ru/protection'>Подробнее о Программе защиты клиентов проекта.</a></p>
+        </div>
+
+        <form action="{% url 'new_project'%}" method='post'>
+            {% csrf_token %}
+        <div class="create_project">
+            <div class="create_set">
+                <h3>Название задачи</h3>
+                <div class="form_container">
+                    <img src={% static "mainApp/img/construction_project_plan_building_architect_design_develop-62_icon-icons 1.png" %} alt="img">
+                    <div class="name_form" action="">
+                        <input type="text" placeholder="Введите название" name='name' required minlength="10">
+                    </div>
+                </div>
+                <p>От 10 до 150 символов</p>
+            </div>
+
+            <div class="create_set">
+                <h3>Доплнительное описание задачи</h3>
+                <div class="form_container">
+                    <img src={% static "mainApp/img/dsadsadasdadadsadasd.png" %} alt="img">
+                    <div class="description_form" action="">
+                        <textarea  minlength="30" type="text" placeholder="Опишите, что именно вам нужно, в каком объеме и за какой срок" name='description' required></textarea>
+                    </div>
+                </div>
+                <p>От 30 до 1500 символов</p>
+            </div>
+
+            <div class="choise_container">
+                <h3>Рубрика</h3>
+                <div class="form_container gfsdhfdhs">
+                    <img src={% static "mainApp/img/toppng 1.png" %} alt="img">
+                    <div class="choise" >
+                        <div class="menu">
+                            <div class="background"></div><input class='categoryinput' type="text" name="detcat" placeholder="Выберите категорию" required><i></i>
+                        </div>
+                        <div class="menu_categorys">
+                            {% for maincat in maincats %}
+                            <div class="menu_category">
+                                <p>{{ maincat.name }}</p>
+                                <div class="sub_menu">
+                                    {% for subcat in subcats %}
+                                        {% if subcat.main_category_id == maincat.id %}
+                                            <div class="detail_menu">
+                                                <button type='button'>{{ subcat.name }}</button>
+                                                <div class="detcats">
+                                                    {% for detcat in detcats %}
+                                                        
+                                                        {% if detcat.sub_category_id == subcat.id %}
+                                                            <button type='button' class='detcat' value='{{detcat.name}}'>{{detcat.name}}</button>
+                                                        {% endif %}
+
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}  
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="choise_container">
+                <h3>Цена не более</h3>
+                <div class="form_container gfsdhfdhs">
+                    <img class="imgfdsfs" src={% static "mainApp/img/saving-computer-icons-money-coin-save-electricity-c14988f4cb36b40f51f30f540e3acebd 1.png" %} alt="img">
+                    <div class="choise">
+                        <input type="number" placeholder="Введите цену ₽" name='price' required>
+                    </div>
+                </div>
+            </div>
+
+            <button class="apply_b">Опубликовать</button>
+        </div>
+        </form>
+    </div>
+
+
+
+   
+
+
+</main>
+<script src={% static "project_create.js" %}></script>
+{% endblock %}
