@@ -1,8 +1,11 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.views import View
 from django.forms.models import model_to_dict
 
+from usersApp.models import User
+
 from .models import MainCategory, SubCategory, DetailCategory
+
 
 
 # Create your views here.
@@ -132,18 +135,22 @@ class SubCategoryView(View):
 class new_project(View):
     template_name = 'productsApp\\template\\project_create.html'
     def get(self, request):
-        context = {
-            'maincats':MainCategory.objects.all(),
-            'subcats':SubCategory.objects.all(),
-            'detcats':DetailCategory.objects.all()
-        }
-        return render(request, self.template_name, context)
-    
+        
+        if request.user.is_authenticated:
+            context = {
+                'maincats':MainCategory.objects.all(),
+                'subcats':SubCategory.objects.all(),
+                'detcats':DetailCategory.objects.all()
+            }
+            return render(request, self.template_name, context)
+        else:
+            return redirect('signup')
     
     
     
     
     
     def post(self, request):
-        return HttpResponse(request.POST)
+        
+        return HttpResponse(request.post)
     

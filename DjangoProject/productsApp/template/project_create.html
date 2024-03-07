@@ -21,6 +21,13 @@
         <form action="{% url 'new_project'%}" method='post'>
             {% csrf_token %}
         <div class="create_project">
+            <div class="producttype">
+                <h3>Что хочу сделать?</h3>
+                <div>
+                    <input type="radio" name='type' value='True' checked id='sellrad'><label for='sellrad'>Продать</label>
+                    <input type="radio" name='type' value='False' id='buyrad'><label for='buyrad'>Купить</label>
+                </div>
+            </div>
             <div class="create_set">
                 <h3>Название задачи</h3>
                 <div class="form_container">
