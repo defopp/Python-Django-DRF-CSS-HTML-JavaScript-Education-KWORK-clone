@@ -9,7 +9,7 @@
 /*  */
 .main_block {
     gap: 24px;
-    padding-top: 34px;
+    padding-top: 24px;
     max-width: 1440px;
     width: 100%;
     margin: 0 auto;
@@ -18,18 +18,19 @@
     grid-template-columns: 2fr 1fr;
     grid-template-rows: max-content;
     grid-template-areas: 'description buy'
-                        'description owner'
+                        'description owner';
+                        /* 'description none'
                         'description none'
-                        'description none'
-                        'detail none';
+                        'detail none'; */
     @media (max-width:1000px) {
         grid-template-columns: 1fr;
-        grid-template-areas: 'description '
+        grid-template-areas: 'description'
+                        'buy'
                         'owner'
                         'detail';
         margin: 0 0;
-        padding: 0 0;
-        gap: 0px;
+        padding: 24px 0;
+        gap: 5px;
     }
 }
 
@@ -107,9 +108,7 @@
     width: 100%;
     height: max-content;
     padding: 20px 20px;
-    @media (max-width:1000px) {
-        display: none;
-    }
+
 }
 
 .detail{
@@ -139,7 +138,7 @@
     height: 15px;
     content: "";
     margin-right: 3px;
-    background-image: url("../img/timer-icon-7799\ 1.png");
+    background-image: url("img/timer-icon-7799\ 1.png");
 }
 
 
@@ -150,7 +149,8 @@
 .project_buy > button{
     width: 100%;
     height: 50px;
-    margin: 20px 0;
+    margin: 0;
+    margin-top: 20px;
     border: 1px solid rgba(192, 57, 201, 0.599);
     border-radius: 5px;
     background-color: #CF65C5;
@@ -162,6 +162,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 15px;
 }
 
 .amount p{
@@ -255,7 +256,11 @@
     width: 100%;
     height: max-content;
     padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 }
+
 
 
 .owner_title {
@@ -296,7 +301,7 @@
     top: 5px;
     display: block;
     content: "";
-    background-image: url(../img/dasdadadadasdsadsadaa.png);
+    background-image: url(img/dasdadadadasdsadsadaa.png);
     width: 10px;
     height: 10px;
 }
@@ -304,7 +309,7 @@
 .project_owner > button{
     width: 100%;
     height: 50px;
-    margin: 20px 0;
+    margin: 0;
     border: none;
     border-radius: 5px;
     background-color: #e2e5ec;
@@ -349,7 +354,7 @@
     margin-right: 3px;
     position: relative;
     top: 2px;
-    background-image: url('../img/Gold_Star.svg.png');
+    background-image: url('img/Gold_Star.svg.png');
     background-position: center;
     background-size: contain;
 }
@@ -407,7 +412,7 @@
     height: 15px;
     content: "";
     margin-right: 3px;
-    background-image: url("../img/timer-icon-7799\ 1.png");
+    background-image: url("img/timer-icon-7799\ 1.png");
 }
 
 
@@ -512,7 +517,7 @@
     height: 15px;
     content: "";
     margin-right: 3px;
-    background-image: url("../img/timer-icon-7799\ 1.png");
+    background-image: url("img/timer-icon-7799\ 1.png");
 }
 
 
@@ -721,7 +726,7 @@
     margin-right: 3px;
     position: relative;
     top: -1px;
-    background-image: url('../img/Gold_Star.svg.png');
+    background-image: url('img/Gold_Star.svg.png');
     background-position: center;
     background-size: contain;
 }

@@ -3,12 +3,15 @@
 
 
 {% block title %}
-<link rel="stylesheet" href={% static "mainApp\css\project.css" %}>
+<link rel="stylesheet" href={% static "project.css" %}>
 <title>Проект</title>
 {%endblock%}
 
 
 {% block content %}
+
+
+
 <div class="project__background">
     <div class="main_block">
 
@@ -16,13 +19,17 @@
 
         <div class="project_description">
             <div class="main__title">
-                <h2><a href="">Разработка в IT</a> > <a href="">Настройка сайта</a></h2>
-                <h1>Настройка сайта(project name)</h1>
+                <h2><a href="{% url 'maincategoryURL' mainurlname=maincat.urlname %}">{{ maincat }}</a> > 
+                    <a href="{% url 'subcategoryURL' mainurlname=maincat.urlname suburlname=subcat.urlname %}">{{ subcat }}</a> > 
+                    <a href="">{{ detcat }}</a></h2>
+                <h1>{{ project.name }}</h1>
             </div>
             <img src={% static "mainApp/img/Rectangle 42.png" %} alt="logo">
             <div class="description">
                 <h3>Об этом проекте</h3>
-                <p class="owner_text">Приветствую! Меня зовут Екатерина. Я перенесу Ваш сайт с Wix или любой
+                <p class="owner_text">
+                    {{ project.description }}
+                    {% comment %} Приветствую! Меня зовут Екатерина. Я перенесу Ваш сайт с Wix или любой
                     другой платформы на Tilda*. Сайт будет копией уже имеющегося сайта.
                     Также веб-страница будет оптимизирована под разные типы устройств.<br>
                     <br>
@@ -41,44 +48,51 @@
                     <b>Нужно для заказа:</b><br>
                     Ссылка на Wix сайт;<br>
                     Логин и пароль для Tilda и Wix аккаунтов;<br>
-                    Оставаться на связи для уточнения деталей;
+                    Оставаться на связи для уточнения деталей; {% endcomment %}
                 </p>
-                <div class="settings">
+                {% comment %} <div class="settings">
                     <div><h4>CMS:</h4><p>Tilda</p></div>
                     <div><h4>Язык программирования:</h4><p>Нет</p></div>
                     <div><h4>Интерфейс на JavaScript:</h4><p>Да</p></div>
                     <div><h4>Используется:</h4><p>CSS</p></div>
                     <div><h4>База данных:</h4><p>Не предусмотрена</p></div>
                     <div><h4>Объем услуги в проекте:</h4><p>1 сайт, до 5 страниц</p></div>
-                </div>
+                </div> {% endcomment %}
             </div>
         </div>
 
 
 
         <div class="project_buy">
-            <div class="detail"><h3>1000р</h3><h3>Детали заказа</h3></div>
-            <p>7 дней на выполнение</p>
-            <p>Обычно выполняет за 2 дня</p>
-            <button>Заказать за 1000р</button>
-            <div class="amount">
-                <p>Количество:</p>
-                <div class="menu_form">
-                    <div class="menu_button"><p>1</p></div>
-                    <div class="menu">
-                        <button>1</button>
-                        <button>2</button>
-                        <button>3</button>
-                        <button>4</button>
-                        <button>5</button>
-                        <button>6</button>
-                        <button>7</button>
-                        <button>8</button>
-                        <button>9</button>
-                        <button>10</button>
+            <div class="detail"><h3>{{project.price}}р</h3><h3>Детали заказа</h3></div>
+            <p>{??}7 дней на выполнение</p>
+            <p>{??}Обычно выполняет за 2 дня</p>
+            {% if user.is_authenticated %}
+                {% if user.id != owner.id %}
+                    <button>Заказать за {{project.price}}р</button>
+                    <div class="amount">
+                        <p>Количество:</p>
+                        <div class="menu_form">
+                            <div class="menu_button"><p>1</p></div>
+                            <div class="menu">
+                                <button>1</button>
+                                <button>2</button>
+                                <button>3</button>
+                                <button>4</button>
+                                <button>5</button>
+                                <button>6</button>
+                                <button>7</button>
+                                <button>8</button>
+                                <button>9</button>
+                                <button>10</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                {% else %}
+                    <button>Изменить проект</button>
+                    <button style='color:red'>Удалить проект</button>
+                {% endif %}
+            {% endif %}
         </div>
 
 
@@ -87,24 +101,28 @@
             <div class="owner_title">
                 <img src={% static "mainApp/img/Screenshot_3.png" %} alt="user_avatar">
                 <div class="title_info">
-                    <h4>nickname</h4>
+                    <h4>{{ owner.username }}</h4>
                     <h4>fullname</h4>
                     <h4>Онлай(статус)</h4>
                 </div>
             </div>
-            <button>Связаться с продавцом</button>
+            {% if user.is_authenticated %}
+                {% if user.id != owner.id %}
+                    <button>Связаться с продавцом</button>
+                {% endif %}
+            {% endif %}
             <ul class="rep_info">
-                <div><p>Репутация</p><div class="owner_rating">5.0<p>(50)</p></div></div>
-                <div><p>Выполнено заказов</p><div id="done_projects">11111</div></div>
-                <div><p>505 оценок к заказах</p><div class="projects_rating" id="projects_rating"><p>500</p><p>5</p></div></div>
-                <div><p>Заказов в работе</p><div id="projects_in_process">55</div></div>
-                <div><p>Новосибирск</p><div class="reg_date" id="reg_date"><p>На сайте с 1 ноября 2022</p></div></div>
+                <div><p>{??}Репутация</p><div class="owner_rating">5.0<p>(50)</p></div></div>
+                <div><p>{??}Выполнено заказов</p><div id="done_projects">11111</div></div>
+                <div><p>{??}505 оценок к заказах</p><div class="projects_rating" id="projects_rating"><p>500</p><p>5</p></div></div>
+                <div><p>{??}Заказов в работе</p><div id="projects_in_process">55</div></div>
+                <div><p>{??}Новосибирск</p><div class="reg_date" id="reg_date"><p>На сайте с 1 ноября 2022</p></div></div>
             </ul>
         </div>
 
 
 
-        <div class="project_buy_detail">
+        {% comment %} <div class="project_buy_detail">
             <h1>Детали заказа</h1>
             <div class="detail_settings">
                 <div class="detail_setting">
@@ -253,7 +271,7 @@
                 </div>
                 <button>Заказать за 1000р</button>
             </div>
-        </div>
+        </div> {% endcomment %}
 
 
 
@@ -380,5 +398,5 @@
         </div>
     </div>
 </div>
-<script src={% static "mainApp/js/project.js" %}></script>
+<script src={% static "project.js" %}></script>
 {% endblock %}

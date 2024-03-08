@@ -4,7 +4,7 @@ from django.forms.models import model_to_dict
 
 from usersApp.models import User
 
-from .models import MainCategory, SubCategory, DetailCategory
+from .models import MainCategory, SubCategory, DetailCategory, Product
 
 
 
@@ -151,6 +151,32 @@ class new_project(View):
     
     
     def post(self, request):
+        post = request.POST
+        if request.user.is_authenticated:
+            product = Product(sell_type=post['type'], 
+                              name=post['name'], 
+                              description=post["description"], 
+                              detail_cat_id=post['detcat'], 
+                              price=post["price"],
+                              owner_id=request.user.id)
+            product.save()
+            
+            return redirect('project', project_id = product.id)
         
-        return HttpResponse(request.post)
-    
+        
+class ProjectView(View):
+    template_name = 'productsApp\\template\\project.html'
+    def get(self, request, project_id):
+        project = Product.objects.get(id=project_id)
+        owner = User.objects.get(id=project.owner_id)
+        detcat = DetailCategory.objects.get(name=project.detail_cat_id)
+        subcat = SubCategory.objects.get(id=detcat.sub_category_id)
+        maincat = MainCategory.objects.get(id=subcat.main_category_id)
+        
+        return render(request, self.template_name, context={
+            'project':project,
+            'owner':owner,
+            'maincat': maincat,
+            'subcat': subcat,
+            'detcat': detcat,
+        })
