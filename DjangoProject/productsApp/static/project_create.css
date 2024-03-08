@@ -335,7 +335,9 @@ input{
 .detail_menu:hover > button{
     background-color: var(--blue-color);
 }
-
+.detail_menu{
+    position: relative;
+}
 .detcats{
     position: absolute;
     right: 100%;

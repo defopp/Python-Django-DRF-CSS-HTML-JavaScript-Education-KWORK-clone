@@ -29,6 +29,8 @@ class Product(models.Model):
     sell_type = models.BooleanField(blank=False)
     name = models.CharField(blank=False, max_length=150, null=False)
     description = models.CharField(blank=False, max_length=1500, null=False)
+    main_cat = models.ForeignKey(MainCategory, to_field="name", on_delete=models.PROTECT,)
+    sub_cat = models.ForeignKey(SubCategory, to_field="name", on_delete=models.PROTECT,)
     detail_cat = models.ForeignKey(DetailCategory, to_field="name", on_delete=models.PROTECT,)
     price = models.IntegerField(blank=False, null=False)
     

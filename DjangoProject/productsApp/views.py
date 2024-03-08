@@ -108,7 +108,9 @@ class SubCategoryView(View):
                 subcatQS = subcat.values_list('id', 'urlname', 'name')
                 for cat in subcatQS:
                     subid, suburlname, subname = cat
-            
+                    products = Product.objects.all().filter(sub_cat_id = subname)
+                    users = User.objects.all()
+                    
                 if len(get_list_of_detailcategory(subid)) > 0:
                     context = {
                         'maincategory': {
@@ -119,9 +121,11 @@ class SubCategoryView(View):
                                 'id':subid,
                                 'url':suburlname,
                                 'name':subname,
-                                'detailcategory': get_list_of_detailcategory(subid) 
+                                'detailcategory': get_list_of_detailcategory(subid)
                             }
-                        } 
+                        },
+                        'products': products,
+                        'users': users
                     }
                     return render(request, self.template_name, context)
                 else:
@@ -153,12 +157,19 @@ class new_project(View):
     def post(self, request):
         post = request.POST
         if request.user.is_authenticated:
+            
+            sub_cat_id = SubCategory.objects.get(id=DetailCategory.objects.get(name = post['detcat']).sub_category_id).name
+            main_cat_id = MainCategory.objects.get(id=SubCategory.objects.get(id=DetailCategory.objects.get(name = post['detcat']).sub_category_id).main_category_id)
+            
+            
             product = Product(sell_type=post['type'], 
                               name=post['name'], 
                               description=post["description"], 
                               detail_cat_id=post['detcat'], 
                               price=post["price"],
-                              owner_id=request.user.id)
+                              owner_id=request.user.id,
+                              sub_cat_id=sub_cat_id,
+                              main_cat_id=main_cat_id)
             product.save()
             
             return redirect('project', project_id = product.id)
