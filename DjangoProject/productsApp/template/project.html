@@ -286,14 +286,16 @@
 
                 {% for product in owner_products %}
                     {% if product.id != project.id %}
-                    <form action="{% url 'project' project_id=product.id %}" method='GET'>
-                        <button class="project_item">
+                    
+                    <button class="project_item">
                         <img src={% static "mainApp/img/1_blockBackGround.jpg" %} alt="project_img">
                         <div class="project_info">
+                            <a href="{% url 'project' project_id=product.id %}"></a>
                             <p>{{product.name}}</p>
                             <div class="price">{{product.price}}р</div>
                         </div>
                         <div class="item_project_owner">
+                            <a href="{% url 'profile' pk=user.id %}" ></a>
                             <div class="owner_info">
                                 <img src={% static "mainApp/img/Screenshot_5.png" %} alt="owner_avatar">
                                 <p class="owner_name">{{ owner.username }}</p>
@@ -301,7 +303,7 @@
                             <div class="owner_rating">{??}5.0<p>(50)</p></div>
                         </div>
                     </button>
-                    </form>
+                    
                     {% endif %}
                 {% endfor %}
 
