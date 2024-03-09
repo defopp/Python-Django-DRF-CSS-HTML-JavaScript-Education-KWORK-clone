@@ -295,7 +295,7 @@
                             <div class="price">{{product.price}}р</div>
                         </div>
                         <div class="item_project_owner">
-                            <a href="{% url 'profile' pk=user.id %}" ></a>
+                            <a href="{% url 'profile' pk=owner.id %}" ></a>
                             <div class="owner_info">
                                 <img src={% static "mainApp/img/Screenshot_5.png" %} alt="owner_avatar">
                                 <p class="owner_name">{{ owner.username }}</p>

@@ -716,9 +716,8 @@
 }
 
 .owner_name{
-    min-width: 50px;
     max-width: 100px;
-    margin: auto 7px;
+    margin: auto 5px;
 }
 .owner_rating {
     margin:auto 7px;

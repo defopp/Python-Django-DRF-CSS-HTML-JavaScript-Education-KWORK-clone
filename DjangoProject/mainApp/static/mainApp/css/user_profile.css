@@ -197,8 +197,7 @@ main{
     padding: 0 0;
     position: relative;
     cursor: pointer;
-    max-width: 220px;
-    width: 100%;
+    width: 220px;
     height: 300px;
     background-color: #FFFFFF;
     border: none;
@@ -268,7 +267,6 @@ main{
 }
 
 .owner_name{
-    min-width: 50px;
     max-width: 100px;
     margin: auto 7px;
 }
@@ -311,6 +309,7 @@ main{
     position: absolute;
     top: 50%;
     left: -5%;
+    z-index: 1;
 }
 
 .slider_b button{
@@ -355,6 +354,7 @@ main{
     overflow: hidden;
     width: 1440px;
     margin: 0 auto;
+    z-index: 2;
 }
 
 .slider_items{
