@@ -149,7 +149,7 @@ main{
 }
 .review {
     margin: 0 auto;
-    max-width: 940px;
+    max-width: 1340px;
     width: 100%;
     padding: 20px 20px;
 }
@@ -197,7 +197,8 @@ main{
     padding: 0 0;
     position: relative;
     cursor: pointer;
-    min-width: 220px;
+    max-width: 220px;
+    width: 100%;
     height: 300px;
     background-color: #FFFFFF;
     border: none;
@@ -206,6 +207,13 @@ main{
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    a{
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        position:absolute;
+    }
 }
 
 .project_item img{
@@ -239,6 +247,7 @@ main{
     color: var(--pink-color);
 }
 .item_project_owner {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;

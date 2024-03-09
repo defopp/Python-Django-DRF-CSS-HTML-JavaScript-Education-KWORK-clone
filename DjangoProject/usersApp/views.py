@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 
 from .forms import SignUpForm, LogInForm
 from .models import User
+from productsApp.models import Product
 
 
 class signupView(View):
@@ -74,25 +75,20 @@ class profileView(View):
     template_name = 'usersApp\\template\\profile.html'
     
     def get(self, request, pk):
-        user = User.objects.filter(id = pk)
-        if user.exists():
+        
+        try:
+            user = User.objects.get(id = pk)
+    
             """проверяю есть ли пользователь с таким PrimaryKey в Базе данных
             Если он есть, то распаковываю QuerySet в dict userprofile,
             и отправляю на шаблон с контекстом userprofile"""
-            userQuerySet = user.values_list('username','password','date_joined')      
-            for i in userQuerySet:
-                username, password, date_joined = i
-                
-                userprofile = {
-                    'userprofile':{
-                        'username':username,
-                        'password':password,
-                        'date_joined':date_joined
-                    }
-                }    
+            owner_projects = Product.objects.all().filter(owner_id=user.id)
+            userprofile = {
+                'user':user,
+                'owner_projects':owner_projects
+            }    
             return render(request, self.template_name, userprofile)
-        
-        else:
+        except Exception:
             return HttpResponse('404')
 
 

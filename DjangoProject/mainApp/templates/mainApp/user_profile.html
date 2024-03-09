@@ -40,22 +40,24 @@
                         <div class="slider_items">
                             
                             {% for product in owner_projects %}
-                                <form action="{% url 'project' project_id=product.id %}" method='GET'>
+                                
                                     <button class="project_item">
                                     <img src={% static "mainApp/img/1_blockBackGround.jpg" %} alt="project_img">
                                     <div class="project_info">
+                                        <a href="{% url 'project' project_id=product.id %}"></a>
                                         <p>{{product.name}}</p>
                                         <div class="price">{{product.price}}р</div>
                                     </div>
                                     <div class="item_project_owner">
                                         <div class="owner_info">
+                                            <a href="{% url 'profile' pk=user.id %}" ></a>
                                             <img src={% static "mainApp/img/Screenshot_5.png" %} alt="owner_avatar">
                                             <p class="owner_name">{{ user.username }}</p>
                                         </div>
                                         <div class="owner_rating">{??}5.0<p>(50)</p></div>
                                     </div>
                                 </button>
-                            </form>
+                       
                             {% endfor %}
                             
                             {% endif %}
