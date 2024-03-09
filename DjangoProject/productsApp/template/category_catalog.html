@@ -170,25 +170,26 @@
             <div class="catalog__categorys">
 
                 {% for product in products %}
-                <button class="project_item">
-                    <img src={% static "mainApp/img/1_blockBackGround.jpg" %} alt="project_img">
-                    <div class="project_info">
-                        <p>{{product.name}}</p>
-                        <div class="price">{{product.price}}р</div>
-                    </div>
-                    <div class="project_owner">
-                        <div class="owner_info">
-                            <img src={% static "mainApp/img/medium.jpg" %} alt="owner_avatar">
-                            {% for user in users %}
-                                {% if user.id == product.owner_id%}
-                                    <p class="owner_name">{{user.username}}</p>
-                                {% endif%}
-                            {% endfor %}
+                <form action="{% url 'project' project_id=product.id %}" method='GET'>
+                    <button class="project_item">
+                        <img src={% static "mainApp/img/1_blockBackGround.jpg" %} alt="project_img">
+                        <div class="project_info">
+                            <p>{{product.name}}</p>
+                            <div class="price">{{product.price}}р</div>
                         </div>
-                        <div class="owner_rating">5.0<p>(50)</p></div>
-                    </div>
-                </button>
-
+                        <div class="project_owner">
+                            <div class="owner_info">
+                                <img src={% static "mainApp/img/medium.jpg" %} alt="owner_avatar">
+                                {% for user in users %}
+                                    {% if user.id == product.owner_id%}
+                                        <p class="owner_name">{{user.username}}</p>
+                                    {% endif%}
+                                {% endfor %}
+                            </div>
+                            <div class="owner_rating">5.0<p>(50)</p></div>
+                        </div>
+                    </button>
+                </form>
                 {% endfor %}
 
                

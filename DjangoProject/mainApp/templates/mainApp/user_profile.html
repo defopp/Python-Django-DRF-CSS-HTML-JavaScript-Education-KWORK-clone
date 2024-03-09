@@ -32,7 +32,47 @@
             </div>
             <div class="active_projects">
                 <h1>Мои проекты</h1>
+                {% if owner_projects|length == 0 %}
                 <p>У пользователя {{ user.username }} нет активных проектов{??}</p>
+                {% else %}
+                <div class="slider">
+                    <div class="slider_container">
+                        <div class="slider_items">
+                            
+                            {% for product in owner_projects %}
+                                <form action="{% url 'project' project_id=product.id %}" method='GET'>
+                                    <button class="project_item">
+                                    <img src={% static "mainApp/img/1_blockBackGround.jpg" %} alt="project_img">
+                                    <div class="project_info">
+                                        <p>{{product.name}}</p>
+                                        <div class="price">{{product.price}}р</div>
+                                    </div>
+                                    <div class="item_project_owner">
+                                        <div class="owner_info">
+                                            <img src={% static "mainApp/img/Screenshot_5.png" %} alt="owner_avatar">
+                                            <p class="owner_name">{{ user.username }}</p>
+                                        </div>
+                                        <div class="owner_rating">{??}5.0<p>(50)</p></div>
+                                    </div>
+                                </button>
+                            </form>
+                            {% endfor %}
+                            
+                            {% endif %}
+                            
+                        </div>
+                    </div>
+                    <div class="slider_b">
+                        <button class="prev_sl_bt">
+                            <img src={% static "mainApp/img/arrowpng.png" %} alt="prev" width="35px" height="60px">
+                        </button>
+                        <button class="next_sl_bt">
+                            <img src={% static "mainApp/img/arrowpng.png" %} alt="next" width="35px" height="60px">
+                        </button>
+                    </div>
+                </div>
+
+
             </div>
         </div>
         <div class="profile_review">
@@ -43,5 +83,5 @@
         </div>
     </div>
 </main>
-
+<script src={% static "mainApp/js/user_profile.js" %}></script>
 {%endblock%}

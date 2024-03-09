@@ -180,6 +180,7 @@ class ProjectView(View):
     def get(self, request, project_id):
         project = Product.objects.get(id=project_id)
         owner = User.objects.get(id=project.owner_id)
+        owner_products = Product.objects.all().filter(owner_id=owner.id)
         detcat = DetailCategory.objects.get(name=project.detail_cat_id)
         subcat = SubCategory.objects.get(id=detcat.sub_category_id)
         maincat = MainCategory.objects.get(id=subcat.main_category_id)
@@ -187,6 +188,7 @@ class ProjectView(View):
         return render(request, self.template_name, context={
             'project':project,
             'owner':owner,
+            'owner_products': owner_products,
             'maincat': maincat,
             'subcat': subcat,
             'detcat': detcat,

@@ -102,8 +102,8 @@
                 <img src={% static "mainApp/img/Screenshot_3.png" %} alt="user_avatar">
                 <div class="title_info">
                     <h4>{{ owner.username }}</h4>
-                    <h4>fullname</h4>
-                    <h4>Онлай(статус)</h4>
+                    <h4>{??}fullname</h4>
+                    <h4>{??}Онлай(статус)</h4>
                 </div>
             </div>
             {% if user.is_authenticated %}
@@ -282,20 +282,31 @@
     <div class="slider">
         <div class="slider_container">
             <div class="slider_items">
-                <button class="project_item">
-                    <img src={% static "mainApp/img/Screenshot_6.png" %} alt="project_img">
-                    <div class="project_info">
-                        <p>project name</p>
-                        <div class="price">1000р</div>
-                    </div>
-                    <div class="item_project_owner">
-                        <div class="owner_info">
-                            <img src={% static "mainApp/img/Screenshot_5.png" %} alt="owner_avatar">
-                            <p class="owner_name">username</p>
+
+
+                {% for product in owner_products %}
+                    {% if product.id != project.id %}
+                    <form action="{% url 'project' project_id=product.id %}" method='GET'>
+                        <button class="project_item">
+                        <img src={% static "mainApp/img/1_blockBackGround.jpg" %} alt="project_img">
+                        <div class="project_info">
+                            <p>{{product.name}}</p>
+                            <div class="price">{{product.price}}р</div>
                         </div>
-                        <div class="owner_rating">5.0<p>(50)</p></div>
-                    </div>
-                </button>
+                        <div class="item_project_owner">
+                            <div class="owner_info">
+                                <img src={% static "mainApp/img/Screenshot_5.png" %} alt="owner_avatar">
+                                <p class="owner_name">{{ owner.username }}</p>
+                            </div>
+                            <div class="owner_rating">{??}5.0<p>(50)</p></div>
+                        </div>
+                    </button>
+                    </form>
+                    {% endif %}
+                {% endfor %}
+
+
+
 
                 {% comment %} <button class="project_item">
                     <img src="img/Screenshot_6.png" alt="project_img">

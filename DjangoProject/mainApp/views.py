@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.sessions.models import Session
 
+from productsApp.models import Product
+
+
+
 # Create your views here.
 def MainPage(request, context = None):
     return render(request, 'mainApp\\main.html', )
@@ -22,7 +26,8 @@ def ProjectCreatePage(request):
 
 def UserProfilePage(request):
     if request.user.is_authenticated:
-        return render(request, 'mainApp\\user_profile.html')
+        owner_projects = Product.objects.all().filter(owner_id=request.user.id)
+        return render(request, 'mainApp\\user_profile.html', {'owner_projects':owner_projects})
     else:
         return redirect('main')
 

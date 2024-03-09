@@ -139,6 +139,7 @@ main{
 
 .active_projects {
     padding: 20px 20px;
+    position: relative;
 }
 .profile_review {
     width: 100%;
@@ -190,3 +191,167 @@ main{
 /* main profile info */
 /* main profile info */
 /* main profile info */
+.project_item{
+    padding: 0 0;
+    position: relative;
+    cursor: pointer;
+    min-width: 220px;
+    height: 300px;
+    background-color: #FFFFFF;
+    border: none;
+    box-shadow: 0 0 2px #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.project_item img{
+    object-fit:cover;
+    object-position: center;
+    width: 100%;
+    height: 55%;
+}
+
+.project_info {
+    position: relative;
+    height: 30%;
+    width: 100%;
+    text-align: start;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.487);
+    border-top: 1px solid rgba(0, 0, 0, 0.487);
+}
+
+.project_info > p{
+    margin: 5px 7px;
+    max-width: 100%;
+    max-height: 65%;
+    overflow: hidden;
+}
+
+.price {
+    position: absolute;
+    right: 7px;
+    bottom: 5px;
+    font-size: 17px;
+    color: var(--pink-color);
+}
+.item_project_owner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 15%;
+    width: 100%;
+}
+.owner_info {
+    display: flex;
+    margin-left: 7px;
+    overflow: hidden;
+}
+
+.owner_info img{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.355);
+}
+
+.owner_name{
+    min-width: 50px;
+    max-width: 100px;
+    margin: auto 7px;
+}
+.owner_rating {
+    margin:auto 7px;
+    display: flex;
+    color: gold;
+}
+.owner_rating::before{
+    content: "";
+    height: 15px;
+    width: 15px;
+    margin-right: 3px;
+    position: relative;
+    top: -1px;
+    background-image: url('img/Gold_Star.svg.png');
+    background-position: center;
+    background-size: contain;
+}
+.owner_rating p{
+    color: #00000033;
+    margin: 0 0;
+    margin-left: 3px;
+}
+
+
+
+
+
+/* слайдер */
+.slider{
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider_b{
+    width: 110%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: -5%;
+}
+
+.slider_b button{
+    margin: 0 15px;
+    padding: 0 0;
+    width: 35px;
+    height: 60px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: transparent;
+    transition: 0.4s;
+    position: relative;
+
+
+}
+
+.prev_sl_bt:hover{
+    transform: translateX(2px);
+}
+.next_sl_bt:hover{
+    transform: translateX(-2px);
+}
+
+
+.prev_sl_bt:active{
+    transform: translateX(-2px);
+}
+.next_sl_bt:active{
+    transform: translateX(2px);
+}
+
+
+.next_sl_bt img{
+    position: relative;
+    transform: rotate(180deg);
+}
+/*  */
+
+.slider_container{
+    position: relative;
+    overflow: hidden;
+    width: 1440px;
+    margin: 0 auto;
+}
+
+.slider_items{
+    transition: 0.6s;
+    display: flex;
+    gap: 40px;
+    margin: 0 auto;
+    padding: 10px 10px;
+    position: relative;
+}
+/* слайдер */
