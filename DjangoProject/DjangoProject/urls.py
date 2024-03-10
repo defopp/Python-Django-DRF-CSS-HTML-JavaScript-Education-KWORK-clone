@@ -41,6 +41,7 @@ urlpatterns = [
     
     # api
     path('users/', include('usersApp.urls')),
-    path('projects/', include('productsApp.urls'))
+    path('projects/', include('productsApp.urls')),
+    path('messeges/', include('messageApp.urls'))
 ]
 # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

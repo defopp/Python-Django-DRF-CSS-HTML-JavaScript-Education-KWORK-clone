@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.views import View
-from django.forms.models import model_to_dict
+
 
 from usersApp.models import User
 
