@@ -103,7 +103,7 @@ main{
     height: 15px;
     content: "";
     margin-right: 3px;
-    background-image: url("../img/timer-icon-7799\ 1.png");
+    background-image: url("img/timer-icon-7799\ 1.png");
 }
 
 .status{
@@ -116,7 +116,7 @@ main{
     top: 5px;
     display: block;
     content: "";
-    background-image: url(../img/dasdadadadasdsadsadaa.png);
+    background-image: url("img/dasdadadadasdsadsadaa.png");
     width: 10px;
     height: 10px;
 }

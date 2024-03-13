@@ -78,10 +78,11 @@ class profileView(View):
         
         try:
             user = User.objects.get(id = pk)
-    
+
             """проверяю есть ли пользователь с таким PrimaryKey в Базе данных
-            Если он есть, то распаковываю QuerySet в dict userprofile,
+            Если он есть, userprofile,
             и отправляю на шаблон с контекстом userprofile"""
+            
             owner_projects = Product.objects.all().filter(owner_id=user.id)
             userprofile = {
                 'user':user,
@@ -93,8 +94,27 @@ class profileView(View):
 
 
 
+class myProfileView(View):
+    template_name = 'usersApp\\template\\user_profile.html'
+    
+    
+    def get(self, request):
+        if request.user.is_authenticated:
+            owner_projects = Product.objects.all().filter(owner_id=request.user.id)
+            return render(request, self.template_name, {'owner_projects':owner_projects})
+        else:
+            return redirect('main')
 
 
+
+
+
+class editProfileView(View):
+    template_name = 'usersApp\\template\\user_settings.html'
+    
+    def get(self, request):
+        
+        return render(request, self.template_name)
 
 
 

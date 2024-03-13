@@ -21,7 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-from mainApp.views import MainPage, ToFreelancerPage, CategoryPage, CategoryCatalogPage, ProjectPage, ProjectCreatePage, UserProfilePage, MessengerPage
+from mainApp.views import MainPage, ToFreelancerPage, MessengerPage
 
 
 
@@ -30,12 +30,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', MainPage, name='main'),
     path('to_freelancer/', ToFreelancerPage, name='freelancer'),
-    path('create_project/', ProjectCreatePage),
+    
     
     
     # pages moded with api
-    path('project/', ProjectPage),
-    path('myprofile/', UserProfilePage, name='myprofile'),
     path('messenger/', MessengerPage),
     
     

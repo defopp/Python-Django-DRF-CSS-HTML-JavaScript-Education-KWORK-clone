@@ -24,12 +24,9 @@ def ProjectPage(request):
 def ProjectCreatePage(request):
     return render(request, 'mainApp\\project_create.html')
 
-def UserProfilePage(request):
-    if request.user.is_authenticated:
-        owner_projects = Product.objects.all().filter(owner_id=request.user.id)
-        return render(request, 'mainApp\\user_profile.html', {'owner_projects':owner_projects})
-    else:
-        return redirect('main')
-
 def MessengerPage(request):
     return render(request, 'mainApp\\messenger.html')
+
+
+    
+    

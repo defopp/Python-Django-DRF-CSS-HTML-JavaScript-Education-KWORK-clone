@@ -3,3 +3,4 @@ venv
 .vscode
 .excalidraw
 Ztodo.txt
+.gitignore

@@ -3,7 +3,7 @@
 
 
 {% block title %}
-<link rel="stylesheet" href={% static "mainApp\css\user_profile.css" %}>
+<link rel="stylesheet" href={% static "user_profile.css" %}>
 <title>MyProfile</title>
 {%endblock%}
 
@@ -27,7 +27,7 @@
                     (Описание) Пользователь не написал о себе{??}
                 </p>
                 <div class="profile_setting">
-                    <button>Настройки профиля{??}</button>
+                    <a href="{% url 'user_settings' %}"><button>Настройки профиля{??}</button></a>
                 </div>
             </div>
             <div class="active_projects">
@@ -85,5 +85,5 @@
         </div>
     </div>
 </main>
-<script src={% static "mainApp/js/user_profile.js" %}></script>
+<script src={% static "user_profile.js" %}></script>
 {%endblock%}
