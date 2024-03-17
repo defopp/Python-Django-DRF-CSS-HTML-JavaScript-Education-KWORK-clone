@@ -4,7 +4,7 @@ from django.views import View
 from django.contrib.auth import authenticate, login, logout
 
 
-from .forms import SignUpForm, LogInForm
+from .forms import SignUpForm, LogInForm, ChangePasswordForm
 from .models import User
 from productsApp.models import Product
 
@@ -113,9 +113,32 @@ class editProfileView(View):
     template_name = 'usersApp\\template\\user_settings.html'
     
     def get(self, request):
+        if request.user.is_authenticated:        
+            user = request.user
+            # Добавить формы для общих настроек и смены пароля
+            context = {
+                'ChangePasswordForm':ChangePasswordForm(user)
+            }        
+            return render(request, self.template_name, context)
         
-        return render(request, self.template_name)
+        else:
+            HttpResponse("404")
 
 
-
-
+    def post(self, request): 
+        if request.POST['old_password']:
+            form = ChangePasswordForm(user=request.user, data=request.POST)
+            if form.is_valid():
+                return HttpResponse('Пароль почти поменян')   
+            
+                
+            context = {
+                'ChangePasswordForm':form
+            }        
+            print(form)
+            return render(request, self.template_name, context)    
+                
+                
+            return HttpResponse(f"form = {form} \n  status = {status}")
+                
+        

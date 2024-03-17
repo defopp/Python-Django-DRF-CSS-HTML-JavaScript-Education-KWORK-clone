@@ -11,12 +11,24 @@
 
 
 {% block content %}
+
 <div class="background">
     <div class="container">
         <h1>Настройки профиля</h1>
         <h3>Общее</h3>
         <form action="">
-            форма
+            форма для смены юзернейма и полного имени + добавление фотографии
+        </form>
+        <h3>Смена пароля</h3>
+        <form action="" method='post'>
+            {% csrf_token %}
+            {% for field in ChangePasswordForm %}
+            <div class="input"> 
+                {{ field.errors }}
+                {{ field }}
+            </div>
+            {% endfor %}
+            <button>Сменить пароль</button>
         </form>
     </div>
 </div>

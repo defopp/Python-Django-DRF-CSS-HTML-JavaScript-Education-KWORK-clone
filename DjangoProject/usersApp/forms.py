@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
 
 
 from .models import User
@@ -17,8 +17,11 @@ class LogInForm(AuthenticationForm):
     class Meta:
         model = User
         fields = ('username','password','error_messages')
-        widgets = {
-            'username': {'placeholder': 'Логинфыыфы'},
-        }
+
         
+        
+class ChangePasswordForm(PasswordChangeForm):
+    class Meta:
+        model = User
+        fields = ('old_password',"new_password1","new_password2")
         
