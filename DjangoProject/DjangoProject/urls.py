@@ -31,15 +31,9 @@ urlpatterns = [
     path('', MainPage, name='main'),
     path('to_freelancer/', ToFreelancerPage, name='freelancer'),
     
-    
-    
-    # pages moded with api
-    path('messenger/', MessengerPage),
-    
-    
     # api
     path('users/', include('usersApp.urls')),
     path('projects/', include('productsApp.urls')),
-    path('messeges/', include('messageApp.urls'))
+    path('messages/', include('messageApp.urls'))
 ]
 # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

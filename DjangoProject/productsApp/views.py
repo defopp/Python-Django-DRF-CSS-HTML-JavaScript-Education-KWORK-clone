@@ -21,10 +21,6 @@ class CatalogView(View):
         return render(request, self.template_name, context)
 
 
-
-
-
-
 class MainCategoryView(View):
     template_name = 'productsApp\\template\\category.html'
     
@@ -51,8 +47,6 @@ class MainCategoryView(View):
                 return HttpResponse(f'<h4>категория {name} не заполнена</h4>')
         else:
             return HttpResponse('404, такой категории не существует')
-
-
 
 
 
@@ -92,7 +86,6 @@ def get_list_of_detailcategory(subcat_id:int) -> list:
 
 class SubCategoryView(View):
     template_name = 'productsApp\\template\\category_catalog.html'
-
 
     def get(self, request, mainurlname, suburlname):
         
@@ -135,8 +128,8 @@ class SubCategoryView(View):
         else:
             return HttpResponse('Такой MAIN категории не существует')
         
-
-class new_project(View):
+        
+class new_projectView(View):
     template_name = 'productsApp\\template\\project_create.html'
     def get(self, request):
         
@@ -150,17 +143,12 @@ class new_project(View):
         else:
             return redirect('signup')
     
-    
-    
-    
-    
     def post(self, request):
         post = request.POST
         if request.user.is_authenticated:
             
             sub_cat_id = SubCategory.objects.get(id=DetailCategory.objects.get(name = post['detcat']).sub_category_id).name
             main_cat_id = MainCategory.objects.get(id=SubCategory.objects.get(id=DetailCategory.objects.get(name = post['detcat']).sub_category_id).main_category_id)
-            
             
             product = Product(sell_type=post['type'], 
                               name=post['name'], 

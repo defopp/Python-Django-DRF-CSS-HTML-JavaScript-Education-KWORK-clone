@@ -13,30 +13,40 @@ runproject flow
 
 
 
-available urls
-    urlpatterns = [
-        # main pages
-        path('admin/', admin.site.urls),
-        path('', MainPage, name='main'),
-        path('to_freelancer/', ToFreelancerPage, name='freelancer'),
-        path('create_project/', ProjectCreatePage),
-        
-        
-        # pages moded with api
-        path('category/', CategoryPage),
-        path('category/catalog/', CategoryCatalogPage),
-        path('project/', ProjectPage),
-        path('user_profile/', UserProfilePage),
-        path('messenger/', MessengerPage),
-        
-        
-        
-        path('users/', include('usersApp.urls'))
+available urls:
+    / [name='main']
+    to_freelancer/ [name='freelancer']
+    users/
+        signup/ [name='signup']
+        login/ [name='login']
+        logout/ [name='logout']
+        <int:pk> [name='profile']
+        myprofile/ [name='myprofile']
+        myprofile/settings/ [name='user_settings']
+    projects/ [name'catalogURL']
+        id/<int:project_id> [name'project']
+        new_project/ [name'new_project']
+        <str:mainurlname> [name'maincategoryURL']
+        <str:mainurlname>/<str:suburlname> [name'subcategoryURL']
+    messages/
 
-        urlpatterns = [
-        path('signup/', signupView.as_view(), name='signup'),
-        path('login/', loginView.as_view(), name='login'),
-        path('logout/', logoutView.as_view(), name='logout'),
-        ]
 
-    ]
+
+
+
+
+
+usersApp
+    signupView - GET(Страница регистрации) POST(Форма регистрации)
+    loginView - GET(Страница авторизации) POST(Форма авторизации)
+    logoutView - GET(Выход из аккаунта)
+    profileView - GET(Страница пользователя по ID)
+    myProfileView - GET(Страница аккаунта пользователя запроса)
+    editProfileView - GET(Страници редактирования аккаунта) POST(Форма смены пароля)
+
+productsApp
+    CatalogView - GET(Страница каталоги категорий)
+    MainCategoryView - GET(Страница главной категории)
+    SubCategoryView - GET(Страница подкатегории)
+    new_projectView - GET(Страница создания проекта) POST(Форма создания проекта)
+    ProjectView - GET(Страница просмотра проекта)

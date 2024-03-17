@@ -127,6 +127,7 @@ class editProfileView(View):
 
     def post(self, request): 
         if request.POST['old_password']:
+            # change password form
             form = ChangePasswordForm(user=request.user, data=request.POST)
             if form.is_valid():
                 username = request.user.username
