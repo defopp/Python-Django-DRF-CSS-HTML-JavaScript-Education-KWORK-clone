@@ -129,16 +129,29 @@ class editProfileView(View):
         if request.POST['old_password']:
             form = ChangePasswordForm(user=request.user, data=request.POST)
             if form.is_valid():
-                return HttpResponse('Пароль почти поменян')   
-            
+                username = request.user.username
+                password = request.POST['old_password']
+                new_password = request.POST['new_password1']
+                user = authenticate(request, username=username, password=password)
+                if user is not None:
+                    form.save(commit=True)
+                    user = authenticate(request, username=username, password=new_password)
+                    login(request, user)
+                    
+                    context = {
+                        'ChangePasswordForm':form,
+                        "change_pass_succes":"Пароль успешно изменен!"
+                    }     
+                    return render(request, self.template_name, context)   
+                else:
+                    return HttpResponse('Ошибка Авторизации')
                 
             context = {
                 'ChangePasswordForm':form
             }        
-            print(form)
             return render(request, self.template_name, context)    
                 
                 
-            return HttpResponse(f"form = {form} \n  status = {status}")
+        return HttpResponse(f"form = {request.POST}")
                 
         

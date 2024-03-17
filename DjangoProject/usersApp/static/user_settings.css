@@ -28,8 +28,20 @@ h3{
         border-radius: 5px;
         padding: 15px 15px;
         background-color: white;
+        h5{
+            margin: 0;
+        }
         input:valid{
             border: 1px solid rgb(82, 135, 3);
+        }
+        input{
+            padding: 10px 10px;
+            border-radius: 5px;
+            border: 1px solid gray;
+            margin-top: 3px;
+        }
+        input::placeholder{
+            color: rgba(0, 0, 0, 0.276);
         }
         input:focus{
             outline: none;
@@ -39,7 +51,6 @@ h3{
             display: flex;
             flex-direction: column;
         }
-
         /* error list */
         ul{
             margin: 0;
@@ -52,7 +63,13 @@ h3{
             color: rgba(255, 0, 0, 0.611);
         }
         /* error list */
+        button{
+            font-weight: 700;
+            padding: 5px 5px;
+            font-size: 15px;
+        }
     }
+    
 }
 input::placeholder{
     color: black;

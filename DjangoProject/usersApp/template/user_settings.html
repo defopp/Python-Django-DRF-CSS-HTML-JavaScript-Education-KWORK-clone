@@ -22,8 +22,12 @@
         <h3>Смена пароля</h3>
         <form action="" method='post'>
             {% csrf_token %}
+            {% if change_pass_succes %}
+                <div color="green">{{ change_pass_succes }}</div>
+            {% endif %}
             {% for field in ChangePasswordForm %}
             <div class="input"> 
+                <h5>{{ field.label}}</h5>
                 {{ field.errors }}
                 {{ field }}
             </div>
