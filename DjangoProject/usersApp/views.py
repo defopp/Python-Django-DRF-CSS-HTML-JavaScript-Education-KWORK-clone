@@ -4,7 +4,7 @@ from django.views import View
 from django.contrib.auth import authenticate, login, logout
 
 
-from .forms import SignUpForm, LogInForm, ChangePasswordForm
+from .forms import SignUpForm, LogInForm, ChangePasswordForm, MainSettingsForm
 from .models import User
 from productsApp.models import Product
 
@@ -117,6 +117,7 @@ class editProfileView(View):
             user = request.user
             # Добавить формы для общих настроек и смены пароля
             context = {
+                'MainSettingsForm':MainSettingsForm(),
                 'ChangePasswordForm':ChangePasswordForm(user)
             }        
             return render(request, self.template_name, context)

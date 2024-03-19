@@ -40,6 +40,13 @@ h3{
             border: 1px solid gray;
             margin-top: 3px;
         }
+        textarea{
+            padding: 10px 10px;
+            font-size: 15px;
+        }
+        textarea::placeholder{
+            color: rgba(0, 0, 0, 0.276);
+        }
         input::placeholder{
             color: rgba(0, 0, 0, 0.276);
         }

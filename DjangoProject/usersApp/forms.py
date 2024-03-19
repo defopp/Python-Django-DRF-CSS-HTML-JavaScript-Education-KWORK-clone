@@ -25,3 +25,13 @@ class ChangePasswordForm(PasswordChangeForm):
         model = User
         fields = ('old_password',"new_password1","new_password2")
         
+        
+class MainSettingsForm(forms.Form):
+    avatar = forms.ImageField()
+    first_name = forms.CharField(label='Имя', max_length=150, widget=forms.TextInput(attrs={"placeholder":'Имя'}))
+    last_name = forms.CharField(label='Фамилия', max_length=150, widget=forms.TextInput(attrs={"placeholder":'Фамилия'}))
+    description = forms.CharField(help_text='Хелп текст',label='Описание', max_length=400, widget=forms.Textarea(attrs={"placeholder":'Описание'}))
+    
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'description', 'avatar')
