@@ -114,11 +114,17 @@ class editProfileView(View):
     
     def get(self, request):
         if request.user.is_authenticated:        
-            user = request.user
+            user = User.objects.get(username=request.user)
             # Добавить формы для общих настроек и смены пароля
+            
+            
             context = {
-                'MainSettingsForm':MainSettingsForm(),
-                'ChangePasswordForm':ChangePasswordForm(user)
+                'MainSettingsForm':MainSettingsForm(initial={
+                    "first_name":user.first_name,
+                    "last_name":user.last_name,
+                    "description":user.description
+                    }),
+                'ChangePasswordForm':ChangePasswordForm(user),
             }        
             return render(request, self.template_name, context)
         
@@ -127,7 +133,7 @@ class editProfileView(View):
 
 
     def post(self, request): 
-        if request.POST['old_password']:
+        if 'old_password' in request.POST :
             # change password form
             form = ChangePasswordForm(user=request.user, data=request.POST)
             if form.is_valid():
@@ -141,6 +147,7 @@ class editProfileView(View):
                     login(request, user)
                     
                     context = {
+                        'MainSettingsForm':MainSettingsForm(),
                         'ChangePasswordForm':form,
                         "change_pass_succes":"Пароль успешно изменен!"
                     }     
@@ -149,11 +156,31 @@ class editProfileView(View):
                     return HttpResponse('Ошибка Авторизации')
                 
             context = {
+                'MainSettingsForm':MainSettingsForm(),
                 'ChangePasswordForm':form
             }        
             return render(request, self.template_name, context)    
-                
-                
-        return HttpResponse(f"form = {request.POST}")
+         
+        elif 'first_name' in request.POST:
+            if request.user.is_authenticated:
+                user = User.objects.get(username=request.user)
+                if user is not None:
+                    form = MainSettingsForm(instance=user, data=request.POST, files=request.FILES)
+                    if form.is_valid():
+                        form.save()
+                        
+                        
+                        
+                        return redirect('user_settings') 
+                    return HttpResponse(f"form = невалид")
+                return HttpResponse(f"user is none")
+            return HttpResponse(f"user is not auth")
+            
+        
+        else:
+            return HttpResponse(f"Запрос не подходит ни под одну форму")
+            
+        
+         
                 
         

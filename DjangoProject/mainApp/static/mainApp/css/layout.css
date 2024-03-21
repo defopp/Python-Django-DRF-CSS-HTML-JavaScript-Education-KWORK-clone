@@ -70,7 +70,9 @@ button:hover{
 
 
 
-
+.userav{
+    object-fit: cover;
+}
 
 
 /* auth *//* auth *//* auth *//* auth *//* auth *//* auth */

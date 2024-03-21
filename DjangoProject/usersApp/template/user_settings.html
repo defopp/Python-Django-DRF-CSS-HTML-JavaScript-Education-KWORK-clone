@@ -14,9 +14,11 @@
 
 <div class="background">
     <div class="container">
-        <h1>Настройки профиля</h1>
+        <h1>Настройки профиля <a href="{% url 'myprofile' %}">{{ user }}</a></h1>
         <h3>Общее</h3>
-        <form action="">
+        <form action="" method='post' enctype="multipart/form-data">
+            <img class='avatar' src="{{ user.avatar.url }}" alt="аватар">
+            {% csrf_token %}
             {% for field in MainSettingsForm%}
             <div class="input">
                 <h5>{{ field.label }}</h5>
@@ -25,7 +27,9 @@
                 <p>{{ field.help_text }}</p> 
             </div>
             {% endfor%}    
+            <button>Сохранить изменения</button>
         </form>
+
         <h3>Смена пароля</h3>
         <form action="" method='post'>
             {% csrf_token %}

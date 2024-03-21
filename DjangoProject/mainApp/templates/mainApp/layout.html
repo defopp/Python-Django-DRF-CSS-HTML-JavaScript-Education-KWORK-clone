@@ -87,7 +87,7 @@
                     <div class="mainbuttons" id="burger_menu1"> 
                         {% if user.is_authenticated %}
                         <div class="profilelinks">
-                            <a href="{% url 'myprofile' %}" class="profilelink"><img src="{% static "mainApp/img/avatar.png" %}" alt="profile" ></a>
+                            <a href="{% url 'myprofile' %}" class="profilelink"><img class='userav' src="{{ user.avatar.url }}" alt="profile" ></a>
                             <form action="{% url 'logout' %}" method="get"><button>Выйти</button></form>
                             <a href="{% url 'chat'%}">Сообщения{??}</a>
                             <a href="{% url "new_project" %}">Создать проект{??}</a>
