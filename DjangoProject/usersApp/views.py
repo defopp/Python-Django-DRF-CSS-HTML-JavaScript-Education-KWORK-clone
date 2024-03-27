@@ -162,15 +162,13 @@ class editProfileView(View):
             return render(request, self.template_name, context)    
          
         elif 'first_name' in request.POST:
+            # mainsettings form
             if request.user.is_authenticated:
                 user = User.objects.get(username=request.user)
                 if user is not None:
                     form = MainSettingsForm(instance=user, data=request.POST, files=request.FILES)
                     if form.is_valid():
                         form.save()
-                        
-                        
-                        
                         return redirect('user_settings') 
                     return HttpResponse(f"form = невалид")
                 return HttpResponse(f"user is none")

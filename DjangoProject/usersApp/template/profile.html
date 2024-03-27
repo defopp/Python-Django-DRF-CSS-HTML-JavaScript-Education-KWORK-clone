@@ -16,15 +16,19 @@
         <div class="profile_infos">
             <div class="profile">
                 <div class="profile_info">
-                    <img src={% static 'mainApp/img/avatar.png'%} alt="avatar">
+                    <img class="avatar" src='{{ user.avatar.url }}' alt="avatar">
                     <h1>
                         {{ user.username }}
                     </h1>
+                    <p>{{ user.first_name }} {{ user.last_name }}</p>
                     <p class="reg_date">На сайте с {{ user.date_joined }}{??}</p>
                     <p class="status">status off on{??}</p>
                 </div>
                 <p class="description">
                     (Описание) Пользователь не написал о себе{??}
+                </p>
+                <p class="description">
+                    {{ user.description }}
                 </p>
                 
             </div>
@@ -51,7 +55,7 @@
                                     <div class="item_project_owner">
                                         <div class="owner_info">
                                             <a href="{% url 'profile' pk=user.id %}" ></a>
-                                            <img src={% static "mainApp/img/Screenshot_5.png" %} alt="owner_avatar">
+                                            <img src="{{ user.avatar.url }}" alt="owner_avatar">
                                             <p class="owner_name">{{ user.username }}</p>
                                         </div>
                                         <div class="owner_rating">{??}5.0<p>(50)</p></div>

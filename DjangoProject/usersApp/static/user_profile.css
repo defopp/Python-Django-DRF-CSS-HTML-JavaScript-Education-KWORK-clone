@@ -14,7 +14,9 @@ p{
 
 
 
-
+.avatar{
+    object-fit: cover;
+}
 
 /* main profile info */
 /* main profile info */
