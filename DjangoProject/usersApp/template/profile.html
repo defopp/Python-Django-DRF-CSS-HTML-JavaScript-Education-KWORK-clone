@@ -20,7 +20,9 @@
                     <h1>
                         {{ user_pr.username }}
                     </h1>
+                    {% if user_pr.first_name %}
                     <p>{{ user_pr.first_name }} {{ user_pr.last_name }}</p>
+                    {% endif %}
                     <p class="reg_date">На сайте с {{ user_pr.date_joined }}{??}</p>
                     <p class="status">status off on{??}</p>
                 </div>
@@ -30,7 +32,7 @@
                 </p>
                 {% else %}
                 <p class="description">
-                    (Описание) Пользователь не написал о себе{??}
+                    Пользователь не написал о себе
                 </p>
                 {% endif %}
                 
@@ -38,9 +40,9 @@
 
 
             <div class="active_projects">
-                <h1>Проекты</h1>
+                <h1>Проекты пользователя</h1>
                 {% if owner_projects|length == 0 %}
-                <p>У пользователя {{ user_pr.username }} нет активных проектов{??}</p>
+                <p>У пользователя {{ user_pr.username }} нет активных проектов</p>
                 {% else %}
                 <div class="slider">
                     <div class="slider_container">
@@ -67,7 +69,6 @@
                             
                             {% endfor %}
                             
-                            {% endif %}
                             
                         </div>
                     </div>
@@ -80,6 +81,52 @@
                         </button>
                     </div>
                 </div>
+                {% endif %}
+            </div>
+
+            <div class="active_projects">
+                <h1>Заказы пользователя</h1>
+                {% if owner_orders|length == 0 %}
+                <p>У пользователя {{ user_pr.username }} нет активных заказов</p>
+                {% else %}
+                <div class="slider">
+                    <div class="slider_container">
+                        <div class="slider_items">
+                            
+                            {% for product in owner_orders %}
+                                
+                                    <button class="project_item">
+                                    <img src={% static "mainApp/img/1_blockBackGround.jpg" %} alt="project_img">
+                                    <div class="project_info">
+                                        <a href="{% url 'project' project_id=product.id %}"></a>
+                                        <p>{{product.name}}</p>
+                                        <div class="price">{{product.price}}р</div>
+                                    </div>
+                                    <div class="item_project_owner">
+                                        <div class="owner_info">
+                                            <a href="{% url 'profile' pk=user.id %}" ></a>
+                                            <img src="{{ user_pr.avatar.url }}" alt="owner_avatar">
+                                            <p class="owner_name">{{ user_pr.username }}</p>
+                                        </div>
+                                        <div class="owner_rating">{??}5.0<p>(50)</p></div>
+                                    </div>
+                                </button>
+                            
+                            {% endfor %}
+                            
+                            
+                        </div>
+                    </div>
+                    <div class="slider_b">
+                        <button class="prev_sl_bt">
+                            <img src={% static "mainApp/img/arrowpng.png" %} alt="prev" width="35px" height="60px">
+                        </button>
+                        <button class="next_sl_bt">
+                            <img src={% static "mainApp/img/arrowpng.png" %} alt="next" width="35px" height="60px">
+                        </button>
+                    </div>
+                </div>
+                {% endif %}
             </div>
 
         </div>

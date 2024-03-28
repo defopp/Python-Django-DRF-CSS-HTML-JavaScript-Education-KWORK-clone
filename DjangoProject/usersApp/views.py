@@ -77,31 +77,36 @@ class profileView(View):
     def get(self, request, pk):
         
         try:
-            user = User.objects.get(id = pk)
-
+            user_pr = User.objects.get(id = pk)
             """проверяю есть ли пользователь с таким PrimaryKey в Базе данных
             Если он есть, userprofile,
             и отправляю на шаблон с контекстом userprofile"""
             
-            owner_projects = Product.objects.all().filter(owner_id=user.id)
+            owner_projects = Product.objects.all().filter(owner_id=user_pr.id, sell_type=True)
+            owner_orders = Product.objects.all().filter(owner_id=user_pr.id, sell_type=False)
             userprofile = {
-                'user_pr':user,
-                'owner_projects':owner_projects
+                'user_pr':user_pr,
+                'owner_projects':owner_projects,
+                'owner_orders':owner_orders
             }    
             return render(request, self.template_name, userprofile)
         except Exception:
-            return HttpResponse('404')
+            return HttpResponse('404, пользователь не найден')
 
 
 
 class myProfileView(View):
-    template_name = 'usersApp\\template\\user_profile.html'
+    template_name = 'usersApp\\template\\my_profile.html'
     
     
     def get(self, request):
         if request.user.is_authenticated:
-            owner_projects = Product.objects.all().filter(owner_id=request.user.id)
-            return render(request, self.template_name, {'owner_projects':owner_projects})
+            owner_projects = Product.objects.all().filter(owner_id=request.user.id, sell_type=True)
+            owner_orders = Product.objects.all().filter(owner_id=request.user.id, sell_type=False)
+            return render(request, self.template_name, {
+                                                        'owner_projects':owner_projects,
+                                                        'owner_orders':owner_orders
+                                                        })
         else:
             return redirect('main')
 
