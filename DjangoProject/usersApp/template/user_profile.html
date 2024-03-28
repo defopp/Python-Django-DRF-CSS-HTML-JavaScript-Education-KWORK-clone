@@ -25,8 +25,11 @@
                     <p class="status">status off on{??}</p>
                 </div>
                 <p class="description">
-                    (Описание) Пользователь не написал о себе{??}
+                    {% if user.description %}
                     {{ user.description }}
+                    {% else %}
+                    (Описание) Пользователь не написал о себе{??}
+                    {% endif %}
                 </p>
                 <div class="profile_setting">
                     <a href="{% url 'user_settings' %}"><button>Настройки профиля{??}</button></a>

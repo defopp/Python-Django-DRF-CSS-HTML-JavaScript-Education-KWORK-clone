@@ -4,7 +4,7 @@
 
 {% block title %}
 <link rel="stylesheet" href={% static "user_profile.css" %}>
-<title>{{ user.username }}</title>
+<title>{{ user_pr.username }}</title>
 {%endblock%}
 
 
@@ -16,20 +16,23 @@
         <div class="profile_infos">
             <div class="profile">
                 <div class="profile_info">
-                    <img class="avatar" src='{{ user.avatar.url }}' alt="avatar">
+                    <img class="avatar" src='{{ user_pr.avatar.url }}' alt="avatar">
                     <h1>
-                        {{ user.username }}
+                        {{ user_pr.username }}
                     </h1>
-                    <p>{{ user.first_name }} {{ user.last_name }}</p>
-                    <p class="reg_date">На сайте с {{ user.date_joined }}{??}</p>
+                    <p>{{ user_pr.first_name }} {{ user_pr.last_name }}</p>
+                    <p class="reg_date">На сайте с {{ user_pr.date_joined }}{??}</p>
                     <p class="status">status off on{??}</p>
                 </div>
+                {% if user_pr.description %}
+                <p class="description">
+                    {{ user_pr.description }}
+                </p>
+                {% else %}
                 <p class="description">
                     (Описание) Пользователь не написал о себе{??}
                 </p>
-                <p class="description">
-                    {{ user.description }}
-                </p>
+                {% endif %}
                 
             </div>
 
@@ -37,7 +40,7 @@
             <div class="active_projects">
                 <h1>Проекты</h1>
                 {% if owner_projects|length == 0 %}
-                <p>У пользователя {{ user.username }} нет активных проектов{??}</p>
+                <p>У пользователя {{ user_pr.username }} нет активных проектов{??}</p>
                 {% else %}
                 <div class="slider">
                     <div class="slider_container">
@@ -55,8 +58,8 @@
                                     <div class="item_project_owner">
                                         <div class="owner_info">
                                             <a href="{% url 'profile' pk=user.id %}" ></a>
-                                            <img src="{{ user.avatar.url }}" alt="owner_avatar">
-                                            <p class="owner_name">{{ user.username }}</p>
+                                            <img src="{{ user_pr.avatar.url }}" alt="owner_avatar">
+                                            <p class="owner_name">{{ user_pr.username }}</p>
                                         </div>
                                         <div class="owner_rating">{??}5.0<p>(50)</p></div>
                                     </div>
@@ -87,7 +90,7 @@
         <div class="profile_review">
             <div class="review">
                 <h1>Отзывы</h1>
-                <p>У пользователя {{ userprofile.username }} нет отзывов{??}</p>
+                <p>У пользователя {{ user_pr.username }} нет отзывов{??}</p>
             </div>
         </div>
     </div>

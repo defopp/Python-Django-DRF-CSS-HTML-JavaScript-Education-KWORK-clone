@@ -181,7 +181,7 @@
                     {% if user.id == product.owner_id%}
                     <div class="project_owner">
                         <div class="owner_info">
-                            <img src={% static "mainApp/img/medium.jpg" %} alt="owner_avatar">
+                            <img src='{{ user.avatar.url }}' alt="owner_avatar">
                             <p class="owner_name">{{user.username}}</p>
                             <a href="{% url 'profile' pk=user.id %}" ></a>
                         </div>

@@ -85,7 +85,7 @@ class profileView(View):
             
             owner_projects = Product.objects.all().filter(owner_id=user.id)
             userprofile = {
-                'user':user,
+                'user_pr':user,
                 'owner_projects':owner_projects
             }    
             return render(request, self.template_name, userprofile)
