@@ -13,39 +13,25 @@ class signupView(View):
     template_name = 'usersApp\\template\\signup.html'
 
     def get(self, request):
-        context = {
-            'form': SignUpForm()
-        }
-        return render(request, self.template_name, context)
+        return render(request, self.template_name, {'form': SignUpForm()})
 
     def post(self, request):
         form = SignUpForm(request.POST)
-
         if form.is_valid():
             form.save()
-            
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
-            
-            return redirect('main')
-        
-        context = {
-            'form': form
-        }
-                
-        return render(request, self.template_name, context)
+            return redirect('main')        
+        return render(request, self.template_name, {'form': form})
 
             
 class loginView(View):
     template_name = 'usersApp\\template\\login.html'
     
     def get(self, request):
-        context = {
-            'form': LogInForm()
-        }
-        return render(request, self.template_name, context)
+        return render(request, self.template_name, {'form': LogInForm()})
     
     def post(self, request):
         form = LogInForm(request=request, data = request.POST)
@@ -56,15 +42,9 @@ class loginView(View):
             if user is not None:
                 login(request, user)
                 return redirect('main')
-        
-            
-        context = {
-            'form': form
-        }
-        return render(request, self.template_name, context)
+        return render(request, self.template_name, {'form': form})
  
  
-
 class logoutView(View):
     def get(self, request):
         logout(request)
@@ -74,9 +54,7 @@ class logoutView(View):
 class profileView(View):
     template_name = 'usersApp\\template\\profile.html'
     
-
     def get(self, request, user_id):
-        
         try:
             user_pr = User.objects.all().filter(id = user_id).get()
         except Exception as ex:
@@ -84,7 +62,6 @@ class profileView(View):
             
         owner_projects = Product.objects.all().filter(owner_id=user_pr.id, sell_type=True)
         owner_orders = Product.objects.all().filter(owner_id=user_pr.id, sell_type=False)
-        
         userprofile = {
             'user_pr':user_pr,
             'owner_projects':owner_projects,
@@ -93,24 +70,17 @@ class profileView(View):
         return render(request, self.template_name, userprofile)
 
 
-
 class myProfileView(View):
     template_name = 'usersApp\\template\\my_profile.html'
-    
     
     def get(self, request):
         if request.user.is_authenticated:
             owner_projects = Product.objects.all().filter(owner_id=request.user.id, sell_type=True)
             owner_orders = Product.objects.all().filter(owner_id=request.user.id, sell_type=False)
-            return render(request, self.template_name, {
-                                                        'owner_projects':owner_projects,
-                                                        'owner_orders':owner_orders
-                                                        })
+            return render(request, self.template_name, {'owner_projects':owner_projects,
+                                                        'owner_orders':owner_orders})
         else:
             return redirect('main')
-
-
-
 
 
 class editProfileView(View):
@@ -121,7 +91,6 @@ class editProfileView(View):
             user = User.objects.get(username=request.user)
             # Добавить формы для общих настроек и смены пароля
             
-            
             context = {
                 'MainSettingsForm':MainSettingsForm(initial={
                     "first_name":user.first_name,
@@ -131,10 +100,8 @@ class editProfileView(View):
                 'ChangePasswordForm':ChangePasswordForm(user),
             }        
             return render(request, self.template_name, context)
-        
         else:
             HttpResponse("404")
-
 
     def post(self, request): 
         if 'old_password' in request.POST :
