@@ -59,7 +59,7 @@
                                     </div>
                                     <div class="item_project_owner">
                                         <div class="owner_info">
-                                            <a href="{% url 'profile' pk=user.id %}" ></a>
+                                            <a href="{% url 'profile' user_id=user_pr.id %}" ></a>
                                             <img src="{{ user_pr.avatar.url }}" alt="owner_avatar">
                                             <p class="owner_name">{{ user_pr.username }}</p>
                                         </div>
@@ -104,7 +104,7 @@
                                     </div>
                                     <div class="item_project_owner">
                                         <div class="owner_info">
-                                            <a href="{% url 'profile' pk=user.id %}" ></a>
+                                            <a href="{% url 'profile' user_id=user_pr.id %}" ></a>
                                             <img src="{{ user_pr.avatar.url }}" alt="owner_avatar">
                                             <p class="owner_name">{{ user_pr.username }}</p>
                                         </div>

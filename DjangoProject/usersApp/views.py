@@ -74,24 +74,48 @@ class logoutView(View):
 class profileView(View):
     template_name = 'usersApp\\template\\profile.html'
     
-    def get(self, request, pk):
+    # def get(self, request, user_id):
         
-        try:
-            user_pr = User.objects.get(id = pk)
-            """проверяю есть ли пользователь с таким PrimaryKey в Базе данных
-            Если он есть, userprofile,
-            и отправляю на шаблон с контекстом userprofile"""
+    #     try:
+    #         print(user_id)
+    #         user_pr = User.objects.get(id = user_id)
+    #         """проверяю есть ли пользователь с таким PrimaryKey в Базе данных
+    #         Если он есть, userprofile,
+    #         и отправляю на шаблон с контекстом userprofile"""
             
-            owner_projects = Product.objects.all().filter(owner_id=user_pr.id, sell_type=True)
-            owner_orders = Product.objects.all().filter(owner_id=user_pr.id, sell_type=False)
-            userprofile = {
-                'user_pr':user_pr,
-                'owner_projects':owner_projects,
-                'owner_orders':owner_orders
-            }    
-            return render(request, self.template_name, userprofile)
-        except Exception:
-            return HttpResponse('404, пользователь не найден')
+    #         owner_projects = Product.objects.all().filter(owner_id=user_pr.id, sell_type=True)
+    #         owner_orders = Product.objects.all().filter(owner_id=user_pr.id, sell_type=False)
+    #         userprofile = {
+    #             'user_pr':user_pr,
+    #             'owner_projects':owner_projects,
+    #             'owner_orders':owner_orders
+    #         }    
+    #         return render(request, self.template_name, userprofile)
+    #     except Exception as ex:
+    #         print("ошибка =", ex)
+    #         return HttpResponse('404, пользователь не найден')
+    
+    
+    def get(self, request, user_id):
+        
+        # try:
+        print(user_id)
+        user_pr = User.objects.get(id = user_id)
+        """проверяю есть ли пользователь с таким PrimaryKey в Базе данных
+        Если он есть, userprofile,
+        и отправляю на шаблон с контекстом userprofile"""
+        
+        owner_projects = Product.objects.all().filter(owner_id=user_pr.id, sell_type=True)
+        owner_orders = Product.objects.all().filter(owner_id=user_pr.id, sell_type=False)
+        userprofile = {
+            'user_pr':user_pr,
+            'owner_projects':owner_projects,
+            'owner_orders':owner_orders
+        }    
+        return render(request, self.template_name, userprofile)
+        # except Exception as ex:
+        #     print("ошибка =", ex)
+        #     return HttpResponse('404, пользователь не найден')
 
 
 

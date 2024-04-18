@@ -183,7 +183,7 @@
                         <div class="owner_info">
                             <img src='{{ user.avatar.url }}' alt="owner_avatar">
                             <p class="owner_name">{{user.username}}</p>
-                            <a href="{% url 'profile' pk=user.id %}" ></a>
+                            <a href="{% url 'profile' user_id=user.id %}" ></a>
                         </div>
                         <div class="owner_rating">5.0<p>(50)</p></div>
                     </div> 
