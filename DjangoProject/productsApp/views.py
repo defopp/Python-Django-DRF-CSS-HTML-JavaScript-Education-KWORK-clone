@@ -14,11 +14,8 @@ class CatalogView(View):
     def get(self, request):
         maincats = MainCategory.objects.all()
         subcats = SubCategory.objects.all()
-        context = {
-                'maincats':maincats,
-                'subcats':subcats
-                }
-        return render(request, self.template_name, context)
+        return render(request, self.template_name, context = {'maincats':maincats,
+                                                              'subcats':subcats})
 
 
 class MainCategoryView(View):
@@ -128,7 +125,7 @@ class SubCategoryView(View):
         else:
             return HttpResponse('Такой MAIN категории не существует')
         
-        
+            
 class new_projectView(View):
     template_name = 'productsApp\\template\\project_create.html'
     def get(self, request):
