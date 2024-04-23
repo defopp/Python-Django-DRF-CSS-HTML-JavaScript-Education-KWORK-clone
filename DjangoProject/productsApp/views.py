@@ -3,8 +3,8 @@ from django.views import View
 
 
 from usersApp.models import User
-
 from .models import MainCategory, SubCategory, DetailCategory, Product
+from .services import *
 
 
 
@@ -21,66 +21,27 @@ class CatalogView(View):
 class MainCategoryView(View):
     template_name = 'productsApp\\template\\category.html'
     
-    def get(self, request, mainurlname):
+    def get(self, request, mainurlname):      
+        
+        # Проверка наличия категории по "mainurlname"
+        try:
+            main_category = MainCategory.objects.get(urlname=mainurlname)
+        except:
+            return HttpResponse('404, такой категории не существует')         
+        
+        sub_cats_with_det_cats = get_sub_cats_with_det_cats(main_category.id)
 
-        maincat = MainCategory.objects.filter(urlname=mainurlname)
-        if maincat.exists():
-            maincatQS = maincat.values_list('id', 'urlname', 'name', 'description')            
-            for cat in maincatQS:
-                mainid, urlname, name, description = cat
-
-            subcat_list = get_list_of_subcategory(mainid)
-            if len(subcat_list) > 0:     
-                context = {
-                    'maincategory' : {
-                        'url': urlname,
-                        'name': name,
-                        'description': description, 
-                        'subcat_list': subcat_list
-                    }
+        if sub_cats_with_det_cats is not False:    
+            context = {
+                'main_cat':main_category,
+                'sub_cats_list':sub_cats_with_det_cats
                 }
-                return render(request, self.template_name, context)
-            else:
-                return HttpResponse(f'<h4>категория {name} не заполнена</h4>')
+            return render(request, self.template_name, context)
         else:
-            return HttpResponse('404, такой категории не существует')
-
-
-
-def get_list_of_subcategory(maincat_id:int) -> list: 
-    subcatsSQ = SubCategory.objects.filter(main_category_id = maincat_id).values_list('id', 'urlname', 'name')
-    subcatslist = []
-    
-    for cat in subcatsSQ:    
-        subid, suburlname, subname = cat    
-        if len(get_list_of_detailcategory(subid)) > 0:
-            subcatslist.append({
-                'name':subname,
-                'url':suburlname,
-                'detcat_list':get_list_of_detailcategory(subid)    
-            })
-        else:
-            subcatslist.append({
-                'name':subname,
-                'url':suburlname    
-            })
-    return subcatslist
-
-def get_list_of_detailcategory(subcat_id:int) -> list:  
-    detailcatsSQ = DetailCategory.objects.filter(sub_category_id = subcat_id).values_list('id','urlname', 'sub_category_id', 'name')
-    detcatlist = []   
-                     
-    for detcat in detailcatsSQ:
-        id, url, sub_category_id, name  = detcat
-        detcatlist.append({
-            'id': id,
-            'url': url,
-            'subcat_id': sub_category_id,
-            'name': name,
-        })   
-    return detcatlist
-
-
+            return HttpResponse(f'Категория "{main_category}" не заполнена')         
+        
+        
+        
 class SubCategoryView(View):
     template_name = 'productsApp\\template\\category_catalog.html'
 

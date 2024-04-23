@@ -9,13 +9,11 @@
 
 
 {% block content %}
-{% comment %} {{ maincategory }} {% endcomment %}
-
 
     <main class="main">
         <div class="mainblock">
             <div class="main__title">
-                <h1>{{ maincategory.name }}
+                <h1>{{ main_cat.name }}
                     <div class="title_burger" id="Tburger"> 
                         <span></span>
                         <span></span>
@@ -23,31 +21,28 @@
                         <div class="title_burger_container"></div>
                     </div>
                 </h1>
-                <p>{{ maincategory.description }}</p>
+                <p>{{ main_cat.description }}</p>
             </div>
             <div class="catalog__container">
                 <div class="catalog__menus" id="TBmenu">
-                    <h2>{{ maincategory.name }}</h2>
-                    
-                    {% for subcat in maincategory.subcat_list %}
+                    <h2>{{ main_cat.name }}</h2>
+                    {% for sub_cat in sub_cats_list %}
                         <div class="catalog__menu">
-                            <h3><a href='{% url 'subcategoryURL' mainurlname=maincategory.url suburlname=subcat.url %}'>{{ subcat.name }}</a></h3>
-                            {% if subcat.detcat_list %}
-                                {% for detcat in subcat.detcat_list %}
-                                    <button>{{ detcat.name }}</button>
-                                {% endfor %}
-                            {% endif %}
+                            <h3><a href="{% url 'subcategoryURL' main_cat.urlname sub_cat.sub_cat.urlname %}">{{ sub_cat.sub_cat.name }}</a></h3> 
+                            {% for det_cat in sub_cat.det_cats_list %}
+                                <button>{{ det_cat.name }}</button>
+                            {% endfor %}     
                         </div>
                     {% endfor %}
 
                 </div>
                 <div class="catalog__categorys">
-                    {% for subcat in maincategory.subcat_list %}
-                        {% for detcat in subcat.detcat_list %}
+                    {% for sub_cat in sub_cats_list %}
+                        {% for det_cat in sub_cat.det_cats_list %}
                             <button class="categories_button">
                                 <img alt='настроить вывод картинки через бд' src="">
                                 <div class='shadow_box'></div>
-                                <h3>{{ detcat.name }}</h3>
+                                <h3>{{ det_cat.name }}</h3>
                             </button>
                         {% endfor %}
                     {% endfor %}     
@@ -59,4 +54,4 @@
 
     </main>
 
-    {%endblock%}
+    {% endblock %}
