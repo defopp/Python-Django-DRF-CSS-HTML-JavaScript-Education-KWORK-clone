@@ -29,14 +29,11 @@ class MainCategoryView(View):
         except:
             return HttpResponse('404, такой категории не существует')         
         
+        # Проверка/сборка, есть ли субкатегории у мейнкатегории
         sub_cats_with_det_cats = get_sub_cats_with_det_cats(main_category.id)
-
-        if sub_cats_with_det_cats is not False:    
-            context = {
-                'main_cat':main_category,
-                'sub_cats_list':sub_cats_with_det_cats
-                }
-            return render(request, self.template_name, context)
+        if sub_cats_with_det_cats is not False:
+            return render(request, self.template_name, {'main_cat':main_category,
+                                                        'sub_cats_list':sub_cats_with_det_cats})
         else:
             return HttpResponse(f'Категория "{main_category}" не заполнена')         
         
@@ -47,45 +44,26 @@ class SubCategoryView(View):
 
     def get(self, request, mainurlname, suburlname):
         
-        maincat = MainCategory.objects.filter(urlname=mainurlname)
-        if maincat.exists():
-            maincatQS = maincat.values_list('id', 'urlname', 'name')
-            for cat in maincatQS:
-                mainid, mainurlname, mainname = cat
-                
-             
-            subcat = SubCategory.objects.filter(main_category_id = mainid, urlname = suburlname)
-            if subcat.exists():
-                subcatQS = subcat.values_list('id', 'urlname', 'name')
-                for cat in subcatQS:
-                    subid, suburlname, subname = cat
-                    products = Product.objects.all().filter(sub_cat_id = subname)
-                    users = User.objects.all()
-                    
-                if len(get_list_of_detailcategory(subid)) > 0:
-                    context = {
-                        'maincategory': {
-                            'id':mainid,
-                            'url':mainurlname,
-                            'name':mainname,
-                            'subcategory': {
-                                'id':subid,
-                                'url':suburlname,
-                                'name':subname,
-                                'detailcategory': get_list_of_detailcategory(subid)
-                            }
-                        },
-                        'products': products,
-                        'users': users
-                    }
-                    return render(request, self.template_name, context)
-                else:
-                    return HttpResponse('У Sub категории не заполнены detail категории')
-            else:    
-                return HttpResponse('Такой Sub категории не существует')
-        else:
-            return HttpResponse('Такой MAIN категории не существует')
+        # Получить МЕЙНКАТЕГОРИЮ, получить СУБКАТЕГОРИЮ и все ДЕТЕЙЛКАТЕГОРИИ
+        try:
+            main_category = MainCategory.objects.get(urlname=mainurlname)
+            sub_category = SubCategory.objects.get(urlname=suburlname)
+        except: 
+            return HttpResponse('404, такой категории не существует')
         
+        det_categorys_list = list(DetailCategory.objects.filter(sub_category=sub_category.id))
+        if len(det_categorys_list) != 0:
+            
+            # Далее получаешь все продукты по СУБКАТЕГОРИИ
+            products_list = Product.objects.all().select_related('owner').filter(sell_type=1, sub_cat=sub_category)       
+            return render(request, self.template_name, {'main_cat':main_category,
+                                                        'sub_cat':sub_category,
+                                                        'det_cats_list':det_categorys_list,
+                                                        'products_list':products_list})
+        else: 
+            return HttpResponse('У подкатегори не заполнены detail категории')
+        
+      
             
 class new_projectView(View):
     template_name = 'productsApp\\template\\project_create.html'

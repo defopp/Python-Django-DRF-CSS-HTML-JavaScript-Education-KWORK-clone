@@ -1,4 +1,6 @@
 from django.urls import path
+from django.conf.urls.static import static
+from django.conf import settings
 
 from productsApp.views import MainCategoryView, SubCategoryView, CatalogView, new_projectView, ProjectView
 

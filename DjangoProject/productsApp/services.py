@@ -6,25 +6,50 @@ def get_sub_cats_with_det_cats(main_category_id:int) -> list:
     """list[dict{"subcat","det_cats_list"}] в случае успеха, 
     False в случае, если Субкатегории не найдены"""
     
-    
     sub_categorys = SubCategory.objects.all().filter(main_category=main_category_id)
     if sub_categorys.exists():   
         
-        # Если есть субкатегория у мейнкатегории, то ищем и отбираем делеилкатегорию
+        # Если есть субкатегория у мейнкатегории, то ищем и отбираем детеилкатегорию
         # TODO ОТРЕФАКТОРИТЬ ЗАПРОС, ЧТОБЫ ПЕРЕБИРАТЬ НЕ ВСЕ ДЕТЕЛ КАТЕГОРИИ, А ТОЛЬКО СВЯЗАННЫЕС MAIN
+        # TODO + переписать на генераторы списков 
+        # TODO - попробовать генератор в генератиоре
         det_categorys = list(DetailCategory.objects.all())
          
         sub_cats_list = []
         for sub_cat in sub_categorys:
-            det_cats_list = []
-            for det_cat in det_categorys:
-                if det_cat.sub_category_id == sub_cat.id:
-                    det_cats_list.append(det_cat)
+            det_cats_list = [det_cat for det_cat in det_categorys if det_cat.sub_category_id == sub_cat.id]
                     
             sub_cats_list.append({'sub_cat':sub_cat, 'det_cats_list':det_cats_list})  
     else:
         return False
     return sub_cats_list
+
+
+
+
+
+def get_products_with_users_for_catalog() -> list:
+    ...
+     
+
+# ТЕСТИРУЮ RAW
+# products_list = list(Product.objects.raw('SELECT p.id, p.name AS project_name, p.price, p.owner_id as user_id,\
+#                                                  u.username, u.avatar AS user_avatar\
+#                                           FROM productsApp_product p\
+#                                           INNER JOIN usersApp_user u ON p.owner_id = u.id\
+#                                           WHERE p.sell_type = 1'))
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

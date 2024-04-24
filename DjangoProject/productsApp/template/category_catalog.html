@@ -4,21 +4,17 @@
 
 {% block title %}
 <link rel="stylesheet" href={% static "category_catalog.css" %}>
-<title>Catalog</title>
+<title>{{ sub_cat.name }}</title>
 {%endblock%}
 
 
-{% block content %}
-{% comment %} <p>{{ maincategory }} {% endcomment %}
-    
-    
+{% block content %}    
 <main>
-    
     <div class="mainblock">
         <div class="main__title">
-            <h2><a href="{% url 'maincategoryURL' mainurlname=maincategory.url %}">{{ maincategory.name }}</a> > 
-                <a href="{{maincat}}">{{ maincategory.subcategory.name }}</a></h2>
-            <h1>{{ maincategory.subcategory.name }}
+            <h2><a href="{% url 'maincategoryURL' main_cat.urlname %}">{{ main_cat.name }}</a> > 
+                <a href="{% url  "subcategoryURL" main_cat.urlname sub_cat.urlname %}">{{ sub_cat.name }}</a></h2>
+            <h1>{{ sub_cat.name }}
                 <div class="title_burger" id="Tburger"> 
                     <span></span>
                     <span></span>
@@ -33,15 +29,16 @@
             <div class="catalog__menus" id="TBmenu">
                 <h4>Рубрики</h4>
                 <div class="catalog__menu">
-                    <a href="{% url 'maincategoryURL' mainurlname=maincategory.url %}">{{ maincategory.name }}</a>
-                    <a href="" style="font-weight: 700;">{{ maincategory.subcategory.name }}</a>
+                    <a href="{% url 'maincategoryURL' main_cat.urlname %}">{{ main_cat.name }}</a>
+                    <a href="" style="font-weight: 700;">{{ sub_cat.name }}</a>
         
                     <ul>
-                        {% for detcat in maincategory.subcategory.detailcategory %}
-                            <button>{{ detcat.name }}</button>
+                        {% for det_cat in det_cats_list %}
+                            <button>{{ det_cat.name }}</button>
                         {% endfor %}
                     </ul>
                 </div>
+
                 {?фильтрация, делать??}
                 <div class="filter_menu">
                     <h5>CMS</h5>
@@ -165,30 +162,26 @@
                 {??}
 
             </div>
-
+            {% comment %} фильтрация делать? {% endcomment %}
 
             <div class="catalog__categorys">
 
-                {% for product in products %}
+                {% for product in products_list %}
                 <button class="project_item">
                     <img src={% static "mainApp/img/1_blockBackGround.jpg" %} alt="project_img">
                     <div class="project_info">
                         <a href="{% url 'project' project_id=product.id %}"></a>
-                        <p>{{product.name}}</p>
-                        <div class="price">{{product.price}}р</div>
+                        <p>{{ product.name }}</p>
+                        <div class="price">{{ product.price }}р</div>
                     </div>   
-                    {% for user in users %}
-                    {% if user.id == product.owner_id%}
                     <div class="project_owner">
                         <div class="owner_info">
-                            <img src='{{ user.avatar.url }}' alt="owner_avatar">
-                            <p class="owner_name">{{user.username}}</p>
-                            <a href="{% url 'profile' user_id=user.id %}" ></a>
+                            <img src={{ product.owner.avatar.url }} alt="owner_avatar">
+                            <p class="owner_name">{{ product.owner.username }}</p>
+                            <a href="{% url 'profile' user_id=product.owner_id %}" ></a>
                         </div>
                         <div class="owner_rating">5.0<p>(50)</p></div>
                     </div> 
-                    {% endif %}
-                    {% endfor %}
                     </button>
                 {% endfor %}
 
