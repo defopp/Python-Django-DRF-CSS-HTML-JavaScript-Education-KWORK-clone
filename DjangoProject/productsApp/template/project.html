@@ -10,8 +10,6 @@
 
 {% block content %}
 
-
-
 <div class="project__background">
     <div class="main_block">
 
@@ -19,9 +17,9 @@
 
         <div class="project_description">
             <div class="main__title">
-                <h2><a href="{% url 'maincategoryURL' mainurlname=maincat.urlname %}">{{ maincat }}</a> > 
-                    <a href="{% url 'subcategoryURL' mainurlname=maincat.urlname suburlname=subcat.urlname %}">{{ subcat }}</a> > 
-                    <a href="">{{ detcat }}</a></h2>
+                <h2><a href="{% url 'maincategoryURL' project.main_cat.urlname %}">{{ project.main_cat }}</a> > 
+                    <a href="{% url 'subcategoryURL' project.main_cat.urlname project.sub_cat.urlname %}">{{ project.sub_cat }}</a> > 
+                    <a href="">{{ project.detail_cat }}</a></h2>
                 <h1>{{ project.name }}</h1>
             </div>
             <img src={% static "mainApp/img/Rectangle 42.png" %} alt="logo">
@@ -64,12 +62,12 @@
 
 
         <div class="project_buy">
-            <div class="detail"><h3>{{project.price}}р</h3><h3>Детали заказа</h3></div>
+            <div class="detail"><h3>{{ project.price }}р</h3><h3>Детали заказа</h3></div>
             <p>{??}7 дней на выполнение</p>
             <p>{??}Обычно выполняет за 2 дня</p>
             {% if user.is_authenticated %}
-                {% if user.id != owner.id %}
-                    <button>Заказать за {{project.price}}р</button>
+                {% if user.id != project.owner.id %}
+                    <button>Заказать за {{ project.price }}р</button>
                     <div class="amount">
                         <p>Количество:</p>
                         <div class="menu_form">
@@ -99,17 +97,17 @@
 
         <div class="project_owner">
             <div class="owner_title">
-                <img src="{{ owner.avatar.url }}" alt="user_avatar">
+                <img src="{{ project.owner.avatar.url }}" alt="user_avatar">
                 <div class="title_info">
-                    <h4>{{ owner.username }}</h4>
-                    {% if owner.first_name %}
-                    <h4>{{ owner.first_name }} {{ owner.last_name }}</h4>
+                    <h4>{{ project.owner.username }}</h4>
+                    {% if project.owner.first_name %}
+                    <h4>{{ project.owner.first_name }} {{ project.owner.last_name }}</h4>
                     {% endif %}
                     <h4>{??}Онлай(статус)</h4>
                 </div>
             </div>
             {% if user.is_authenticated %}
-                {% if user.id != owner.id %}
+                {% if user.id != project.owner.id %}
                     <button>Связаться с продавцом</button>
                 {% endif %}
             {% endif %}
@@ -279,28 +277,28 @@
 
     </div>
 </div>
+{% if owner_projects %}
 <div class="others_owner_projects">
     <h1>Другие проекты продавца</h1>
     <div class="slider">
         <div class="slider_container">
             <div class="slider_items">
 
-
-                {% for product in owner_products %}
+                {% for product in owner_projects %}
                     {% if product.id != project.id %}
                     
                     <button class="project_item">
                         <img src={% static "mainApp/img/1_blockBackGround.jpg" %} alt="project_img">
                         <div class="project_info">
                             <a href="{% url 'project' project_id=product.id %}"></a>
-                            <p>{{product.name}}</p>
-                            <div class="price">{{product.price}}р</div>
+                            <p>{{ product.name }}</p>
+                            <div class="price">{{ product.price }}р</div>
                         </div>
                         <div class="item_project_owner">
-                            <a href="{% url 'profile' user_id=owner.id %}" ></a>
+                            <a href="{% url 'profile' user_id=product.owner.id %}" ></a>
                             <div class="owner_info">
-                                <img src="{{ owner.avatar.url }}" alt="owner_avatar">
-                                <p class="owner_name">{{ owner.username }}</p>
+                                <img src="{{ product.owner.avatar.url }}" alt="owner_avatar">
+                                <p class="owner_name">{{ product.owner.username }}</p>
                             </div>
                             <div class="owner_rating">{??}5.0<p>(50)</p></div>
                         </div>
@@ -308,7 +306,6 @@
                     
                     {% endif %}
                 {% endfor %}
-
 
 
 
@@ -413,5 +410,6 @@
         </div>
     </div>
 </div>
+{% endif %}
 <script src={% static "project.js" %}></script>
 {% endblock %}

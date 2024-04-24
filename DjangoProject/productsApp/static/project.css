@@ -108,6 +108,8 @@
     width: 100%;
     height: max-content;
     padding: 20px 20px;
+    position: relative;
+    z-index: 100;
 
 }
 

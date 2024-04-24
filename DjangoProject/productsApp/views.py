@@ -94,23 +94,18 @@ class new_projectView(View):
         else: return redirect('signup')
             
             
-            
-        
+             
 class ProjectView(View):
     template_name = 'productsApp\\template\\project.html'
     def get(self, request, project_id):
-        project = Product.objects.get(id=project_id)
-        owner = User.objects.get(id=project.owner_id)
-        owner_products = Product.objects.all().filter(owner_id=owner.id)
-        detcat = DetailCategory.objects.get(name=project.detail_cat_id)
-        subcat = SubCategory.objects.get(id=detcat.sub_category_id)
-        maincat = MainCategory.objects.get(id=subcat.main_category_id)
         
-        return render(request, self.template_name, context={
-            'project':project,
-            'owner':owner,
-            'owner_products': owner_products,
-            'maincat': maincat,
-            'subcat': subcat,
-            'detcat': detcat,
-        })
+        try: project = Product.objects.select_related('owner', 'detail_cat', 'sub_cat', 'main_cat').filter(id=project_id).get()
+        except: return HttpResponse('Такого проекта не существует')
+        owner_projects = list(Product.objects.all().select_related('owner').filter(owner=project.owner.id))
+        
+        context = {"project":project}        
+        if len(owner_projects) != 0: context['owner_projects'] = owner_projects    
+           
+        return render(request, self.template_name, context)
+
+        
