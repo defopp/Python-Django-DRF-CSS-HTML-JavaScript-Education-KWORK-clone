@@ -458,7 +458,7 @@
     margin-right: 3px;
     position: relative;
     top: -1px;
-    background-image: url('../img/Gold_Star.svg.png');
+    background-image: url('img/Gold_Star.svg.png');
     background-position: center;
     background-size: contain;
 }
