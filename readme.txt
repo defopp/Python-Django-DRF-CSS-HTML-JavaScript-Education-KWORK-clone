@@ -45,7 +45,8 @@ usersApp
     editProfileView - GET(Страници редактирования аккаунта) POST(Форма смены пароля)
 
 productsApp
-    CatalogView - GET(Страница каталоги категорий)
+    CatalogBuyView - GET(Страница каталога категорий)
+    CatalogSellView - GET(Страница каталога проектов на продажу)
     MainCategoryView - GET(Страница главной категории)
     SubCategoryView - GET(Страница подкатегории)
     new_projectView - GET(Страница создания проекта) POST(Форма создания проекта)
