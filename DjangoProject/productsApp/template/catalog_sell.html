@@ -1,0 +1,15 @@
+{% extends 'mainApp/layout.html' %}
+{% load static %}
+
+{% block title %}
+{% comment %} <link rel="stylesheet" href={% static "catalog.css" %}> {% endcomment %}
+<title>Каталог SELL</title>
+{% endblock %}
+
+
+{% block content %}
+catalog sell
+    {% for project in projects_list%}
+        {{ project }}
+    {% endfor %}
+{% endblock %}

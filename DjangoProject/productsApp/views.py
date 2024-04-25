@@ -18,6 +18,16 @@ class CatalogBuyView(View):
                                                               'subcats':subcats})
 
 
+class CatalogSellView(View):
+    template_name = 'productsApp\\template\\catalog_sell.html'
+
+    def get(self, request):
+        projects_list = Product.objects.all().filter(sell_type=0)
+        return render(request, self.template_name, context={'projects_list':projects_list})
+
+
+
+
 class MainCategoryView(View):
     template_name = 'productsApp\\template\\category.html'
     
