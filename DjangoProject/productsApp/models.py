@@ -38,4 +38,4 @@ class Product(models.Model):
     price = models.IntegerField(blank=False, null=False)
     
     def __str__(self):
-        return self.name
+        return f"{self.id}.{self.name}"

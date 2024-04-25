@@ -9,8 +9,8 @@ from .services import *
 
 
 # Create your views here.
-class CatalogView(View):
-    template_name = 'productsApp\\template\\catalog.html'
+class CatalogBuyView(View):
+    template_name = 'productsApp\\template\\catalog_buy.html'
     def get(self, request):
         maincats = MainCategory.objects.all()
         subcats = SubCategory.objects.all()
@@ -48,8 +48,7 @@ class SubCategoryView(View):
         try:
             main_category = MainCategory.objects.get(urlname=mainurlname)
             sub_category = SubCategory.objects.get(urlname=suburlname)
-        except: 
-            return HttpResponse('404, такой категории не существует')
+        except: return HttpResponse('404, такой категории не существует')
         
         det_categorys_list = list(DetailCategory.objects.filter(sub_category=sub_category.id))
         if len(det_categorys_list) != 0:
@@ -60,8 +59,7 @@ class SubCategoryView(View):
                                                         'sub_cat':sub_category,
                                                         'det_cats_list':det_categorys_list,
                                                         'products_list':products_list})
-        else: 
-            return HttpResponse('У подкатегори не заполнены detail категории')
+        else: return HttpResponse('У подкатегори не заполнены detail категории')
         
       
             
@@ -97,13 +95,15 @@ class new_projectView(View):
              
 class ProjectView(View):
     template_name = 'productsApp\\template\\project.html'
-    def get(self, request, project_id):
-        
+    
+    # TODO Обновить модель продукта, и запрос к моделям категорий.
+    def get(self, request, project_id):    
         try: project = Product.objects.select_related('owner', 'detail_cat', 'sub_cat', 'main_cat').filter(id=project_id).get()
         except: return HttpResponse('Такого проекта не существует')
-        owner_projects = list(Product.objects.all().select_related('owner').filter(owner=project.owner.id))
         
         context = {"project":project}        
+        
+        owner_projects = list(Product.objects.all().select_related('owner').filter(owner=project.owner.id))
         if len(owner_projects) != 0: context['owner_projects'] = owner_projects    
            
         return render(request, self.template_name, context)

@@ -97,7 +97,7 @@
 
         <div class="project_owner">
             <div class="owner_title">
-                <img src="{{ project.owner.avatar.url }}" alt="user_avatar">
+                <a href="{% url 'profile' project.owner.id %}"><img src="{{ project.owner.avatar.url }}" alt="user_avatar"></a>
                 <div class="title_info">
                     <h4>{{ project.owner.username }}</h4>
                     {% if project.owner.first_name %}
@@ -108,7 +108,7 @@
             </div>
             {% if user.is_authenticated %}
                 {% if user.id != project.owner.id %}
-                    <button>Связаться с продавцом</button>
+                    <button>{??}Связаться с продавцом</button>
                 {% endif %}
             {% endif %}
             <ul class="rep_info">
