@@ -35,6 +35,7 @@
                 </p>
                 <div class="profile_setting">
                     <a href="{% url 'user_settings' %}"><button>Настройки профиля</button></a>
+                    <p>Как ваш профиль будут видет другие пользователи: <a href="{% url "profile" user.id %}">{% url "profile" user.id %}</a></p>
                 </div>
             </div>
             <div class="active_projects">
