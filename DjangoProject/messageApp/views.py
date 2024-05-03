@@ -12,3 +12,4 @@ class ChatView(View):
     
 # class MessageViewSet(viewsets.ModelViewSet):
 #     ...    
+

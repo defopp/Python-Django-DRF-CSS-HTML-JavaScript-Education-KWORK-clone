@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.views import View
 from django.contrib.auth import authenticate, login, logout
 
+from rest_framework import viewsets
 
 from .forms import SignUpForm, LogInForm, ChangePasswordForm, MainSettingsForm
 from .models import User
@@ -149,7 +150,16 @@ class editProfileView(View):
         else:
             return HttpResponse(f"Запрос не подходит ни под одну форму")
             
-        
          
-                
+        
+
+# TEST API
+    
+    # 
+from .serializers import UserSerializer
+
+class TestUserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
         
