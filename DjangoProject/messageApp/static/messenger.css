@@ -511,6 +511,7 @@ main{
     resize: none;
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
     transition: padding .3s;
 }
 

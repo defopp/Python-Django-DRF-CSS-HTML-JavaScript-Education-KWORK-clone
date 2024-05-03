@@ -35,7 +35,7 @@
 
 
 GARBAGE
-слайдер 1 //сделать слайдер
+// слайдер 1 //сделать слайдер
 let offset = 0;
 const sliderLine = document.querySelector('.slider_items')
 

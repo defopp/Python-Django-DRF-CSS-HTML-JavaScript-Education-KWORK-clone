@@ -28,12 +28,13 @@ from mainApp.views import MainPage, ToFreelancerPage
 urlpatterns = [
     # main pages
     path('admin/', admin.site.urls),
-    
-    
     path('', MainPage, name='main'),
     path('to_freelancer/', ToFreelancerPage, name='freelancer'),
     
     # api
+    path('api/', include('api.urls')),
+    
+    # views
     path('users/', include('usersApp.urls')),
     path('projects/', include('productsApp.urls')),
     path('messages/', include('messageApp.urls'))
