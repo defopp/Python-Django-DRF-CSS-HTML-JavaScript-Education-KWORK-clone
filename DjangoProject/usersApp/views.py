@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from django.views import View
 from django.contrib.auth import authenticate, login, logout
 
-from rest_framework import viewsets
 
 from .forms import SignUpForm, LogInForm, ChangePasswordForm, MainSettingsForm
 from .models import User
@@ -89,7 +88,7 @@ class editProfileView(View):
     
     def get(self, request):
         if request.user.is_authenticated:        
-            user = User.objects.get(username=request.user)
+            user = User.objects.get(username=request.user.username)
             # Добавить формы для общих настроек и смены пароля
             
             context = {
@@ -154,12 +153,19 @@ class editProfileView(View):
         
 
 # TEST API
-    
-    # 
-from .serializers import UserSerializer
+# from rest_framework.views import APIView   
+# from rest_framework.response import Response
+# from rest_framework.renderers import JSONRenderer
 
-class TestUserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+# from .serializers import UserSerializer
+# class TestUserViewSet(viewsets.ModelViewSet):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
 
+# class UserApiView(APIView):    
+#     def get(self, request):
+#         users = User.objects.all()
+#         serializer = UserSerializer(users, many=True)
+#         return Response(serializer.data)
         
+

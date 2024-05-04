@@ -7,3 +7,6 @@ class User(AbstractUser):
     avatar = models.ImageField(upload_to="avatars", null=False, default="avatars/avatar.png")
     description = models.CharField(max_length=1000, null=True)
     pass
+
+    def __str__(self) -> str:
+        return f"id - {self.id}, username - {self.username}"
