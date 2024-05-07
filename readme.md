@@ -3,13 +3,13 @@
 
 ### Тестовый запуск:
 ###### 1. create/activate venv    
-```py -m venv .\venv```
-```.\venv\Scripts\activate```
+    py -m venv .\venv
+    .\venv\Scripts\activate
 ###### 2. install requirements
-```pip install -r requirements.txt```
+    pip install -r requirements.txt
 ###### 3. run server
-```cd .\DjangoProject\```
-```py manage.py runserver```
+    cd .\DjangoProject\
+    py manage.py runserver
 
 
 
