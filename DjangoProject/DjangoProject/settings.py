@@ -34,6 +34,9 @@ AUTH_USER_MODEL = 'usersApp.User'
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,8 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+
     "rest_framework",
     "debug_toolbar",
+
 
     'mainApp',
     'usersApp',
@@ -50,6 +55,7 @@ INSTALLED_APPS = [
     'messageApp'
 ]
 
+ASGI_APPLICATION = 'DjangoProject.asgi.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
