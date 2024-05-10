@@ -419,7 +419,7 @@ main{
     flex-direction: column;
     gap: 5px;
     justify-content: flex-end;
-    max-height: 530px;
+    min-height: 530px;
     overflow: hidden;
     padding: 5px 5px;
     border-bottom: 1px solid rgba(95, 95, 95, 0.567);
@@ -427,10 +427,12 @@ main{
 
 
 .chat ul{
+    /* поправить jsом скролл */
     overflow: hidden scroll;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     gap: 10px;
+    height: 100%;
     flex-direction: column-reverse;
 }
 
