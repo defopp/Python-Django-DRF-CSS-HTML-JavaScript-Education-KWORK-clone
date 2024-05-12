@@ -11,17 +11,6 @@
 {% block content %}
 <main>
 
-
-{% comment %} init WebSockets {% endcomment %}
-    <script src={% static "messenger_chat.js" %}></script>
-    
-
-
-
-
-
-
-
     <div class="messenger_container">
         <!-- menu -->
         <div class="menu_container" >
@@ -33,7 +22,7 @@
             
             <!-- CHAT ROOMS --><!-- CHAT ROOMS --><!-- CHAT ROOMS -->
             <!-- CHAT ROOMS --><!-- CHAT ROOMS --><!-- CHAT ROOMS -->
-            <ul>
+            <ul id='chatrooms'>
 
 
                 <div class="messege_div">
@@ -164,4 +153,5 @@
 </main>
 
 <script src={% static "messenger.js" %}></script>
+<script src={% static "messenger_chat.js" %}></script>
 {%endblock%}
