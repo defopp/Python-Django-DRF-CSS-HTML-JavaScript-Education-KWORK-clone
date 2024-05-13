@@ -36,23 +36,20 @@ AUTH_USER_MODEL = 'usersApp.User'
 INSTALLED_APPS = [
     'daphne',
 
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
 
     "rest_framework",
     "debug_toolbar",
 
-
     'mainApp',
     'usersApp',
     'productsApp',
-    'messageApp'
+    'messageApp',
 ]
 
 ASGI_APPLICATION = 'DjangoProject.asgi.application'
@@ -73,7 +70,7 @@ ROOT_URLCONF = 'DjangoProject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [''],
+        'DIRS': [ BASE_DIR ,],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
