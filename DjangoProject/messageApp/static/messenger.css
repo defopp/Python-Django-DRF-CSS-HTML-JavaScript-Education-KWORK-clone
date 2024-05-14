@@ -119,12 +119,15 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 160px;
+    position: relative;
 }
 
 .mes{
     font-size: 10px;
     overflow: hidden;
-    max-width: 90%;
+    width: 100%;
+    height: 12px;
 }
 
 .messege_div_avatar{
@@ -187,12 +190,25 @@ main{
 
 
 
+.empty_chatrooms{
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100%;
+}
 
-
-
+.empty_messanger{
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100%;
+}
 
 /* messenger */
 .messenger {
+    position: relative;
     width: 100%;
 }
 
@@ -204,7 +220,7 @@ main{
 /* Burger *//* Burger *//* Burger *//* Burger *//* Burger */
 .chat_brg{
     padding: 0;
-    margin: 0 5px;
+    margin: 5px 5px;
     height: 30px;
     width: 30px;
     background-color: transparent;
@@ -254,9 +270,12 @@ main{
 .chat_brg.open div:nth-child(3){
     transform: rotate(-45deg);
 }
+
+
 /* Burger *//* Burger *//* Burger *//* Burger *//* Burger */
 /* Burger *//* Burger *//* Burger *//* Burger *//* Burger */
 /* Burger *//* Burger *//* Burger *//* Burger *//* Burger */
+
 
 .user_title {
     position: relative;
@@ -552,6 +571,12 @@ main{
 
 /* adaptive */
 @media (max-width:750px) {
+
+    .messenger {
+        height: 630px;
+    }
+
+
     .messenger_container{
         display: flex;
         width: 90%;

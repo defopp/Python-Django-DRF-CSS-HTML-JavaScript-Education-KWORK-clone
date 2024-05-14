@@ -13,7 +13,7 @@ class ChatRoomSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ChatRoom
-        # fields = '__all__'
-        fields = ['creater', 'interlocutor', 'product', 'start_date']
+        fields = '__all__'
+        # fields = ['creater', 'interlocutor', 'product', 'start_date']
 
 

@@ -135,7 +135,7 @@ class editProfileView(View):
         elif 'first_name' in request.POST:
             # mainsettings form
             if request.user.is_authenticated:
-                user = User.objects.get(username=request.user)
+                user = User.objects.get(username=request.user.username)
                 if user is not None:
                     form = MainSettingsForm(instance=user, data=request.POST, files=request.FILES)
                     if form.is_valid():

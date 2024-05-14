@@ -25,7 +25,14 @@
             <ul id='chatrooms'>
 
 
-                <div class="messege_div">
+                <span class='empty_chatrooms'>
+                    Загрузка...
+                </span>
+
+
+
+
+                {% comment %} <div class="messege_div">
                     <div class="messege_div_title">
                         <img src={% static "mainApp/img/dasdadadadasdsadsadaa.png" %} alt="status" class="status_pl">
                         <img class="messege_div_avatar" src={% static "mainApp/img/medium.jpg" %} alt="avatar">
@@ -57,7 +64,7 @@
                             </div>
                         </div>
                     </div> 
-                </div>  
+                </div>    {% endcomment %}
 
 
             </ul>
@@ -66,6 +73,18 @@
                
         </div>
         <!-- messenger -->
+
+
+        {% comment %} <div class="messenger">
+            <button class="chat_brg" id="burger_chat"> 
+                <div></div>
+                <div></div>
+                <div></div>
+            </button>
+            <span class='empty_messanger'>Откройте чат</span>
+        </div> {% endcomment %}
+
+        
         <div class="messenger">
             <!-- user title -->
             <div class="user_title">
@@ -107,7 +126,7 @@
             <div class="chat">
                 <ul>
                 
-                    <div class="mess from">
+                    {% comment %} <div class="mess from">
                         <img class="messege_div_avatar" src={% static "mainApp/img/medium.jpg" %} alt="avatar">
                         <div class="messege_user_info">
                             <p>собеседник nickname</p>
@@ -122,7 +141,9 @@
                         </div>
                         <img class="messege_div_avatar" src={% static "mainApp/img/medium.jpg" %} alt="avatar">
                     </div>
-                
+                 {% endcomment %}
+
+
                 </ul>
             </div>
             <!-- chat -->                <!-- chat -->                <!-- chat -->                <!-- chat -->
@@ -146,9 +167,9 @@
             </div>
             <!-- input div -->                <!-- input div -->                <!-- input div -->                <!-- input div -->                <!-- input div -->
             <!-- input div -->                <!-- input div -->                <!-- input div -->                <!-- input div -->                <!-- input div -->
-
-
         </div>
+
+
     </div>
 </main>
 

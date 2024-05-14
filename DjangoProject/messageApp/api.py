@@ -15,7 +15,8 @@ class ChatRoomAPI(APIView):
         chat_rooms = ChatRoom.objects.all().filter(Q(interlocutor = user_id) | Q(creater = user_id)).select_related('creater', 'interlocutor')
         # print(chat_rooms.query)
         serializer = ChatRoomSerializer(chat_rooms, many=True)
-        return Response(serializer.data)
+        return Response({"requester_id":user_id,
+                         "data":serializer.data})
 
     def post(self, request):
         ...
