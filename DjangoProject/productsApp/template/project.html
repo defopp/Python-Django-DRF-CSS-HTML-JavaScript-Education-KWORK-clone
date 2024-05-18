@@ -108,7 +108,11 @@
             </div>
             {% if user.is_authenticated %}
                 {% if user.id != project.owner.id %}
-                    <button>{??}Связаться с продавцом</button>
+                    <form action={% url 'chat' %} method='get'>
+                        <input type='hidden' name='intID' value='{{ project.owner.id }}'>
+                        <input type='hidden' name='prodID' value='{{ project.owner.id }}'>
+                        <button>{??}Связаться с продавцом</button>
+                    </form> 
                 {% endif %}
             {% endif %}
             <ul class="rep_info">

@@ -11,52 +11,6 @@
 
 
 
-// 1. Ajax xRequests to API
-let url = `http://${window.location.host}/api/chatroom/`
-
-// XML METHOD
-let xhr = new XMLHttpRequest();
-xhr.open('get', url, true);
-xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-        // console.log(xhr)
-        console.log('xhr response.json - ', JSON.parse(xhr.responseText))
-        let jsonData = JSON.parse(xhr.responseText)
-
-        const Rooms = chatRoomsModer()
-        if (jsonData.data.length > 0) {
-            Rooms.state1(jsonData.data, jsonData.requester_id)
-            console.log('div - ', Rooms.div)
-        } else {
-            Rooms.state0()
-        }
-
-    }    
-}
-xhr.send()
-
-
-
-
-// 2. Create ChatRoomDivs
-// const chatRoomsDiv = document.getElementById('chatrooms')
-
-// function createChatRoomsDivsByJSON(chatRoomsJson, requester_id) {
-//     chatRoomsJson.forEach(chatRoomJson => {
-//         chatRoomsDiv.appendChild(createChatRoomDiv(chatRoomJson, requester_id)) 
-//     });  
-// };
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -73,27 +27,46 @@ function getFullUrlWithHost(url) {
 }
 
 // 3. создание компонентов для страницы
-// TODO: Создавать див class='message_div ?mark as read' с id='chatroom_ID' 
 function createChatRoomDiv(chatRoomJson, requester_id) {
     let chatRoomId = chatRoomJson.id
     // Выбор кого отображать собеседником для chatRoom 
     let interlocutor = chooseInterlocutor(chatRoomJson, requester_id)
     let interlocutorAvatar = getFullUrlWithHost(interlocutor.avatar)
+    
 
-    const div = document.createElement('div');
+    const div = document.createElement('form');
     div.classList.add(`messege_div`);
     div.setAttribute('id', `chatRoomId${chatRoomId}`)
+
+    // TEST TEST TEST TEST TEST TEST
+    // TEST TEST TEST TEST TEST TEST
+    
+
+
+    
+    // TEST TEST TEST TEST TEST TEST
+    // TEST TEST TEST TEST TEST TEST
+
+
+
     // div.classList.add(`roomid_${chatRoomId}`);
     div.innerHTML = `<div class="messege_div_title">
                         <img class="messege_div_avatar" src='${interlocutorAvatar}' alt="avatar">
                         <div class="user_info">
                             <p>${interlocutor.username}</p>
-                            <p class="mes"> last message chatroom id - ${chatRoomId}</p>
+                            <p class="mes">??last message chatroom id - ${chatRoomId}</p>
                         </div>  
                         <div class="messege_info">
-                            <p class="date">date time</p>
+                            <p class="date">??last message datetime</p>
+                            <div class="read_or">
+                                ??<i></i><i></i>
+                            </div>
                         </div>
                     </div>`
+    div.onclick = function () {
+        // delat ajax запрос по chatroomid
+        alert('вы напугали деда')
+    }
     return div
     }
 
@@ -137,6 +110,58 @@ var chatRoomsModer = function () {
 
 
 
-
 // ОБЪЕКТ CHATFORM
-var chatModer = function () {}
+var chatModer = function () {
+    const chatDiv = document.getElementById('chatDiv')
+
+    return {
+        stateNull: () => {chatDiv.innerHTML = `<button class="chat_brg" id="burger_chat"> 
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                </button>
+                                                <span class='empty_messanger'></span>`},
+        createFrom: () => {}
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 1. Ajax xRequests to API
+let url = `http://${window.location.host}/api/chatroom/`
+
+// XML METHOD
+let xhr = new XMLHttpRequest();
+xhr.open('get', url, true);
+xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        // console.log(xhr)
+        console.log('xhr response.json - ', JSON.parse(xhr.responseText))
+        let jsonData = JSON.parse(xhr.responseText)
+
+        const Rooms = chatRoomsModer()
+        const Chat = chatModer()
+        if (jsonData.data.length > 0) {
+            Rooms.state1(jsonData.data, jsonData.requester_id)
+            console.log('div - ', Rooms.div)
+        } else {
+            Rooms.state0()
+        }
+
+    }    
+}
+xhr.send()
+
+
+

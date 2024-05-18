@@ -20,16 +20,20 @@
             </form>
 
             
+
+
+
+
+
+
+
             <!-- CHAT ROOMS --><!-- CHAT ROOMS --><!-- CHAT ROOMS -->
             <!-- CHAT ROOMS --><!-- CHAT ROOMS --><!-- CHAT ROOMS -->
             <ul id='chatrooms'>
 
-
                 <span class='empty_chatrooms'>
                     Загрузка...
                 </span>
-
-
 
 
                 {% comment %} <div class="messege_div">
@@ -64,28 +68,37 @@
                             </div>
                         </div>
                     </div> 
-                </div>    {% endcomment %}
-
+                </div> {% endcomment %}
 
             </ul>
-                <!-- CHAT ROOMS --><!-- CHAT ROOMS --><!-- CHAT ROOMS -->
-                <!-- CHAT ROOMS --><!-- CHAT ROOMS --><!-- CHAT ROOMS -->
+                <!-- end CHAT ROOMS --><!-- CHAT ROOMS --><!-- CHAT ROOMS -->
+                <!-- end CHAT ROOMS --><!-- CHAT ROOMS --><!-- CHAT ROOMS -->
                
+
         </div>
-        <!-- messenger -->
 
 
-        {% comment %} <div class="messenger">
+
+
+
+
+
+
+
+
+        <!-- start messenger -->
+
+        <div class="messenger" id='chatDiv'>
             <button class="chat_brg" id="burger_chat"> 
                 <div></div>
                 <div></div>
                 <div></div>
             </button>
-            <span class='empty_messanger'>Откройте чат</span>
-        </div> {% endcomment %}
+            <span class='empty_messanger'></span>
+        </div>
 
-        
-        <div class="messenger">
+{% comment %}         
+        <div class="messenger" id='chatDiv'>
             <!-- user title -->
             <div class="user_title">
                 <div class="title">
@@ -126,7 +139,7 @@
             <div class="chat">
                 <ul>
                 
-                    {% comment %} <div class="mess from">
+                    <div class="mess from">
                         <img class="messege_div_avatar" src={% static "mainApp/img/medium.jpg" %} alt="avatar">
                         <div class="messege_user_info">
                             <p>собеседник nickname</p>
@@ -141,7 +154,7 @@
                         </div>
                         <img class="messege_div_avatar" src={% static "mainApp/img/medium.jpg" %} alt="avatar">
                     </div>
-                 {% endcomment %}
+                 
 
 
                 </ul>
@@ -167,12 +180,326 @@
             </div>
             <!-- input div -->                <!-- input div -->                <!-- input div -->                <!-- input div -->                <!-- input div -->
             <!-- input div -->                <!-- input div -->                <!-- input div -->                <!-- input div -->                <!-- input div -->
-        </div>
+        </div> {% endcomment %}
 
 
     </div>
 </main>
 
 <script src={% static "messenger.js" %}></script>
-<script src={% static "messenger_chat.js" %}></script>
+
+
+{% comment %} MAIN JAVASCRIPT {% endcomment %}
+<script>
+// WebSocket connect
+// let url = `ws://${window.location.host}/ws/socket-server/`
+
+// const chatSocket = new WebSocket(url)
+
+// chatSocket.onmessage = function(e) {
+//     let data = JSON.parse(e.data)
+//     console.log('Data:', data)
+// }
+
+
+
+
+
+
+
+function chooseInterlocutor(chatRoomJson, requester_id) {
+    if (requester_id == chatRoomJson.creater.id) {
+        return chatRoomJson.interlocutor
+    } else if (requester_id == chatRoomJson.interlocutor.id) {
+        return chatRoomJson.creater
+    }
+}
+
+function chooseRequseter(chatRoomJson, requester_id) {
+    if (requester_id == chatRoomJson.creater.id) {
+        return chatRoomJson.creater
+    } else if (requester_id == chatRoomJson.interlocutor.id) {
+        return chatRoomJson.interlocutor
+    }
+}
+
+
+
+
+function getFullUrlWithHost(url) {
+    return `http://${window.location.host}${url}`
+}
+
+// 3. создание компонентов для страницы
+function createChatRoomDiv(chatRoomJson, requester_id, csrf_token) {
+    let chatRoomId = chatRoomJson.id
+    // Выбор кого отображать собеседником для chatRoom 
+    let interlocutor = chooseInterlocutor(chatRoomJson, requester_id)
+    let interlocutorAvatar = getFullUrlWithHost(interlocutor.avatar)
+    let lastMessageText = chatRoomJson.last_message.text
+    let lastMessageDate = chatRoomJson.last_message.date
+
+    const div = document.createElement('form');
+    div.classList.add(`messege_div`);
+    div.setAttribute('id', `chatRoomId${chatRoomId}`)
+    // div.classList.add(`roomid_${chatRoomId}`);
+    div.innerHTML = `<div class="messege_div_title">
+                        <img class="messege_div_avatar" src='${interlocutorAvatar}' alt="avatar">
+                        <div class="user_info">
+                            <p>${interlocutor.username}</p>
+                            <p class="mes">${lastMessageText}</p>
+                        </div>  
+                        <div class="messege_info">
+                            <p class="date">${lastMessageDate}</p>
+                            <div class="read_or">
+                                ??<i></i><i></i>
+                            </div>
+                        </div>
+                    </div>`
+    div.onclick = function () {
+        // delat ajax запрос по chatroomid
+        div.style.backgroundColor = '#dbd8d8'
+        getChatRoomFetch(interlocutor.id, csrf_token)
+
+    }
+    return div
+    }
+
+
+
+// TODO: Сделать модель чата, из которой будут строиться все отображение
+
+
+// ОБЪЕКТ CHATROOMS
+var chatRoomsModer = function () {
+    const chatRoomsDiv = document.getElementById('chatrooms')
+    return {
+        div: chatRoomsDiv,
+        stateNull: () => {chatRoomsDiv.innerHTML = `<span class='empty_chatrooms'>Загрузка</span>`},
+        state0: () => {chatRoomsDiv.innerHTML = `<span class='empty_chatrooms'>У вас нет чатов</span>`},
+        state1: (chatRoomsJson, requester_id, csrf_token) => {
+            // Обнуление
+            chatRoomsDiv.innerHTML = ''
+            // Добавление
+            chatRoomsJson.forEach(chatRoomJson => {
+                chatRoomsDiv.appendChild(createChatRoomDiv(chatRoomJson, requester_id, csrf_token)) 
+            });
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function createUserTitleDiv(fetchData) {
+    let interlocutor = chooseInterlocutor(fetchData.data, fetchData.requester_id)
+    let avatar = getFullUrlWithHost(interlocutor.avatar)
+    let username = interlocutor.username
+    
+
+    return `<div class="user_title">
+                <div class="title">
+                    <button class="chat_brg" id="burger_chat"> 
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </button>
+                    <img class="avatar" src=${avatar} alt="avatar">
+                    <div>
+                        <p>${username}</p>
+                        <p class="status_info">{??}Онлай(статус)</p>
+                    </div>
+                </div>
+                <div class="title_settings">
+                    <div class="search_form">
+                        <button class="search_btn"></button>
+                        <input placeholder="поиск"></input>
+                    </div>
+                    <div class="chat_set">
+                        <button></button>
+                        <ul>
+                            <button>Кнопка</button>
+                            <button>Кнопка</button>
+                            <button>Удалить переписку</button>
+                        </ul>       
+                    </div>
+                </div>
+            </div>`
+};
+
+ 
+function createChatUlDiv(fetchData) {
+    let chatDiv = document.createElement('div');
+    chatDiv.className = 'chat';
+
+    if (fetchData.data.all_messages) {
+        let interlocutor = chooseInterlocutor(fetchData.data, fetchData.requester_id)
+        let requester = chooseRequseter(fetchData.data, fetchData.requester_id)
+
+
+        let chatUl = document.createElement('ul');
+        chatDiv.appendChild(chatUl)
+        fetchData.data.all_messages.forEach(message => {
+            chatUl.appendChild(createMessageDiv(message, interlocutor, requester))
+        })
+
+        return chatDiv.outerHTML
+    } else {
+        return chatDiv.outerHTML
+    }
+
+
+};
+
+
+function createMessageDiv(message, interlocutor, requester) {
+    if (message.owner == requester.id) {
+        from = 'to'
+        username = requester.username 
+        avatar = getFullUrlWithHost(requester.avatar)
+    } else {
+        from = 'from'
+        username = interlocutor.username
+        avatar = getFullUrlWithHost(interlocutor.avatar)
+    }
+
+    let div = document.createElement('div')
+    div.className = `mess ${from}`
+    div.innerHTML = `<img class="messege_div_avatar" src=${avatar} alt="avatar">
+                     <div class="messege_user_info">
+                         <p>${username}</p>
+                         <p class="messs">${message.text}</p>
+                     </div>
+                    `
+
+    return div
+}
+
+function createFormDiv(interlocutorID, csrf_token) {
+    return `<form class="input_div" method='post'>
+                    <span class="file_b backimgset"></span>
+                    <input type='hidden' name='intID' value='${interlocutorID}'></input>
+                    <input type='hidden' name='csrfmiddlewaretoken' value='${csrf_token}'></input>
+                    <textarea name='text' class="message_input" placeholder="Введите сообщение..."></textarea>
+                    <span class="smile backimgset"></span>
+                    <button class="send_b backimgset"></button>
+                </form>`
+};
+
+
+
+function getChatRoomFetch(intID, csrf_token) {
+    var paramsForChatRoomApi = {intID:intID}
+    const params = new URLSearchParams(paramsForChatRoomApi);
+
+    fetch(`http://${window.location.host}/api/chatroom/?`+ params)
+        .then(response => {
+            if (!response.ok) {
+            throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('ChatRoomFetch - ', data); // Data received from the API
+            const Chat = chatModer()
+            Chat.createForm(intID, csrf_token, data)
+
+
+        })
+        .catch(error => {
+            console.error('There was a problem with your fetch operation:', error);
+        });
+
+}
+
+
+
+// ОБЪЕКТ CHATFORM
+var chatModer = function () {
+    const chatDiv = document.getElementById('chatDiv')
+    
+    return {
+        stateNull: () => {chatDiv.innerHTML = `<button class="chat_brg" id="burger_chat"> 
+                                                    <div></div>
+                                                    <div></div>
+                                                    <div></div>
+                                                </button>
+                                                <span class='empty_messanger'></span>`},
+        createForm: (intID, csrf_token, fetchData) => {
+            chatDiv.innerHTML = `
+                <div class="messenger" id='chatDiv'>
+                    ${createUserTitleDiv(fetchData)}
+                    ${createChatUlDiv(fetchData)}
+                    ${createFormDiv(intID, csrf_token)}
+                </div> 
+            `
+            
+
+            // + запрос на все сообщения доделать
+        }
+    }
+}
+
+
+function getChatRoomsXHR (csrf_token) {
+    // 1. Ajax xRequests to API TO GET ROOMS
+    let url = `http://${window.location.host}/api/chatrooms/`
+
+    // XML METHOD
+    let xhr = new XMLHttpRequest();
+    xhr.open('get', url, true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            // console.log(xhr)
+            console.log('ChatRoomsXML - ', JSON.parse(xhr.responseText))
+            let jsonData = JSON.parse(xhr.responseText)
+
+            const Rooms = chatRoomsModer()
+            const Chat = chatModer()
+            if (jsonData.data.length > 0) {
+                Rooms.state1(jsonData.data, jsonData.requester_id, csrf_token)
+            } else {
+                Rooms.state0()
+            }
+        }    
+    }
+    xhr.send()
+}
+
+function main () {
+    const csrf_token = `{{csrf_token}}`;
+    const Chat = chatModer()
+    getChatRoomsXHR(csrf_token)
+
+
+    {% if type_of_chat == 'PeerToPeer'%}
+        // Получаем параметры запроса из URL
+        const urlParams = new URLSearchParams(window.location.search);
+        // Получаем конкретный параметр из URL
+        let intID = urlParams.get('intID');
+
+        getChatRoomFetch(intID, csrf_token)
+    {% endif %}
+}
+
+main()
+
+
+
+
+
+</script>
+
+    
+    
+
+
 {%endblock%}

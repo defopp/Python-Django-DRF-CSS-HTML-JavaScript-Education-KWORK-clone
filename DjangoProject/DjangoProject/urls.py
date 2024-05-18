@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 
 
 from mainApp.views import MainPage, ToFreelancerPage
-
+from messageApp.views import ChatView
 
 
 urlpatterns = [
@@ -37,7 +37,7 @@ urlpatterns = [
     # views
     path('users/', include('usersApp.urls')),
     path('projects/', include('productsApp.urls')),
-    path('messages/', include('messageApp.urls'))
+    path('messages', ChatView.as_view(), name="chat")
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

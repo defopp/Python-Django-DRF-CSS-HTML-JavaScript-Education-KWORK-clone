@@ -202,8 +202,15 @@ main{
     display: inline-block;
     position: absolute;
     text-align: center;
-    top: 50%;
+    top: calc(50% - 25px);
     width: 100%;
+    background-image: url('img/paperplane.png');
+    background-position: center center;
+    background-size: contain;
+    background-repeat:no-repeat;
+    content: '';
+    height: 50px;
+    opacity: 0.1;
 }
 
 /* messenger */
@@ -452,7 +459,7 @@ main{
     /* flex-direction: column; */
     gap: 10px;
     height: 100%;
-    flex-direction: column-reverse;
+    flex-direction: column;
 }
 
 
@@ -488,6 +495,8 @@ main{
 
 .to {
     justify-content: flex-end;
+    flex-direction: row-reverse;
+    justify-content: flex-start
 }
 .to > .messege_user_info > p:nth-child(1){
     text-align: end;
@@ -501,6 +510,16 @@ main{
 
 
 /* input div */
+.backimgset {
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+
+
+
+
 
 .input_div {
     padding: 5px 10px;
@@ -511,14 +530,19 @@ main{
 }
 
 
-.input_div img:hover{
+.input_div span:hover{
+    opacity: 0.6;
+}
+.input_div button:hover{
     opacity: 0.6;
 }
 
 .file_b {
     opacity: 0.5;
     margin-left: 5px;
-    height: 25px;
+    height: 30px;
+    background-image: url('img/screpi.png');
+    width: 30px;
 }
 .message_input {
     height: 100%;
@@ -552,17 +576,19 @@ main{
 
 
 .smile {
-    width: 20px;
-    height: 20px;
-}
-.smile img{
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
+    background-image: url('img/smile.png');
     opacity: 0.5;
 }
+
 .send_b {
+    border: none;
+    background-color: transparent;
+    background-image: url("img/send-4008.png");
     margin-right: 5px;
-    height: 20px;
+    height: 25px;
+    width: 25px;
     opacity: 0.5;
 }
 

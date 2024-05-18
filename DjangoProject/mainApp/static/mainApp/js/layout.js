@@ -126,3 +126,14 @@ SignInButtons.forEach(button => {
 // log logic// log logic// log logic// log logic// log logic// log logic// log logic
 // log logic// log logic// log logic// log logic// log logic// log logic// log logic
 // log logic// log logic// log logic// log logic// log logic// log logic// log logic
+
+// алерт на все кнопки footer'а
+let footer = document.querySelector('footer')
+let footButtons = footer.querySelectorAll('button')
+footButtons.forEach(button => {
+    button.onclick = () => {
+        alert(`вы испугали деда посредством кнопки\n${button.innerText}`)
+        button.style.backgroundColor = 'red'
+        button.style.color = 'white'
+    }
+}) 

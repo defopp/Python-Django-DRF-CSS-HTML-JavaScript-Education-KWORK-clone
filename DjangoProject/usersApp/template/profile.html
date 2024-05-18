@@ -26,16 +26,23 @@
                     <p class="reg_date">На сайте с {{ user_pr.date_joined }}{??}</p>
                     <p class="status">status off on{??}</p>
                 </div>
-                {% if user_pr.description %}
                 <p class="description">
-                    {{ user_pr.description }}
+                    {% if user_pr.description %}
+                        {{ user_pr.description }}
+                    {% else %}
+                        Пользователь не написал о себе
+                    {% endif %}
                 </p>
-                {% else %}
-                <p class="description">
-                    Пользователь не написал о себе
-                </p>
-                {% endif %}
-                
+                {% if user_pr.id != user.id %}
+                <form action={% url 'chat' %} method='get'>
+                    <input type="hidden" name='intID' value={{ user_pr.id }}>
+                    <button class='toChatButton'>связаться с пользователем</button>
+                </form>      
+                {% else %}       
+                <form action={% url 'chat' %} method='get'>
+                    <button class='toChatButton' disabled>связаться с пользователем</button>
+                </form>      
+                {% endif %}   
             </div>
 
 

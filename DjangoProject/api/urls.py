@@ -3,7 +3,7 @@ from django.urls import path
 
 # from messageApp.views import 
 # from usersApp.api import UserApiView
-from messageApp.api import ChatRoomAPI
+from messageApp.api import ChatRoomsAPI, ChatRoomAPI
 
 
 
@@ -13,6 +13,7 @@ router = DefaultRouter()
 
 urlpatterns = [
     # path('users/', UserApiView.as_view(), name='usersAPI')
+    path('chatrooms/', ChatRoomsAPI.as_view(), name='chatroomsAPI'),
     path('chatroom/', ChatRoomAPI.as_view(), name='chatroomAPI')
 ]
 
