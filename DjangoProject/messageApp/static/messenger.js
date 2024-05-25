@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function (){
         burger.classList.toggle('open')
         menu_back.classList.toggle('open')
         menu.classList.toggle('open')
+        
     })
 })
 

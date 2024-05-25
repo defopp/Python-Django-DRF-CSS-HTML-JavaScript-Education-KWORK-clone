@@ -18,18 +18,12 @@ class ChatView(View):
                     # else create chatroom
                 return render(request, self.template_name, {'type_of_chat' : 'PeerToPeer'})
 
-            if 'prodID' in request.GET:
-                product_id = request.GET['prodID']
-                # if prodID => open product chat
-                    # open chat room if она есть
-                    # else create chatroom
-
         # WAY TWO mainopen/ else
         else:
             return render(request, self.template_name)
     
     def post(self, request):
-        return HttpResponse('ЗАЕБИСЬЯ')
+        return HttpResponse('[http post request] request - ЗАЕБИСЬЯ')
 
 
 

@@ -189,16 +189,26 @@
 <script src={% static "messenger.js" %}></script>
 
 
-{% comment %} MAIN JAVASCRIPT {% endcomment %}
+{% comment %} CHAT JAVASCRIPT {% endcomment %}
 <script>
 // WebSocket connect
-// let url = `ws://${window.location.host}/ws/socket-server/`
+let url = `ws://${window.location.host}/ws/socket-server/`
 
-// const chatSocket = new WebSocket(url)
+const chatSocket = new WebSocket(url)
 
-// chatSocket.onmessage = function(e) {
-//     let data = JSON.parse(e.data)
-//     console.log('Data:', data)
+
+chatSocket.onopen = function(e) {
+    console.log(`WebSockets - onOpen`)
+}
+
+chatSocket.onmessage = function(e) {
+    let data = JSON.parse(e.data)
+    console.log('websockets:', data)
+    console.dir(chatSocket)
+}
+
+// chatSocket.send = function(e) {
+//     console.log(`WebSockets - send`)
 // }
 
 
@@ -257,9 +267,11 @@ function createChatRoomDiv(chatRoomJson, requester_id, csrf_token) {
                         </div>
                     </div>`
     div.onclick = function () {
-        // delat ajax запрос по chatroomid
-        div.style.backgroundColor = '#dbd8d8'
-        getChatRoomFetch(interlocutor.id, csrf_token)
+        chatDiv = document.getElementById(`chatDivID${interlocutor.id}`)
+        if (chatDiv === null) {
+            div.style.backgroundColor = '#dbd8d8'
+            getChatRoomFetch(interlocutor.id, csrf_token)
+        }
 
     }
     return div
@@ -383,15 +395,24 @@ function createMessageDiv(message, interlocutor, requester) {
     return div
 }
 
+// TODO: Сделать кнопку, которая, будет отсылать запрос с сообщением
 function createFormDiv(interlocutorID, csrf_token) {
-    return `<form class="input_div" method='post'>
-                    <span class="file_b backimgset"></span>
+    // Создание формы
+    var form = document.createElement('form')
+    form.className = `input_div`
+    form.setAttribute('method', 'post');
+    form.setAttribute('id', 'msgForm');
+    form.innerHTML = `<span class="file_b backimgset"></span>
                     <input type='hidden' name='intID' value='${interlocutorID}'></input>
                     <input type='hidden' name='csrfmiddlewaretoken' value='${csrf_token}'></input>
                     <textarea name='text' class="message_input" placeholder="Введите сообщение..."></textarea>
-                    <span class="smile backimgset"></span>
-                    <button class="send_b backimgset"></button>
-                </form>`
+                    <span class="smile backimgset"></span>`
+    // Создание кнопки
+    var button = document.createElement('button')
+    button.className = `send_b backimgset`
+    // Добавление кнопки
+    form.appendChild(button)
+    return form.outerHTML
 };
 
 
@@ -435,17 +456,32 @@ var chatModer = function () {
                                                 <span class='empty_messanger'></span>`},
         createForm: (intID, csrf_token, fetchData) => {
             chatDiv.innerHTML = `
-                <div class="messenger" id='chatDiv'>
+                <div class="messenger" id='chatDivID${intID}'>
                     ${createUserTitleDiv(fetchData)}
                     ${createChatUlDiv(fetchData)}
                     ${createFormDiv(intID, csrf_token)}
                 </div> 
             `
+            document.getElementById("msgForm").onsubmit = function(e) {
+                e.preventDefault()
+                console.log('ajax запрос c submitBtn')
+                var formData = new FormData(this)
+                sendMessageWS(formData)
+                    
+                
+            }
+
             
 
-            // + запрос на все сообщения доделать
         }
     }
+}
+
+
+function sendMessageWS (formData) {
+    const queryString = new URLSearchParams(formData).toString()
+    chatSocket.send(queryString)
+    console.log('отправил дату на ws')
 }
 
 
