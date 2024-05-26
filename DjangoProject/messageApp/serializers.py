@@ -14,10 +14,6 @@ class MessageSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
-
-
-
 class ChatRoomsSerializer(serializers.ModelSerializer):
     creater = UserSerializer()
     interlocutor = UserSerializer()
@@ -39,4 +35,19 @@ class ChatRoomSerializer(serializers.ModelSerializer):
         # fields = '__all__'
         fields = ['id', 'creater', 'interlocutor', 'product', 'start_date', 'all_messages']
 
+class NewMessage_ChatRoomSerializer(serializers.ModelSerializer):
+    creater = UserSerializer()
+    interlocutor = UserSerializer()
 
+    class Meta:
+        model = ChatRoom
+        # fields = '__all__'
+        fields = ['id', 'creater', 'interlocutor', 'product', 'start_date']
+
+
+class NewMessage(serializers.ModelSerializer):
+    chatroom = NewMessage_ChatRoomSerializer()
+
+    class Meta:
+        model = Message
+        fields = '__all__'

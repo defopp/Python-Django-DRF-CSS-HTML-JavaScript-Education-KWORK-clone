@@ -198,19 +198,43 @@ const chatSocket = new WebSocket(url)
 
 
 chatSocket.onopen = function(e) {
-    console.log(`WebSockets - onOpen`)
+    console.log(`WebSockets opened`)
 }
 
 chatSocket.onmessage = function(e) {
+    console.dir(e)
     let data = JSON.parse(e.data)
     console.log('websockets:', data)
-    console.dir(chatSocket)
+    if (data.type === 'new_message') {
+        ShowNewMessage(data.message_data)
+    }
 }
 
-// chatSocket.send = function(e) {
-//     console.log(`WebSockets - send`)
-// }
+function ShowNewMessage(message_data) {
+    let intID = message_data.chatroom.interlocutor.id
+    let createrID = message_data.chatroom.creater.id
 
+    // Показать сообщение в чате
+    chatDivByInt = document.getElementById(`chatDivID${intID}`)
+    chatDivByCreater = document.getElementById(`chatDivID${createrID}`)
+    if (chatDivByInt != null) {
+        ulDiv = chatDivByInt.querySelector(".chatUl")
+        console.dir(ulDiv)
+        console.log('нашел бай инт')
+        ulDiv.appendChild(createMessageDiv(message_data, message_data.chatroom.interlocutor, message_data.chatroom.creater))
+        console.log('создал')
+    }
+    if (chatDivByCreater != null) {
+        ulDiv = chatDivByCreater.querySelector(".chatUl")
+        console.dir(ulDiv)
+        console.log('нашел бай кр')
+        ulDiv.appendChild(createMessageDiv(message_data, message_data.chatroom.creater, message_data.chatroom.interlocutor))
+        console.log('создал')
+    }
+
+
+    // Показать сообщение в комнатах
+}
 
 
 
@@ -358,6 +382,7 @@ function createChatUlDiv(fetchData) {
 
 
         let chatUl = document.createElement('ul');
+        chatUl.className = 'chatUl';
         chatDiv.appendChild(chatUl)
         fetchData.data.all_messages.forEach(message => {
             chatUl.appendChild(createMessageDiv(message, interlocutor, requester))
@@ -373,6 +398,7 @@ function createChatUlDiv(fetchData) {
 
 
 function createMessageDiv(message, interlocutor, requester) {
+
     if (message.owner == requester.id) {
         from = 'to'
         username = requester.username 
@@ -464,20 +490,16 @@ var chatModer = function () {
                 </div> 
             `
             document.getElementById("msgForm").onsubmit = function(e) {
+                // Функция отправки сообщения с формы кнопкой "Отправить"
                 e.preventDefault()
-                console.log('ajax запрос c submitBtn')
                 const formData = new FormData(this)
-
                 // encode text to bytes
                 let utf8EncodedString = encodeURIComponent(formData.get("text"));
-                console.log(utf8EncodedString)
                 formData.set('text', utf8EncodedString)
-                console.dir(formData)
 
-                sendMessageWS(formData)
-                    
-                
+                sendMessageWS(formData)               
             }
+        
 
             
 

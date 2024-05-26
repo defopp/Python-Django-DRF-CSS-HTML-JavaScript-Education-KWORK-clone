@@ -38,3 +38,4 @@ class Message(models.Model):
     def __str__(self) -> str:
         return f"chatroom_id - {self.chatroom}; message_id - {self.id}"
         ...
+

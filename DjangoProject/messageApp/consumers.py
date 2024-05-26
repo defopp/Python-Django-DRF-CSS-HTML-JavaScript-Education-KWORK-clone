@@ -3,20 +3,31 @@ import urllib.parse
 
 from channels.generic.websocket import WebsocketConsumer
 from django.db.models import Q
+from asgiref.sync import async_to_sync
 
 from .models import ChatRoom, Message
 from usersApp.models import User
+from .serializers import NewMessage
 
 class ChatConsumer(WebsocketConsumer):
     
     def connect(self):
-       self.accept()
-       
-       print(self.scope['user'])
-       self.send(text_data=json.dumps({
+        user_id = self.scope['user'].id
+
+
+        async_to_sync(self.channel_layer.group_add)(str(user_id), self.channel_name)
+        self.accept()
+
+
+        self.send(text_data=json.dumps({
            'type':'connection_established',
            'message':'You are now connected!'
-       }))
+        }))
+
+    def disconnect(self, text_data):
+        user_id = self.scope['user'].id
+        async_to_sync(self.channel_layer.group_discard)(str(user_id), self.channel_name)
+        ...
     
 
     def websocket_receive(self, message):
@@ -51,21 +62,27 @@ class ChatConsumer(WebsocketConsumer):
             new_message.save(force_insert=True)
 
 
-        # отправить подтверждению отправителю 
-            # ...
-            
-        # отправить сообщение получателю
-            # ...
+        # отправить сообщение получателю и отправителю
+        serializer = NewMessage(new_message)
+
+        data_to_send = {
+            'type':'new_message',
+            'message_data':serializer.data
+        }
+
+        async_to_sync(self.channel_layer.group_send)(
+            str(interlocutor.id),
+            {
+                'type':'chat.new.message',
+                'data':json.dumps(data_to_send)
+            }
+        )
+        self.send(json.dumps(data_to_send))
 
 
+    def chat_new_message(self, event):
+        self.send(event['data'])
 
-
-
-    def recive(self, text_data):
-        ...        
-
-    def disconnect(self, text_data):
-        ...
 
 
 def parse_message_text(message) -> dict:

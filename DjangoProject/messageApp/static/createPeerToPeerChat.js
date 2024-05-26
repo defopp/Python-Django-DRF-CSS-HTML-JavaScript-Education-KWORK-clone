@@ -14,7 +14,6 @@ const intID = urlParams.get('intID');
 console.log(`intID = ${intID}`);
 
 
-forEa
 
 function createChatFrom (intID) {
     const chatDiv = document.getElementById('chatDiv')
