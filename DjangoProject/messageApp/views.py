@@ -13,9 +13,6 @@ class ChatView(View):
             requester_id = request.user.id
             if 'intID' in request.GET:
                 interlocutor_id = request.GET['intID']
-                # if только intID => open simple chat
-                    # open chat room if она есть
-                    # else create chatroom
                 return render(request, self.template_name, {'type_of_chat' : 'PeerToPeer'})
 
         # WAY TWO mainopen/ else
@@ -23,7 +20,7 @@ class ChatView(View):
             return render(request, self.template_name)
     
     def post(self, request):
-        return HttpResponse('[http post request] request - ЗАЕБИСЬЯ')
+        return HttpResponse('[http post request] request - done')
 
 
 

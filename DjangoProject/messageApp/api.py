@@ -56,8 +56,7 @@ class ChatRoomAPI(APIView):
 
 
 
-            if 'prodID' in request.GET:
-                ...
+        
             ...
         else:
             return Response({'data':'none',

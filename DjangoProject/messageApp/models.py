@@ -16,8 +16,10 @@ class ChatRoom(models.Model):
         ...
 
     def last_message(self):
-        last_message = Message.objects.filter(chatroom = self.id).order_by("-id")[0]
-        return last_message
+        last_message = Message.objects.filter(chatroom = self.id).order_by("-id")
+        if last_message.exists():
+            return last_message[0]
+        return None
     
     def all_messages(self):
         all_messages = Message.objects.filter(chatroom = self.id).order_by("id")

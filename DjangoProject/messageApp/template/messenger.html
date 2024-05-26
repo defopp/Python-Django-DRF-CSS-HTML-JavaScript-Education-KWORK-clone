@@ -396,7 +396,7 @@ function createMessageDiv(message, interlocutor, requester) {
 }
 
 // TODO: Сделать кнопку, которая, будет отсылать запрос с сообщением
-function createFormDiv(interlocutorID, csrf_token) {
+function createFormDiv(interlocutorID, csrf_token, fetchData) {
     // Создание формы
     var form = document.createElement('form')
     form.className = `input_div`
@@ -404,6 +404,7 @@ function createFormDiv(interlocutorID, csrf_token) {
     form.setAttribute('id', 'msgForm');
     form.innerHTML = `<span class="file_b backimgset"></span>
                     <input type='hidden' name='intID' value='${interlocutorID}'></input>
+                    <input type='hidden' name='chatRoomID' value='${fetchData.data.id}'></input>
                     <input type='hidden' name='csrfmiddlewaretoken' value='${csrf_token}'></input>
                     <textarea name='text' class="message_input" placeholder="Введите сообщение..."></textarea>
                     <span class="smile backimgset"></span>`
@@ -459,13 +460,20 @@ var chatModer = function () {
                 <div class="messenger" id='chatDivID${intID}'>
                     ${createUserTitleDiv(fetchData)}
                     ${createChatUlDiv(fetchData)}
-                    ${createFormDiv(intID, csrf_token)}
+                    ${createFormDiv(intID, csrf_token, fetchData)}
                 </div> 
             `
             document.getElementById("msgForm").onsubmit = function(e) {
                 e.preventDefault()
                 console.log('ajax запрос c submitBtn')
-                var formData = new FormData(this)
+                const formData = new FormData(this)
+
+                // encode text to bytes
+                let utf8EncodedString = encodeURIComponent(formData.get("text"));
+                console.log(utf8EncodedString)
+                formData.set('text', utf8EncodedString)
+                console.dir(formData)
+
                 sendMessageWS(formData)
                     
                 
@@ -482,6 +490,7 @@ function sendMessageWS (formData) {
     const queryString = new URLSearchParams(formData).toString()
     chatSocket.send(queryString)
     console.log('отправил дату на ws')
+
 }
 
 
