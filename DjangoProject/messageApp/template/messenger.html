@@ -211,10 +211,14 @@ chatSocket.onmessage = function(e) {
 }
 
 function ShowNewMessage(message_data) {
+    let requesterID = {{ user.id }}
+    let csrf_token = `{{ csrf_token }}`
     let intID = message_data.chatroom.interlocutor.id
     let createrID = message_data.chatroom.creater.id
     let chatRoomID = message_data.chatroom.id
     let message = message_data.text
+
+    let chatRooms = document.getElementById('chatrooms');
 
     // Показать сообщение в чате
     chatDivByInt = document.getElementById(`chatDivID${intID}`)
@@ -234,12 +238,26 @@ function ShowNewMessage(message_data) {
 
     // Показать сообщение в комнатах
     chatRoomDiv = document.getElementById(`chatRoomId${chatRoomID}`)
-    last_mesDiv = chatRoomDiv.querySelector('.mes')
-    console.dir(last_mesDiv)
-    last_mesDiv.innerHTML = message
+    if (chatRoomDiv != null) {
+    // если есть комната
+        last_mesDiv = chatRoomDiv.querySelector('.mes')
+        console.dir(last_mesDiv)
+        last_mesDiv.innerHTML = message
+        // перенос чатрум вверх
+        chatRooms.insertBefore(chatRoomDiv, chatRooms.firstChild);
+    } else {
+    // если нет комнаты
+        let errordiv = chatRooms.querySelector('.empty_chatrooms')
+        if (errordiv != null) {
+            errordiv.innerHTML = ``
+        }
+        // создание комнаты
+        newChatRoomDiv = createChatRoomDiv(message_data.chatroom, requesterID, csrf_token)
+        chatRooms.appendChild(newChatRoomDiv)
+        // перенос чатрум вверх
+        chatRooms.insertBefore(newChatRoomDiv, chatRooms.firstChild);
+    }
 
-    let chatRooms = document.getElementById('chatrooms');
-    chatRooms.insertBefore(chatRoomDiv, chatRooms.firstChild);
 }
 
 
@@ -276,8 +294,15 @@ function createChatRoomDiv(chatRoomJson, requester_id, csrf_token) {
     // Выбор кого отображать собеседником для chatRoom 
     let interlocutor = chooseInterlocutor(chatRoomJson, requester_id)
     let interlocutorAvatar = getFullUrlWithHost(interlocutor.avatar)
-    let lastMessageText = chatRoomJson.last_message.text
-    let lastMessageDate = chatRoomJson.last_message.date
+    let lastMessageText
+    let lastMessageDate
+    if (chatRoomJson.last_message) {
+    lastMessageText = chatRoomJson.last_message.text
+    lastMessageDate = chatRoomJson.last_message.date
+    } else {
+    lastMessageText = `У вас новое сообщение!`
+    lastMessageDate = ``
+    }
 
     const div = document.createElement('form');
     div.classList.add(`messege_div`);
@@ -317,7 +342,7 @@ var chatRoomsModer = function () {
     const chatRoomsDiv = document.getElementById('chatrooms')
     return {
         div: chatRoomsDiv,
-        stateNull: () => {chatRoomsDiv.innerHTML = `<span class='empty_chatrooms'>Загрузка</span>`},
+        stateNull: () => {chatRoomsDiv.innerHTML = `<span class='empty_chatrooms'></span>`},
         state0: () => {chatRoomsDiv.innerHTML = `<span class='empty_chatrooms'>У вас нет чатов</span>`},
         state1: (chatRoomsJson, requester_id, csrf_token) => {
             // Обнуление
@@ -326,7 +351,8 @@ var chatRoomsModer = function () {
             chatRoomsJson.forEach(chatRoomJson => {
                 chatRoomsDiv.appendChild(createChatRoomDiv(chatRoomJson, requester_id, csrf_token)) 
             });
-        }
+        },
+        
     }
 }
 
@@ -381,15 +407,15 @@ function createUserTitleDiv(fetchData) {
 function createChatUlDiv(fetchData) {
     let chatDiv = document.createElement('div');
     chatDiv.className = 'chat';
+    let chatUl = document.createElement('ul');
+    chatUl.className = 'chatUl';
+    chatDiv.appendChild(chatUl)
 
     if (fetchData.data.all_messages) {
         let interlocutor = chooseInterlocutor(fetchData.data, fetchData.requester_id)
         let requester = chooseRequseter(fetchData.data, fetchData.requester_id)
 
 
-        let chatUl = document.createElement('ul');
-        chatUl.className = 'chatUl';
-        chatDiv.appendChild(chatUl)
         fetchData.data.all_messages.forEach(message => {
             chatUl.appendChild(createMessageDiv(message, interlocutor, requester))
         })
@@ -525,7 +551,6 @@ function sendMessageWS (formData) {
 function getChatRoomsXHR (csrf_token) {
     // 1. Ajax xRequests to API TO GET ROOMS
     let url = `http://${window.location.host}/api/chatrooms/`
-
     // XML METHOD
     let xhr = new XMLHttpRequest();
     xhr.open('get', url, true);
