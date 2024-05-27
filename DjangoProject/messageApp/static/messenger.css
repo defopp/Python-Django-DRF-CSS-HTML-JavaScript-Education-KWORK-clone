@@ -559,7 +559,7 @@ main{
     border-radius: 10px;
     resize: none;
     position: relative;
-    overflow: hidden;
+    overflow: hidden hidden;
     box-sizing: border-box;
     transition: padding .3s;
 }

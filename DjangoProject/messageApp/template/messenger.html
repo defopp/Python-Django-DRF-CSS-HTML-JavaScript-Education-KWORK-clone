@@ -213,27 +213,33 @@ chatSocket.onmessage = function(e) {
 function ShowNewMessage(message_data) {
     let intID = message_data.chatroom.interlocutor.id
     let createrID = message_data.chatroom.creater.id
+    let chatRoomID = message_data.chatroom.id
+    let message = message_data.text
 
     // Показать сообщение в чате
     chatDivByInt = document.getElementById(`chatDivID${intID}`)
     chatDivByCreater = document.getElementById(`chatDivID${createrID}`)
     if (chatDivByInt != null) {
+        // отобразить в чате
         ulDiv = chatDivByInt.querySelector(".chatUl")
-        console.dir(ulDiv)
-        console.log('нашел бай инт')
         ulDiv.appendChild(createMessageDiv(message_data, message_data.chatroom.interlocutor, message_data.chatroom.creater))
         console.log('создал')
     }
     if (chatDivByCreater != null) {
+        // отобразить в чате
         ulDiv = chatDivByCreater.querySelector(".chatUl")
-        console.dir(ulDiv)
-        console.log('нашел бай кр')
         ulDiv.appendChild(createMessageDiv(message_data, message_data.chatroom.creater, message_data.chatroom.interlocutor))
         console.log('создал')
     }
 
-
     // Показать сообщение в комнатах
+    chatRoomDiv = document.getElementById(`chatRoomId${chatRoomID}`)
+    last_mesDiv = chatRoomDiv.querySelector('.mes')
+    console.dir(last_mesDiv)
+    last_mesDiv.innerHTML = message
+
+    let chatRooms = document.getElementById('chatrooms');
+    chatRooms.insertBefore(chatRoomDiv, chatRooms.firstChild);
 }
 
 
