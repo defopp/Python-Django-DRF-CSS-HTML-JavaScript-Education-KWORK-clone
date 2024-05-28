@@ -324,6 +324,10 @@ function createChatRoomDiv(chatRoomJson, requester_id, csrf_token) {
     div.onclick = function () {
         chatDiv = document.getElementById(`chatDivID${interlocutor.id}`)
         if (chatDiv === null) {
+            allDivs = document.querySelectorAll('.messege_div')
+            allDivs.forEach(div => {
+                div.style.backgroundColor = 'white'
+            })
             div.style.backgroundColor = '#dbd8d8'
             getChatRoomFetch(interlocutor.id, csrf_token)
         }
