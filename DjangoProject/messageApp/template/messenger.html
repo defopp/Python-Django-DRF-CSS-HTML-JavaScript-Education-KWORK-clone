@@ -468,7 +468,7 @@ function createFormDiv(interlocutorID, csrf_token, fetchData) {
                     <input type='hidden' name='intID' value='${interlocutorID}'></input>
                     <input type='hidden' name='chatRoomID' value='${fetchData.data.id}'></input>
                     <input type='hidden' name='csrfmiddlewaretoken' value='${csrf_token}'></input>
-                    <textarea name='text' class="message_input" placeholder="Введите сообщение..."></textarea>
+                    <textarea name='text' id='inputtextarea' class="message_input" placeholder="Введите сообщение..."></textarea>
                     <span class="smile backimgset"></span>`
     // Создание кнопки
     var button = document.createElement('button')
@@ -528,8 +528,11 @@ var chatModer = function () {
             document.getElementById("msgForm").onsubmit = function(e) {
                 // Функция отправки сообщения с формы кнопкой "Отправить"
                 e.preventDefault()
+                const input = document.getElementById("inputtextarea")
+                console.dir(input)
+                input.value = ''
                 const formData = new FormData(this)
-                // encode text to bytes
+                // кодировка в bytestring
                 let utf8EncodedString = encodeURIComponent(formData.get("text"));
                 formData.set('text', utf8EncodedString)
 
