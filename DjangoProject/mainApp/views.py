@@ -6,10 +6,10 @@ from django.contrib.sessions.models import Session
 
 # Create your views here.
 def MainPage(request):
-    return render(request, 'mainApp\\main.html', )
+    return render(request, r'mainApp/main.html', )
 
 def ToFreelancerPage(request):
-    return render(request, 'mainApp\\to_freelancer.html')
+    return render(request, 'mainApp/to_freelancer.html')
 
 
 
