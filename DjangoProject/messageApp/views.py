@@ -1,25 +1,25 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from django.views import View
 
 from messageApp.models import ChatRoom
 
 # Create your views here.
 class ChatView(View):
-    template_name = 'messageApp\\template\\messenger.html'
+    template_name = 'messageApp/template/messenger.html'
     
     def get(self, request):
-        if len(request.GET) > 0:
-            requester_id = request.user.id
-            if 'intID' in request.GET:
-                interlocutor_id = request.GET['intID']
-                return render(request, self.template_name, {'type_of_chat' : 'PeerToPeer'})
+        if request.user.is_authenticated:
+            if len(request.GET) > 0:
+                requester_id = request.user.id
+                if 'intID' in request.GET:
+                    interlocutor_id = request.GET['intID']
+                    return render(request, self.template_name, {'type_of_chat' : 'PeerToPeer'})
 
-        # WAY TWO mainopen/ else
-        else:
-            return render(request, self.template_name)
-    
-    def post(self, request):
-        return HttpResponse('[http post request] request - done')
+            # WAY TWO mainopen/ else
+            else:
+                return render(request, self.template_name)
+        else: return redirect('signup')
+
 
 
 

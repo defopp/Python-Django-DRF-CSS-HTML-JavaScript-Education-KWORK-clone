@@ -10,7 +10,7 @@ from .services import *
 
 # Create your views here.
 class CatalogBuyView(View):
-    template_name = 'productsApp\\template\\catalog_buy.html'
+    template_name = 'productsApp/template/catalog_buy.html'
     def get(self, request):
         maincats = MainCategory.objects.all()
         subcats = SubCategory.objects.all()
@@ -19,7 +19,7 @@ class CatalogBuyView(View):
 
 
 class CatalogSellView(View):
-    template_name = 'productsApp\\template\\catalog_sell.html'
+    template_name = 'productsApp/template/catalog_sell.html'
 
     def get(self, request):
         projects_list = Product.objects.all().filter(sell_type=0)
@@ -29,7 +29,7 @@ class CatalogSellView(View):
 
 
 class MainCategoryView(View):
-    template_name = 'productsApp\\template\\category.html'
+    template_name = 'productsApp/template/category.html'
     
     def get(self, request, mainurlname):      
         
@@ -50,7 +50,7 @@ class MainCategoryView(View):
         
         
 class SubCategoryView(View):
-    template_name = 'productsApp\\template\\category_catalog.html'
+    template_name = 'productsApp/template/category_catalog.html'
 
     def get(self, request, mainurlname, suburlname):
         
@@ -74,7 +74,7 @@ class SubCategoryView(View):
       
             
 class new_projectView(View):
-    template_name = 'productsApp\\template\\project_create.html'
+    template_name = 'productsApp/template/project_create.html'
     
     def get(self, request):
         
@@ -104,7 +104,7 @@ class new_projectView(View):
             
              
 class ProjectView(View):
-    template_name = 'productsApp\\template\\project.html'
+    template_name = 'productsApp/template/project.html'
     
     # TODO Обновить модель продукта, и запрос к моделям категорий.
     def get(self, request, project_id):    

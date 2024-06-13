@@ -10,7 +10,7 @@ from productsApp.models import Product
 
 
 class signupView(View):
-    template_name = 'usersApp\\template\\signup.html'
+    template_name = 'usersApp/template/signup.html'
 
     def get(self, request):
         return render(request, self.template_name, {'form': SignUpForm()})
@@ -28,7 +28,7 @@ class signupView(View):
 
             
 class loginView(View):
-    template_name = 'usersApp\\template\\login.html'
+    template_name = 'usersApp/template/login.html'
     
     def get(self, request):
         return render(request, self.template_name, {'form': LogInForm()})
@@ -52,7 +52,7 @@ class logoutView(View):
 
 
 class profileView(View):
-    template_name = 'usersApp\\template\\profile.html'
+    template_name = 'usersApp/template/profile.html'
     
     def get(self, request, user_id):
         try:
@@ -71,7 +71,7 @@ class profileView(View):
 
 
 class myProfileView(View):
-    template_name = 'usersApp\\template\\my_profile.html'
+    template_name = 'usersApp/template/my_profile.html'
     
     def get(self, request):
         if request.user.is_authenticated:
@@ -84,7 +84,7 @@ class myProfileView(View):
 
 
 class editProfileView(View):
-    template_name = 'usersApp\\template\\user_settings.html'
+    template_name = 'usersApp/template/user_settings.html'
     
     def get(self, request):
         if request.user.is_authenticated:        

@@ -9,7 +9,7 @@ def MainPage(request):
     return render(request, r'mainApp/main.html', )
 
 def ToFreelancerPage(request):
-    return render(request, 'mainApp/to_freelancer.html')
+    return render(request, r'mainApp/to_freelancer.html')
 
 
 
