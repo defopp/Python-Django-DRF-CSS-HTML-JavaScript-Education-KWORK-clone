@@ -527,16 +527,17 @@ var chatModer = function () {
             `
             document.getElementById("msgForm").onsubmit = function(e) {
                 // Функция отправки сообщения с формы кнопкой "Отправить"
-                e.preventDefault()
+                e.preventDefault()                
                 const input = document.getElementById("inputtextarea")
-                console.dir(input)
-                input.value = ''
+
+                if (input.value !== '') {
                 const formData = new FormData(this)
                 // кодировка в bytestring
                 let utf8EncodedString = encodeURIComponent(formData.get("text"));
                 formData.set('text', utf8EncodedString)
-
                 sendMessageWS(formData)               
+                input.value = ''
+                }
             }
         
 
