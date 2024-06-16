@@ -1,0 +1,41 @@
+version: '3.9'
+
+services:
+  django:
+    build: ./
+    container_name: kwork
+    restart: always
+    # volumes: ?
+    ports:
+      - "8000:8000"
+    expose:
+      - 8000
+    command: sh -c "python manage.py runserver 0.0.0.0:8000"
+    # depends_on:
+    #   - db
+    networks:
+      - default
+
+  redis:
+    image: redis
+    container_name: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    # expose:
+    #   - 6379
+    networks:
+      - default
+
+  # db: 
+  #   image: postgres
+  #   container_name: postgresql_for_django
+  #   # ports:
+  #   #   - 5432:5432
+  #   expose:
+  #     - 5432
+  #   # networks:
+  #   #   - db_net
+
+# networks:
+# - db_net:
