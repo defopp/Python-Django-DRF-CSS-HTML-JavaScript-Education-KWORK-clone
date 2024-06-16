@@ -11,8 +11,8 @@ services:
     expose:
       - 8000
     command: sh -c "python manage.py runserver 0.0.0.0:8000"
-    # depends_on:
-    #   - db
+    depends_on:
+      - redis
     networks:
       - default
 
@@ -22,8 +22,8 @@ services:
     restart: always
     ports:
       - "6379:6379"
-    # expose:
-    #   - 6379
+    expose:
+      - 6379
     networks:
       - default
 
