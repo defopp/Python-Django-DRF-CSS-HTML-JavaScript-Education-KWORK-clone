@@ -5,9 +5,9 @@ from channels.generic.websocket import WebsocketConsumer
 from django.db.models import Q
 from asgiref.sync import async_to_sync
 
-from .models import ChatRoom, Message
-from usersApp.models import User
-from .serializers import NewMessage
+# from .models import ChatRoom, Message
+# from usersApp.models import User
+# from .serializers import NewMessage
 
 class ChatConsumer(WebsocketConsumer):
     
@@ -34,6 +34,8 @@ class ChatConsumer(WebsocketConsumer):
         query_dict = parse_message_text(message)
         print(query_dict)
 
+        from .models import ChatRoom, Message
+        from usersApp.models import User
         sender = User.objects.get(id=self.scope['user'].id) 
         interlocutor = User.objects.get(id=query_dict['intID'])
         chat_room_id = query_dict['chatRoomID']
@@ -61,8 +63,8 @@ class ChatConsumer(WebsocketConsumer):
             new_message = Message(owner=sender, chatroom=ChatRoom.objects.get(id=chat_room_id), text=text)
             new_message.save(force_insert=True)
 
-
         # отправить сообщение получателю и отправителю
+        from .serializers import NewMessage
         serializer = NewMessage(new_message)
 
         data_to_send = {

@@ -2,7 +2,8 @@ from django.db import models
 
 from usersApp.models import User
 from productsApp.models import Product
-
+# from django.contrib.auth import get_user_model
+# User = get_user_model() 
 
 # Create your models here.
 class ChatRoom(models.Model):
