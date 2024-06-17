@@ -2,12 +2,15 @@
 - [Дизайн в Figma.com](https://www.figma.com/file/RPZaZR9gVgVTuSrD9GnmAE/%D0%A0%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0-%D0%91%D0%B8%D1%80%D0%B6%D0%B8-%D0%A4%D1%80%D0%B8%D0%BB%D0%B0%D0%BD%D1%81%D0%B0?type=design&t=ZxV5FBVWbCz9x8aX-6)
 
 ### Тестовый запуск:
-###### 1. create/activate venv    
+###### 1. create/activate venv
+    clone this repo
+    cd into     
+###### 2. create/activate venv    
     py -m venv .\venv
     .\venv\Scripts\activate
-###### 2. install requirements
+###### 3. install requirements
     pip install -r requirements.txt
-###### 3. run server
+###### 4. run server
     cd .\DjangoProject\
     py manage.py runserver
 
