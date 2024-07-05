@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.views import View
 
+from tools import if_login
 
 from usersApp.models import User
 from .models import MainCategory, SubCategory, DetailCategory, Product
@@ -76,30 +77,27 @@ class SubCategoryView(View):
 class new_projectView(View):
     template_name = 'productsApp/template/project_create.html'
     
+    @if_login
     def get(self, request):
-        
-        if request.user.is_authenticated:
-            return render(request, self.template_name, {'maincats':MainCategory.objects.all(),
-                                                        'subcats':SubCategory.objects.all(),
-                                                        'detcats':DetailCategory.objects.all()})
-        else: return redirect('signup')
+        return render(request, self.template_name, {'maincats':MainCategory.objects.all(),
+                                                    'subcats':SubCategory.objects.all(),
+                                                    'detcats':DetailCategory.objects.all()})
     
-    
+    @if_login
     def post(self, request):
         # TODO: Форму от модели и валидацию
-        if request.user.is_authenticated:
-            product = Product(sell_type=request.POST['type'], 
-                              name=request.POST['name'], 
-                              description=request.POST["description"], 
-                              detail_cat_id=request.POST['detcat'], 
-                              price=request.POST["price"],
-                              owner_id=request.user.id,
-                              sub_cat_id=SubCategory.objects.get(id=DetailCategory.objects.get(name = request.POST['detcat']).sub_category_id).name,
-                              main_cat_id=MainCategory.objects.get(id=SubCategory.objects.get(id=DetailCategory.objects.get(name = request.POST['detcat']).sub_category_id).main_category_id))
-            product.save()    
-            return redirect('project', project_id = product.id)
+        product = Product(sell_type=request.POST['type'], 
+                            name=request.POST['name'], 
+                            description=request.POST["description"], 
+                            detail_cat_id=request.POST['detcat'], 
+                            price=request.POST["price"],
+                            owner_id=request.user.id,
+                            sub_cat_id=SubCategory.objects.get(id=DetailCategory.objects.get(name = request.POST['detcat']).sub_category_id).name,
+                            main_cat_id=MainCategory.objects.get(id=SubCategory.objects.get(id=DetailCategory.objects.get(name = request.POST['detcat']).sub_category_id).main_category_id))
+        product.save()    
+        return redirect('project', project_id = product.id)
         
-        else: return redirect('signup')
+       
             
             
              

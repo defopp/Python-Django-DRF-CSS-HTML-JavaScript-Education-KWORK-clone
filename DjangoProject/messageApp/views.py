@@ -1,12 +1,13 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.views import View
 
-from messageApp.models import ChatRoom
+from tools import if_login
 
 # Create your views here.
 class ChatView(View):
     template_name = 'messageApp/template/messenger.html'
-    
+
+    @if_login
     def get(self, request):
         if request.user.is_authenticated:
             if len(request.GET) > 0:

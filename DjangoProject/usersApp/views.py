@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views import View
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+from tools import if_login
 
 
 from .forms import SignUpForm, LogInForm, ChangePasswordForm, MainSettingsForm
@@ -73,36 +76,33 @@ class profileView(View):
 class myProfileView(View):
     template_name = 'usersApp/template/my_profile.html'
     
+    @if_login
     def get(self, request):
-        if request.user.is_authenticated:
             owner_projects = Product.objects.all().filter(owner_id=request.user.id, sell_type=True)
             owner_orders = Product.objects.all().filter(owner_id=request.user.id, sell_type=False)
             return render(request, self.template_name, {'owner_projects':owner_projects,
                                                         'owner_orders':owner_orders})
-        else:
-            return redirect('main')
-
 
 class editProfileView(View):
     template_name = 'usersApp/template/user_settings.html'
-    
-    def get(self, request):
-        if request.user.is_authenticated:        
-            user = User.objects.get(username=request.user.username)
-            # Добавить формы для общих настроек и смены пароля
-            
-            context = {
-                'MainSettingsForm':MainSettingsForm(initial={
-                    "first_name":user.first_name,
-                    "last_name":user.last_name,
-                    "description":user.description
-                    }),
-                'ChangePasswordForm':ChangePasswordForm(user),
-            }        
-            return render(request, self.template_name, context)
-        else:
-            HttpResponse("404")
 
+    @if_login
+    def get(self, request):
+
+        user = User.objects.get(username=request.user.username)
+        # Добавить формы для общих настроек и смены пароля
+
+        context = {
+            'MainSettingsForm':MainSettingsForm(initial={
+                "first_name":user.first_name,
+                "last_name":user.last_name,
+                "description":user.description
+                }),
+            'ChangePasswordForm':ChangePasswordForm(user),
+        }        
+        return render(request, self.template_name, context)
+    
+    @if_login
     def post(self, request): 
         if 'old_password' in request.POST :
             # change password form
@@ -134,17 +134,14 @@ class editProfileView(View):
          
         elif 'first_name' in request.POST:
             # mainsettings form
-            if request.user.is_authenticated:
-                user = User.objects.get(username=request.user.username)
-                if user is not None:
-                    form = MainSettingsForm(instance=user, data=request.POST, files=request.FILES)
-                    if form.is_valid():
-                        form.save()
-                        return redirect('user_settings') 
-                    return HttpResponse(f"form = невалид")
-                return HttpResponse(f"user is none")
-            return HttpResponse(f"user is not auth")
-            
+            user = User.objects.get(username=request.user.username)
+            if user is not None:
+                form = MainSettingsForm(instance=user, data=request.POST, files=request.FILES)
+                if form.is_valid():
+                    form.save()
+                    return redirect('user_settings') 
+                return HttpResponse(f"form = невалид")
+            return HttpResponse(f"user is none")
         
         else:
             return HttpResponse(f"Запрос не подходит ни под одну форму")
